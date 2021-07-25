@@ -5,6 +5,9 @@
   "repository": "https://github.com/llofyy/collab-bingo.git",
   "author": "Lucas André <lucasandrefreitas1@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
   },
