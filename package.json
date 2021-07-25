@@ -1,0 +1,14 @@
+{
+  "name": "collab-bingo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/llofyy/collab-bingo.git",
+  "author": "Lucas André <lucasandrefreitas1@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
