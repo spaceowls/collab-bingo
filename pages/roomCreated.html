@@ -31,13 +31,13 @@
         <div id="room-data">
             <div id="room-id-container">
                 <span id="room-id-text">ID da Sala:</span> 
-                <div id="room-id"><img src="../assets/img/copy.svg">#980347</div>
+                <div id="room-id"><img src="../assets/img/copy.svg" id="copy-room-id">#980347</div>
             </div>
         </div>
 
         <div id="room-info-container">
 
-            <div style="display: flex">
+            <div style="display: flex; flex-direction: row;">
                 <div class="room-info">
                     <span>Participantes:</span> 
                     <div class="room-info-data">
@@ -49,16 +49,33 @@
                 <div class="room-info">
                     <span>Premiação:</span> 
                     <div class="room-info-data">
-                        <img src="../assets/img/coin2.svg" id="coin-img"> 
+                        <img src="../assets/img/coin2.svg" id="award-coin-img"> 
                         200
                     </div>
                 </div>
             </div>
+
+            <div id="buy-card-container">
+                <h2 id="buy-card">Comprar cartela:</h2>
+                <div id="card-price">
+                    Valor: <img src="../assets/img/coin2.svg" id="buy-card-coin-img">75
+                </div>
+                <button id="generate-card-btn">
+                    Gerar
+                </button>
+            </div>
+
+            <div id="card-genera8ted-sucess">
+                Cartela gerada com sucesso.
+            </div>
+
         </div>
 
         <div class="ball" id="bottom-ball">
 
         </div>
     </div>
+
+    <script src="../assets/js/copyRoomId.js"></script>
 </body>
 </html>

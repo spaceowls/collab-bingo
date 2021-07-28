@@ -44,9 +44,11 @@ img{
 }
 
 body{
-    height: 100vh;
-    background: var(--ciano-light);
+    background-color: var(--ciano-light);
+    font-weight: 700;
+    color: var(--roxo-light);
     overflow: hidden;
+    height: 100vh;
 }
 
 html{
@@ -75,7 +77,6 @@ html{
 #room-created > h2 {
     font-family: 'Raleway', sans-serif;
     font-size: 1.56rem;
-    color: var(--roxo-light);
     margin-left: 1.5rem;
 }
 
@@ -105,7 +106,6 @@ html{
     margin-top: 35px;
     font-size: 1.25em;
     font-weight: 700;
-    color: var(--roxo-light);
     background-color: #FFFFFF;
     border-radius: 10px;
     width: 307px;
@@ -144,12 +144,13 @@ html{
 
 #room-info-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-color: #FFFFFF;
     margin-top: 40px;
     border-radius: 15px;
     width: 300px;
-    height: 200px;
+    height: 300px;
 }
 
 .room-info {
@@ -158,9 +159,13 @@ html{
     align-items: center;
     margin-top: 17px;
     margin: 18.5px;
-    color: var(--roxo-light);
+    margin-bottom: 0;
     font-weight: 700;
     font-size: 0.625em;
+}
+
+.room-info > span {
+    margin-bottom: 4px;
 }
 
 .room-info-data {
@@ -179,15 +184,67 @@ html{
     margin-right: 5px;
 }
 
-
 #participants-img {
     width: 37px;
     height: 38px;
 }
 
-#coin-img {
+#award-coin-img {
     width: 28px;
     height: 28px;
+}
+
+#buy-card-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+#buy-card {
+    margin-top: 29px;
+    font-size: 1.25em;
+}
+
+#card-price {
+    margin-top: 4px;
+}
+
+#buy-card-coin-img {
+    margin-left: 3px;
+    margin-right: 3px;
+    width: 16px;
+    height: 16px;
+}
+
+#generate-card {
+    display: flex;
+    justify-content: center;
+}
+
+#generate-card-btn {
+    background-color: var(--ciano-medio);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--roxo-light);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px 0 #00000044;
+    margin-top: 7px;
+    width: 120px;
+    height: 35px;
+}
+
+#card-generated-sucess {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 13px;
+    margin-right: 22px;
+    margin-left: 22px;
+    background-color: var(--ciano-medio);
+    border-radius: 5px;
+    width: 263px;
+    height: 40px;
 }
 
 #bottom-ball {
