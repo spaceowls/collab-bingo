@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucesso!</title>
+
+    <link rel="stylesheet" href="../assets/css/roomCreated.css">
+</head>
+<body>
+
+    <div id="top">
+        <div id="room-created">
+            <a href="javascript:window.history.back()">
+                <img src="../assets/img/arrow-left.svg">
+            </a>
+            <h2>Sala criada</h2>
+        </div>
+
+        <div id="menu">
+            <img src="../assets/img/menu.svg">
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="room-created-sucess-msg">
+            Sala criada com sucesso!
+        </div>
+
+        <div id="room-data">
+            <div id="room-id-container">
+                <span id="room-id-text">ID da Sala:</span> 
+                <div id="room-id"><img src="../assets/img/copy.svg">#980347</div>
+            </div>
+        </div>
+
+        <div id="room-info-container">
+
+            <div style="display: flex">
+                <div class="room-info">
+                    <span>Participantes:</span> 
+                    <div class="room-info-data">
+                        <img src="../assets/img/participants.svg" id="participants-img">
+                        0/15
+                    </div>
+                </div>
+
+                <div class="room-info">
+                    <span>Premiação:</span> 
+                    <div class="room-info-data">
+                        <img src="../assets/img/coin2.svg" id="coin-img"> 
+                        200
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ball" id="bottom-ball">
+
+        </div>
+    </div>
+</body>
+</html>
