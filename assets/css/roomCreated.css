@@ -206,6 +206,8 @@ html{
 }
 
 #card-price {
+    display: flex;
+    align-items: center;
     margin-top: 4px;
 }
 
