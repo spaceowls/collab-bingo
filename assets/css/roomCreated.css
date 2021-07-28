@@ -60,7 +60,7 @@ html{
 
 #top {
     width: 100%;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     margin-left: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -74,14 +74,14 @@ html{
 
 #room-created > h2 {
     font-family: 'Raleway', sans-serif;
-    font-size: 2rem;
+    font-size: 1.56rem;
     color: var(--roxo-light);
     margin-left: 1.5rem;
 }
 
 #menu {
     margin-left: auto;
-    margin-right: 1.5rem;
+    margin-right: 2rem;
 }
 
 #content {
