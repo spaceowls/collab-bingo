@@ -5,14 +5,14 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './database/bingo.db3'
+      filename: `${__dirname}/src/database/collab-bingo.db3`
     },
     useNullAsDefault: true,
     migrations: {
-      directory: './database/migrations'
+      directory: `${__dirname}/src/database/migrations`
     },
     seeds: {
-      directory: './database/seeds'
+      directory: `${__dirname}/src/database/seeds`
     }
   }
 }
