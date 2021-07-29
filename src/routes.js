@@ -1,5 +1,9 @@
 const { Router } = require('express');
 const router = Router();
+const knex = require('./database');
+
+const userController = require('../src/controllers/UserController');
+const { login } = require('../src/controllers/UserController');
 
 router.get('/login', userController.login)
 router.post('/login', userController.login)
@@ -8,22 +12,33 @@ router.get('/register', userController.register)
 router.post('/register', userController.register)
 
 router.get('/profile/:user', userController.profile)
-router.put('/profile/edit/:user', userController.editProfile)
+//router.put('/profile/edit/:user', userController.editProfile)
+router.delete('/profile/:user', userController.delete)
 
-router.get('/rooms', roomsController.listRooms)
+// router.get('/rooms', roomsController.listRooms)
 
-router.get('/create-room', roomsController.create)
-router.post('/create-room', roomsController.create)
+// router.get('/create-room', roomsController.create)
+// router.post('/create-room', roomsController.create)
 
-router.get('/created-room', roomsController.createdRoom)
+// router.get('/created-room', roomsController.createdRoom)
 
-router.get('/enter-room', roomsController.enterRoom)
-router.post('/enter-room', roomsController.enterRoom)
+// router.get('/enter-room', roomsController.enterRoom)
+// router.post('/enter-room', roomsController.enterRoom)
 
-router.post('/room/:room-id', roomsController.enterRoom)
+// router.post('/room/:room-id', roomsController.enterRoom)
 
-router.get('/ranking', rankingController.listRanking)
+// router.get('/ranking', rankingController.listRanking)
 
-router.get('/bingo/:bingo-id', bingoController.bingoMatch)
+// router.get('/bingo/:bingo-id', bingoController.bingoMatch)
+
+
+
+module.exports = {
+    async login(req, res) {
+        const results = await knex('users')
+
+        return res.json(results)
+    }
+}
 
 module.exports = router;
