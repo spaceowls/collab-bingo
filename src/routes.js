@@ -2,18 +2,22 @@ const { Router } = require('express');
 const router = Router();
 const knex = require('./database');
 
-const userController = require('../src/controllers/UserController');
-const { login } = require('../src/controllers/UserController');
+const CreateUserController = require('./controllers/CreateUserController');
+const ListUsersController = require('./controllers/ListUsersController');
+const UpdateAvatarController = require('./controllers/UpdateAvatarController');
+const AuthenticateUserController = require('./controllers/AuthenticateUserController');
+const DeleteUserController = require('./controllers/DeleteUserController');
+const AddVictoriesController = require('./controllers/AddVictoriesController');
 
-router.get('/login', userController.login)
-router.post('/login', userController.login)
+router.get('/users', ListUsersController);
+router.post('/register', CreateUserController);
+router.post('/login', AuthenticateUserController);
+router.put('/edit/avatar/:id', UpdateAvatarController);
+router.delete('/delete/:id', DeleteUserController);
+router.get('/victories/:id', AddVictoriesController);
 
-router.get('/register', userController.register)
-router.post('/register', userController.register)
-
-router.get('/profile/:user', userController.profile)
-//router.put('/profile/edit/:user', userController.editProfile)
-router.delete('/profile/:user', userController.delete)
+// router.get('/profile/:user', userController.profile)
+// router.delete('/profile/:user', userController.delete)
 
 // router.get('/rooms', roomsController.listRooms)
 
