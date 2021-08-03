@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/salaDoBingo.css">
+    <link rel="stylesheet" href="../assets/css/createRoom.css">
+    <link rel="stylesheet" href="../assets/css/modal.css">
+
+    <title>Sala do Bingo</title>
+</head>
+<body>
+    
+    <header id="name-room">
+        <div class="content container">
+            <div class="room">
+                <a href="#"><img src="../assets/img/arrow-left.svg" alt="Voltar na tela anterior"></a>
+                <h2>Nome da Sala</h2>
+            </div>
+            <div class="menu">
+                <img src="../assets/img/menu.svg" alt="Menu Mobile">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <div class="center-number">
+            <div class="numbers-bingo">7</div>
+        </div>
+
+        <section id="createRoom">
+            <div class="content-box">
+                <div class="room-bingo  container">
+                    <div class="pedras-ants">
+                        <div class="ant-number1">8</div>
+                        <div class="ant-number2">65</div>
+                        <div class="ant-number3">20</div>
+                    </div>
+
+                    <h2>Minha Cartela:</h2>
+
+                    <div class="table-bingo">
+                            <table>
+                        
+                                <tr>
+                                    <td><div class="letras-bingo">B</div></td>
+                                    <td><div class="letras-bingo">I</div></td>
+                                    <td><div class="letras-bingo">N</div></td>
+                                    <td><div class="letras-bingo">G</div></td>
+                                    <td><div class="letras-bingo">O</div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="numbers-randomb">0</div></td>
+                                    <td><div class="numbers-randomi">0</div></td>
+                                    <td><div class="numbers-randomn">0</div></td>
+                                    <td><div class="numbers-randomg">0</div></td>
+                                    <td><div class="numbers-randomo">0</div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="numbers-randomb">0</div></td>
+                                    <td><div class="numbers-randomi">0</div></td>
+                                    <td><div class="numbers-randomn">0</div></td>
+                                    <td><div class="numbers-randomg">0</div></td>
+                                    <td><div class="numbers-randomo">0</div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="numbers-randomb">0</div></td>
+                                    <td><div class="numbers-randomi">0</div></td>
+                                    <td><div class="numbers-random"><img src="../assets/img/coringa.svg" alt="Coringa da cartela"></div></td>
+                                    <td><div class="numbers-randomg">0</div></td>
+                                    <td><div class="numbers-randomo">0</div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="numbers-randomb">0</div></td>
+                                    <td><div class="numbers-randomi">0</div></td>
+                                    <td><div class="numbers-randomn">0</div></td>
+                                    <td><div class="numbers-randomg">0</div></td>
+                                    <td><div class="numbers-randomo">0</div></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="numbers-randomb">0</div></td>
+                                    <td><div class="numbers-randomi">0</div></td>
+                                    <td><div class="numbers-randomn">0</div></td>
+                                    <td><div class="numbers-randomg">0</div></td>
+                                    <td><div class="numbers-randomo">0</div></td>
+                                </tr>
+                                
+                            </table>
+                    </div>
+
+                    <button class="gera-cartela">GERAR CARTELA</button>
+                    <div class="btn-bingo">
+                        <button class="btn-padrao">BINGO!!!</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="fundo-modal">
+        <div class="conteudo-modal container">
+            <div class="title-modal">
+                <h2>VOCÊ FOI O VENCEDOR!!!</h2>
+            </div>
+
+            <div class="vencendor">
+                <img src="../assets/img/ganhador-da-sala.svg" alt="Imagem do vencedor">
+                <h2>VENCEDOR!!!</h2>
+
+                <div class="qtd-dinheiro-que-ganhou">
+                    <img src="../assets/img/coin.svg" alt="Moedas que ganhou">
+                    <p>200</p>
+                </div>
+
+                <div class="btn-premiacao">
+                    <button class="receber-premio">RECEBER PREMIAÇÃO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bg">
+        <div class="ball top"></div>
+        <div class="ball bottom"></div>
+    </div>
+
+    <script src="../assets/js/cartela.js"></script>
+    <script src="../assets/js/abrirModal.js"></script>
+</body>
+</html>
