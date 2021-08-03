@@ -12,6 +12,7 @@ async function AuthenticateUserService(username, password) {
     }
     
     const comparePassword = await compare(password, user.password);
+    
     if(!comparePassword) {
         return {
             error: "usuário/senha incorretos."
