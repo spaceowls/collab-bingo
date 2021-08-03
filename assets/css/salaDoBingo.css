@@ -1,0 +1,233 @@
+body{
+    width: 100%;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+#name-room{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+#name-room .content{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#name-room .room{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#name-room .room a{
+    margin-right: 2rem;
+}
+
+main .center-number{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    
+}
+
+.pedras-ants {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ant-number1{
+
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8.5rem;
+    height: 8.5rem;
+    background: transparent;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 5rem;
+
+    border-radius: 100%;
+    border: 3px solid var(--white);
+}
+.ant-number2{
+    margin-top: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8.5rem;
+    height: 8.5rem;
+    background: transparent;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 5rem;
+
+    border-radius: 100%;
+    border: 3px solid var(--white);
+}
+.ant-number3{
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8.5rem;
+    height: 8.5rem;
+    background: transparent;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 5rem;
+
+    border-radius: 100%;
+    border: 3px solid var(--white);
+}
+
+.numbers-bingo {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--white);
+  color: var(--roxo-ligth);
+
+  font-weight: 700;
+  width: 20rem;
+  height: 20rem;
+  border: 5px solid var(--roxo-ligth);
+  border-radius: 100%;
+  font-size: 14rem;
+  -webkit-box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58); 
+  box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58);
+}
+
+.table-bingo{
+    padding: .5rem;
+    border-radius: 10px;
+    background: var(--white);
+    width: 100%;
+    height: auto;
+}
+table{
+    width: 100%;
+    height: auto;
+}
+
+table tr td{
+    padding: .1rem;
+}
+
+table .letras-bingo{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ciano-medio);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--roxo-ligth);
+    border-radius: 10px;
+}
+
+.numbers-random{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ciano-medio);
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 10px;
+}
+.numbers-randomb{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ciano-medio);
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 10px;
+}
+.numbers-randomi{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ciano-medio);
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 10px;
+}
+.numbers-randomn{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ciano-medio);
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 10px;
+}
+.numbers-randomg{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ciano-medio);
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 10px;
+}
+.numbers-randomo{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ciano-medio);
+    font-size: 2rem;
+    font-weight: 700;
+    border-radius: 10px;
+}
+.numbers-random img{
+    width: 100%;
+    height: 70%;
+}
+
+.btn-bingo{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-padrao{
+    width: 12rem;
+    height: 3.4rem;
+    border-radius: 20px;
+
+    font-family: 'Raleway', sans-serif;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--roxo-ligth);
+    font-weight: 700;
+    background: var(--ciano-medio);
+    border: none;
+    -webkit-box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58); 
+    box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58);
+}
+
+.btn-padrao:hover{
+    color: var(--roxo-dark);
+    background: var(--ciano-light);
+}
+
