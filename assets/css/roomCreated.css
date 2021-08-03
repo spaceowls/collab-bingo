@@ -1,0 +1,118 @@
+
+.content-box {
+    display: flex;
+    justify-content: center;
+    
+}
+.container-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.content-box .container-box{
+    margin-top: 5rem;
+    width: 100%;
+    height: 40rem;
+    display: flex;
+    border-radius: 15px;
+    background: var(--white);
+}
+
+.container-box .text-table{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.container-box .text-table p{
+    font-weight: 700;
+    color: var(--roxo-ligth);
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+.container-box .text-table p img{
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    margin-left: .5rem;
+    align-items: center;
+}
+
+.infos-room{
+    margin-top: 2rem;
+    display: flex;
+}
+.infos-room .participantes-max{
+    text-align: center;
+    width: 100%;
+    margin-right: 3.7rem;
+}
+.infos-room .premiacao-value{
+    text-align: center;
+    width: 100%;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 11rem;
+    border-radius: 5px;
+    height: 4.4rem;
+    background: var(--ciano-medio);
+    -webkit-box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58); 
+    box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58);
+}
+.center img{
+    width: 3.7rem;
+    height: 3rem;
+}
+
+.text-table{
+    margin-top: 3.4rem;
+}
+.text-table h2{
+    margin-bottom: 1rem;
+}
+.text-table p{
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+.text-table .btn-padrao{
+    width: 12rem;
+    height: 3.4rem;
+    border-radius: 20px;
+
+    font-family: 'Raleway', sans-serif;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--roxo-ligth);
+    font-weight: 700;
+    background: var(--ciano-medio);
+    border: none;
+    -webkit-box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58); 
+    box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58);
+}
+.text-table .btn-padrao:hover{
+    color: var(--roxo-dark);
+    background: var(--ciano-light);
+}
+
+.warnning-create-table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 35rem;
+    border-radius: 5px;
+    height: 4rem;
+    margin-bottom: 5rem;
+    background: var(--ciano-medio);
+}
+.warnning-create-table h2{
+    font-size: 1.5rem;
+}
+

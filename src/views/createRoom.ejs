@@ -31,10 +31,10 @@
             <div class="content-box">
                 <div class="form-room  container">
                     <h3>Criando Sala:</h3>
-                    <form action="#" method="POST" class="center">
+                    <form action="/create-room" method="POST" class="center">
                             <fieldset class="field">
                                 <label for="nome" class="nome">Nome:</label>
-                                <input name= 'createRoom' type="text" placeholder="Digite nome da sala" class="nome validar">
+                                <input name= 'name' type="text" placeholder="Digite nome da sala" class="nome validar">
                             </fieldset>
 
                             <div class="errors"></div>
@@ -60,7 +60,7 @@
         
                             <fieldset>
                                 <label class="label-type-room" for="nome">Tipo da sala:</label>
-                                <select name="typeRoom" class="typeRoom" onchange="tipoOption(this.value)">
+                                <select name="roomType" class="typeRoom" onchange="tipoOption(this.value)">
                                     <option value ="0">Pública</option>
                                     <option value="1">Privada</option>
                                   </select>
@@ -68,12 +68,12 @@
 
                             <div class="input-senha-sala-privada">
                                 <label class="senha-input-privada" for="senha-sala">Senha:</label>
-                                <input minlength="6" maxlength="12" type="password" name="sala-privada" placeholder="Digite uma senha" class="senha-privada validar-senha-privada">
+                                <input minlength="6" maxlength="12" type="password" name="password" placeholder="Digite uma senha" class="senha-privada validar-senha-privada">
                             </div>
 
 
                             <div class="btn">
-                                <button class="btnCreateRoom">CRIAR <img src="../assets/img/coin.svg" alt=""> 200</button>
+                                <button class="btnCreateRoom">CRIAR <img src="../assets/img/coin.svg" alt="">200</button>
                             </div>
                     </form>
                 </div>  
