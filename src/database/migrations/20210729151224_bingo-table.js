@@ -3,6 +3,8 @@ exports.up = function(knex) {
         
         tbl.string('id').primary();
 
+        tbl.string('name');
+
         tbl.integer('FKuserID').references('id').inTable('users').notNullable().onDelete('CASCADE');
     
         tbl.integer('premiacao');

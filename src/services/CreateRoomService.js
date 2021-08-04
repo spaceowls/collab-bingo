@@ -1,7 +1,7 @@
 const knex = require('../database');
 const { v4: uuid } = require('uuid');
 
-async function CreateRoomService(user_id, premiacao, private) {
+async function CreateRoomService(user_id, name, premiacao, private) {
     let roomCode;
 
     for(let i = 0; i < 6; i++) {
@@ -13,6 +13,7 @@ async function CreateRoomService(user_id, premiacao, private) {
     if(!existRoom) {
         await knex('bingo').insert({
             id: uuid(),
+            name,
             FKuserID: user_id,
             premiacao,
             private,

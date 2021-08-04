@@ -12,6 +12,7 @@ const RemoveCoinsController = require('./controllers/RemoveCoinsController');
 const CreateRoomController = require('./controllers/CreateRoomController');
 const ListPublicRoomsController = require('./controllers/ListPublicRoomsController');
 const RankingController = require('./controllers/RankingController');
+const EnterRoomController = require('./controllers/EnterRoomController');
 
 router.get('/users', ListUsersController);
 router.post('/register', CreateUserController);
@@ -24,6 +25,7 @@ router.put('/remove/coins/:id', RemoveCoinsController);
 router.post('/create/room', CreateRoomController);
 router.get('/rooms', ListPublicRoomsController);
 router.get('/ranking', RankingController)
+router.get('/enter-room', EnterRoomController)
 
 // router.get('/profile/:user', userController.profile)
 // router.delete('/profile/:user', userController.delete)
