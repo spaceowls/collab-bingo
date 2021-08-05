@@ -1,25 +1,31 @@
 
 .content-box {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
     
 }
 .container-box{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
 }
 .content-box .container-box{
-    margin-top: 5rem;
-    width: 100%;
-    height: 40rem;
+    margin-top: -2rem;
+    margin-bottom: 28rem;
+    width: 90%;
+    height: 48%;
     display: flex;
     border-radius: 15px;
     background: var(--white);
 }
 
 .container-box .text-table{
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -102,17 +108,78 @@
 }
 
 .warnning-create-table{
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     margin-top: 2rem;
-    width: 35rem;
+    width: 80%;
+    height: auto;
     border-radius: 5px;
     height: 4rem;
     margin-bottom: 5rem;
     background: var(--ciano-medio);
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+.warnning-create-table-error{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 80%;
+    height: auto;
+    border-radius: 5px;
+    height: 4rem;
+    margin-bottom: 5rem;
+    background: var(--ciano-medio);
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+.warnning-create-table-error h2{
+    font-size: 1.5rem;
+    color: rgba(255, 0, 0, 0.623);
+    
 }
 .warnning-create-table h2{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    
+}
+
+.border-dono-sala{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.border-dono-sala img{
+    margin-top: 2rem;
+    width: 3.5rem;
+    height:5rem;
+}
+
+
+.dono-da-sala{
+    margin-top: -1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-image: url('');
+    background-size: cover;
+    color: var(--ciano-ligth);
+  
+    font-weight: 700;
+    width: 11rem;
+    height: 11rem;
+    border: 5px solid #F0F5FC;
+    border-radius: 100%;
+    font-size: 14rem;
+    -webkit-box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58); 
+    box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58);
+    margin-bottom: 4rem;
 }
 

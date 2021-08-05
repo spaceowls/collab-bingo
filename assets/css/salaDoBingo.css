@@ -231,3 +231,41 @@ table .letras-bingo{
     background: var(--ciano-light);
 }
 
+
+.vencendor .border-dono-sala{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.fundo-modal .conteudo-modal .vencendor .border-dono-sala img{
+    margin-top: 1rem;
+    width: 5rem;
+    height:5rem;
+}
+
+
+.dono-da-sala{
+    margin-top: -1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background-image: url('');
+    background-size: cover;
+    color: var(--ciano-ligth);
+  
+    font-weight: 700;
+    width: 11rem;
+    height: 11rem;
+    border: 5px solid var(--roxo-ligth);
+    border-radius: 100%;
+    font-size: 14rem;
+    -webkit-box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58); 
+    box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58);
+    margin-bottom: 1rem;
+}

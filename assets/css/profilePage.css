@@ -1,0 +1,117 @@
+.pedras-ants{
+    margin-top: 1rem;
+}
+
+.name-usuario h2{
+    margin-top: 6rem;
+    color: var(--white);
+}
+.ant-number1{
+    width: 10rem;
+    height: 10rem;
+}
+.ant-number3{
+    width: 10rem;
+    height: 10rem;
+}
+
+.pedras-ants .ant-number1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.pedras-ants .ant-number1 img{
+    width: 5rem;
+    height: 3.5rem;
+}
+.pedras-ants .ant-number3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.pedras-ants .ant-number3 img{
+    margin-bottom: 0.7rem;
+    width: 5rem;
+    height: 3.5rem;
+}
+.pedras-ants .ant-number1 {
+    font-size: 2rem;
+}
+.pedras-ants .ant-number3 {
+    font-size: 1.5rem;
+}
+
+.content-perfil .sala-abertas{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    width: 100%;
+    height: auto;
+}
+.content-perfil{
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    
+}
+.content-perfil .sala-abertas{
+    width: 85%;
+    height: 5rem;
+    border-radius: 10px;
+    background: var(--white);
+    margin-bottom: 3rem;
+
+}
+.content-perfil .sala-abertas .eye{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ciano-medio);
+    border-radius: 5px;
+    margin-left: 1rem;
+    padding: .8rem 1.5rem;
+}
+
+.content-perfil .sala-abertas img{
+    width: 2rem;
+    height: 2rem;
+}
+
+.content-perfil .criar-sala-perfil{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    
+    width: 100%;
+    height: auto;
+}
+
+
+.content-perfil .criar-sala-perfil{
+    width: 85%;
+    height: 5rem;
+    border-radius: 10px;
+    background: var(--white);
+    margin-bottom: 3rem;
+
+}
+.content-perfil .criar-sala-perfil .add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ciano-medio);
+    border-radius: 5px;
+    margin-left: 1rem;
+    padding: .8rem 1.5rem;
+}
+
+.content-perfil .criar-sala-perfil img{
+    width: 2rem;
+    height: 2rem;
+}
