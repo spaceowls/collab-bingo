@@ -1,0 +1,17 @@
+.entrar-sala-privada {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 13%;   
+    justify-content: space-between;
+    width: 100%;
+}
+
+.texto-id-sala {
+    color: white;
+    font-size: 2rem;
+}
+
+.imagem-submit {
+    background-color: var(--white);
+
+}
