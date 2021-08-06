@@ -1,8 +1,8 @@
 const EnterRoomService = require("../services/EnterRoomService");
 
 async function EnterRoomController(req, res) {
-    const { code } = req.body;
-    const room = await EnterRoomService(code)
+    const { code, password } = req.body;
+    const room = await EnterRoomService(code, password);
 
     res.json(room);
 }
