@@ -1,0 +1,15 @@
+start{
+    compilar os sccs para dist
+    compilar o ejs para a dist com as variaveis em algum arquivo
+    mover as fotos em um arquivo em comum
+    dps rodar uma file server talves
+}
+
+build{
+    compilar o scss para build
+    mover os ejs para la
+    mover os assets
+    tentar colocar uma minificacao
+    sem watcher
+}
+
