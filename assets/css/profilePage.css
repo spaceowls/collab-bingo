@@ -40,7 +40,7 @@
     font-size: 2rem;
 }
 .pedras-ants .ant-number3 {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .content-perfil .sala-abertas{
@@ -115,3 +115,25 @@
     width: 2rem;
     height: 2rem;
 }
+
+input[type=file] {
+    display: none;
+}
+
+.center-number .edit-perfil{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    margin-top: 16rem;
+    margin-left: 10rem;
+
+    
+    background: var(--roxo-dark);
+    padding: 1rem 1.1rem;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+}
+

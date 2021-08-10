@@ -22,7 +22,9 @@ let numerosO = [];
 
 numerosDoBingo.forEach((num) => {
   while (num < 16) {
-    numerosB.push(num);
+    let numO = num;
+    numO = num >= 10 ? num : `0${num}`
+    numerosB.push(numO);
     break;
   }
 });
@@ -115,7 +117,7 @@ function geraTabela() {
     cartela.push(numerosO[j]);
     valor.innerHTML = numerosO.splice(j, 1);
   });
-  console.log(cartela);
+  console.log(cartela.toString());
 }
 
 geraCartela.addEventListener("click", () => {
