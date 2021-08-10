@@ -1,7 +1,9 @@
+let codigo = `
+<script>
 (function reload() {
-	const verbose = false
+	const verbose = true
 	const socketUrl = window.location.hostname
-	const port = 'WS_ENDPOINT_CHANGE'
+	const port = '7777'
 	let firstChange
 	let navigatedAwayFromPage
 	let socket
@@ -56,7 +58,7 @@
 		if (verbose) console.log('[ejs-serve] waiting for socket')
 
 		setTimeout(() => {
-			socket = new WebSocket(`ws://${ socketUrl }:${ port }`)
+			socket = new WebSocket(\`ws://\${ socketUrl }:\${ port }\`)
 			socket.onopen = onOpen
 			socket.onclose = onClose
 			socket.onerror = onError
@@ -64,3 +66,6 @@
 		}, 250)
 	}
 }())
+</script>
+`
+export { codigo }

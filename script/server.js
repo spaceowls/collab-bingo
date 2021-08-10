@@ -3,50 +3,61 @@ import handler from 'serve-handler'
 import { join } from 'path'
 import { accessSync, readFileSync } from 'fs'
 import ejs from 'ejs'
+import WebSocket, { WebSocketServer } from 'ws';
+import open from 'open'
+import { codigo } from './reload-client.js';
 
 const log = console.log
 
-export default class Server {
-    constructor(pathPastaServir) {
-        this.httpServer = http.createServer((req, res) => {
-            const urlPath = req.url
+export default class Servidor {
+    constructor(pathPastaServir, portaServidor, portaWs) {
+        this.pathPastaServir = pathPastaServir
 
-            const extensao = urlPath.split('.')[1]
+        this.servidorHTTP = http.createServer(this.handleHttpRequest)
+        this.servidorHTTP.listen(portaServidor)
 
-            //se o arquivo pedido for um ejs, vai compilar ele antes de mandar
-            if (extensao === 'ejs') {
-                const pathRequisitado = join(pathPastaServir, urlPath)
+        const conexaoWs = new WebSocketServer({port: portaWs})
+        this.conexaoWs = conexaoWs
 
-                try {
-                    //testa se o ejs existe
-                    accessSync(pathRequisitado)
-                } catch {
-                    //se o arquivo requisitado nao existir retorna o erro bonito da biblioteca
-                    return handler(req, res, {
-                        'public' : pathPastaServir
-                    })
-                }
+        open('http://localhost:' + portaServidor)
 
-                //compila o ejs
-                const ejsRaw = readFileSync(pathRequisitado, 'utf8')
-                const ejsCompilado = ejs.render(ejsRaw)
+    }
 
-                res.end(ejsCompilado)
-                return
+    //precisa ser a porra de uma arrow function para o this referir a classe servidor
+    handleHttpRequest = (req, res) => {
+        const urlPath = req.url
+
+        const extensao = urlPath.split('.')[1]
+
+        //se o arquivo pedido for um ejs, vai compilar ele antes de mandar
+        if (extensao === 'ejs') {
+            const pathRequisitado = join(this.pathPastaServir, urlPath)
+
+            try {
+                //testa se o ejs existe
+                accessSync(pathRequisitado)
+            } catch {
+                //se o arquivo requisitado nao existir retorna o erro bonito da biblioteca
+                return handler(req, res, {
+                    'public' : this.pathPastaServir
+                })
             }
 
-            //caso o arquivo nao seja um ejs, deixa essa biblioteca fazer a resposta
-            return handler(req, res, {
-                'public' : pathPastaServir
-            })
+            //compila o ejs
+            const ejsRaw = readFileSync(pathRequisitado, 'utf8')
+            const ejsCompilado = ejs.render(ejsRaw) + codigo
+
+            res.end(ejsCompilado)
+            return
+        }
+
+        //caso o arquivo nao seja um ejs, deixa essa biblioteca fazer a resposta
+        return handler(req, res, {
+            'public' : this.pathPastaServir,
         })
     }
 
-    reload(caminho) {
-
-    }
-
-    start() {
-        this.httpServer.listen(7777)
+    recarregarPagina() {
+        this.conexaoWs.clients.forEach((client) => client.send('reload'))
     }
 }
