@@ -12,7 +12,6 @@ if(!testarExistencia(pastaSrc)){
 
 const pastaScss = join(pastaSrc, 'sass/main.scss')
 if(!testarExistencia(pastaScss)){
-    console.log(pastaScss)
     throw 'pasta do scss nao existe'
 }
 

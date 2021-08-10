@@ -13,16 +13,18 @@ export default function inicarWatcher(pastaAObservar, caminhoSass, eventoRecarre
             //e se for vai recompilar o sass
             console.log(path)
             if(path.endsWith('.scss') || path.endsWith('sass')){
-                let sassCompilado = sass.renderSync({file:caminhoSass}).css
+                try {
+                    let sassCompilado = sass.renderSync({file:caminhoSass}).css
+                } catch(err) {
+                    console.log("#######ERRO NA COMPILACAO DO SASS######")
+                    console.log(err)
+                    return
+                }
                 let caminhoSaidaSass = join(pastaAObservar, 'css/main.css')
                 writeFileSync(caminhoSaidaSass, sassCompilado)
-                console.log('o sass foi compilado', caminhoSaidaSass)
             } else if (path.endsWith('.css')){
                 return
             }
-
-            console.log('mudanca presentida')
-            console.log('**************')
 
             eventoRecarregar()
         })

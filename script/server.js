@@ -7,8 +7,6 @@ import WebSocket, { WebSocketServer } from 'ws';
 import open from 'open'
 import { codigo } from './reload-client.js';
 
-const log = console.log
-
 export default class Servidor {
     constructor(pathPastaServir, portaServidor, portaWs) {
         this.pathPastaServir = pathPastaServir
@@ -33,7 +31,6 @@ export default class Servidor {
         if (extensao === 'ejs') {
             const pathRequisitado = join(this.pathPastaServir, urlPath)
             const caminhoAbsolutoRequest = dirname(pathRequisitado)
-            console.log('caminho é', caminhoAbsolutoRequest)
 
             try {
                 //testa se o ejs existe
@@ -47,13 +44,19 @@ export default class Servidor {
 
             //compila o ejs
             const ejsRaw = readFileSync(pathRequisitado, 'utf8')
-            const ejsCompilado = ejs.render(ejsRaw, null, {
-                'views':[caminhoAbsolutoRequest]
-            })
+            let resposta
+            try{
+                const ejsCompilado = ejs.render(ejsRaw, null, {
+                    'views':[caminhoAbsolutoRequest]
+                })
+                resposta = ejsCompilado + codigo
+            } catch(err) {
+                console.log("#######ERRO NA COMPILACAO DO EJS#######")
+                console.log(err)
+                resposta = '<p>Erro no EJS</p>' + codigo
+            }
 
-            const arquivoCompleto = ejsCompilado + codigo
-
-            res.end(arquivoCompleto)
+            res.end(resposta)
             return
         }
 
