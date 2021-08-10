@@ -1,6 +1,6 @@
 import http from 'http'
 import handler from 'serve-handler'
-import { join } from 'path'
+import { join, dirname } from 'path'
 import { accessSync, readFileSync } from 'fs'
 import ejs from 'ejs'
 import WebSocket, { WebSocketServer } from 'ws';
@@ -32,6 +32,8 @@ export default class Servidor {
         //se o arquivo pedido for um ejs, vai compilar ele antes de mandar
         if (extensao === 'ejs') {
             const pathRequisitado = join(this.pathPastaServir, urlPath)
+            const caminhoAbsolutoRequest = dirname(pathRequisitado)
+            console.log('caminho é', caminhoAbsolutoRequest)
 
             try {
                 //testa se o ejs existe
@@ -45,9 +47,13 @@ export default class Servidor {
 
             //compila o ejs
             const ejsRaw = readFileSync(pathRequisitado, 'utf8')
-            const ejsCompilado = ejs.render(ejsRaw) + codigo
+            const ejsCompilado = ejs.render(ejsRaw, null, {
+                'views':[caminhoAbsolutoRequest]
+            })
 
-            res.end(ejsCompilado)
+            const arquivoCompleto = ejsCompilado + codigo
+
+            res.end(arquivoCompleto)
             return
         }
 

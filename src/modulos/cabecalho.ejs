@@ -1,0 +1,11 @@
+<header class="cabecalho">
+    <% if (typeof salaAnterior !== 'undefined' && salaAnterior) {%> 
+    <div class="cabecalho--voltar">
+        <a href=""><img src="../assets/img/arrow-left.svg" alt="Voltar na tela anterior"></a>
+        <h2><%= salaAnterior %></h2>
+    </div>
+    <% } %> 
+    <div class="cabecalho--menu-hamburger">
+        <img src="../assets/img/menu.svg" alt="Menu Mobile">
+    </div>
+</header>

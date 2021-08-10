@@ -13,3 +13,4 @@ build{
     sem watcher
 }
 
+lidar com os erros do sass e do ejs

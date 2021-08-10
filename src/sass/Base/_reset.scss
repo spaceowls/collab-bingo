@@ -3,3 +3,37 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+html {
+    font-family: 'Raleway', sans-serif;
+    font-size: 62.5%;
+}
+
+/* VARIAVEIS DE CORES */
+:root {
+    --roxo-dark: #5E49DA;
+    --roxo-ligth: #6A5ACD; 
+    --ciano-medio: #E7EDF7;
+    --ciano-light: #F0F5FC;
+    --white: #FFFFFF;
+    --grey-dark: #A5A2A2;
+    --green-light: #05FF00, 50%;
+    --red-ligth: #FF0000, 50%;
+    --roxo-opacity: #6A5ACD, 50%;
+    --black-modal: #000000, 60%
+
+}
+
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}

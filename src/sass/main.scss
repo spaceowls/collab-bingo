@@ -1,4 +1,5 @@
-@use './Base/reset';
-
-@use 'coisa.sass'
-
+@use 'Base/';
+@use 'Layout/';
+@use 'Paginas/';
+@use 'Componentes/';
+@use 'Abstratos/';
