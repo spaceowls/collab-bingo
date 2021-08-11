@@ -40,7 +40,7 @@ let codigo = `
 		if (firstChange === true && navigatedAwayFromPage !== true) {
 			if (verbose) console.log('[ejs-serve] reloading due to changes')
 			firstChange = false
-			window.location.reload()
+			location.reload(true)
 		}
 	}
 

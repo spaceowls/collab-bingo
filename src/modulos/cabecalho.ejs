@@ -1,11 +1,72 @@
 <header class="cabecalho">
-    <% if (typeof salaAnterior !== 'undefined' && salaAnterior) {%> 
-    <div class="cabecalho--voltar">
-        <a href=""><img src="../assets/img/arrow-left.svg" alt="Voltar na tela anterior"></a>
-        <h2><%= salaAnterior %></h2>
+    <% if (typeof salaAnterior !== 'undefined') {%> 
+    <div class="cabecalho__voltar-sala voltar-sala">
+        <a href="#" class="voltar-sala__link">
+            <img class="voltar-sala__imagem" src="../assets/img/arrow-left.svg" alt="Voltar na tela anterior">
+        </a>
+        <h2 class="voltar-sala__texto"><%= salaAnterior %></h2>
     </div>
     <% } %> 
-    <div class="cabecalho--menu-hamburger">
-        <img src="../assets/img/menu.svg" alt="Menu Mobile">
+    <div class="cabecalho__menu-hamburger menu-hamburger">
+        <a href="#" class="menu-hamburger__link" onclick="aparecerMenu()">
+            <img class="menu-hamburger__imagem" src="../assets/img/menu.svg" alt="Menu Mobile">
+        </a>
     </div>
+    <div class="menu-mobile--visivel">
+        <!-- aquele fundo preto na pagina toda -->
+        <div class="menu-mobile__bg"></div>
+        <!-- aqui que tem oque interessa -->
+        <div class="menu-mobile__fg">
+            <img src="../assets/img/close.svg" alt="fechar menu" onclick="esconderMenu()" 
+                class="menu-mobile__imagem-fechar"
+            >
+            
+            <div class="menu-mobile__lista-centrada">
+
+                <div class="menu-mobile__foto-jogador" alt="imagem do jogador">
+                    <img class="menu-mobile__imagem-jogador" src="http://astraios.herokuapp.com/api/200x200/" alt="foto de usuario">
+                    <img class="menu-mobile__frame-foto" src="../assets/img/frame-redondo.svg">
+                </div>
+
+                <div class="menu-mobile__botao fundo-arredondado-cinza">
+                    <span>Nome</span>
+                </div>
+                <div class="menu-mobile__botao fundo-arredondado-cinza">
+                    <img class="menu-mobile__icone" src="../assets/img/edit-perfil.svg" alt="papel e caneta">
+                    <span>Editar Perfil</span>
+                </div>
+                <div class="menu-mobile__botao fundo-arredondado-cinza">
+                    <img class="menu-mobile__icone" src="../assets/img/cria-sala.svg" alt="sinal de mais">
+                    <span>Criar Sala</span>
+                </div>
+                <div class="menu-mobile__botao fundo-arredondado-cinza">
+                    <img class="menu-mobile__icone" src="../assets/img/users.svg" alt="grupo de pessoas">
+                    <span>Salas Publicas</span>
+                </div>
+                <div class="menu-mobile__botao fundo-arredondado-cinza">
+                    <img class="menu-mobile__icone" src="../assets/img/logout.svg" alt="imagem sair">
+                    <span>Logout</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- parte que abre e fecha o menu mobile -->
+    <script>
+        function aparecerMenu(){
+            let elemento = document.getElementsByClassName('menu-mobile--escondido')[0]
+            if (elemento) {
+                elemento.classList.remove('menu-mobile--escondido')
+                elemento.classList.add('menu-mobile--visivel')
+            }
+        }
+
+        function esconderMenu(){
+            let elemento = document.getElementsByClassName('menu-mobile--visivel')[0]
+            if (elemento) {
+                elemento.classList.remove('menu-mobile--visivel')
+                elemento.classList.add('menu-mobile--escondido')
+            }
+        }
+    </script>
 </header>

@@ -23,6 +23,7 @@ export default class Servidor {
 
     //precisa ser a porra de uma arrow function para o this referir a classe servidor
     handleHttpRequest = (req, res) => {
+        res.setHeader('Cache-Control', 'no-store')
         const urlPath = req.url
 
         const extensao = urlPath.split('.')[1]
