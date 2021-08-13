@@ -12,14 +12,16 @@
             <img class="menu-hamburger__imagem" src="../assets/img/menu.svg" alt="Menu Mobile">
         </a>
     </div>
-    <div class="menu-mobile--visivel">
+    <div class="menu-mobile--escondido">
         <!-- aquele fundo preto na pagina toda -->
         <div class="menu-mobile__bg"></div>
         <!-- aqui que tem oque interessa -->
         <div class="menu-mobile__fg">
-            <img src="../assets/img/close.svg" alt="fechar menu" onclick="esconderMenu()" 
-                class="menu-mobile__imagem-fechar"
-            >
+            <div class="menu-mobile__div-fechar">
+                <img src="../assets/img/close.svg" alt="fechar menu" onclick="esconderMenu()" 
+                    class="menu-mobile__imagem-fechar"
+                >
+            </div>
             
             <div class="menu-mobile__lista-centrada">
 
@@ -29,7 +31,11 @@
                 </div>
 
                 <div class="menu-mobile__botao fundo-arredondado-cinza">
-                    <span>Nome</span>
+                    <% if(typeof nomeUsuario !== 'undefined'){ %> 
+                        <span><%= nomeUsuario %></span>
+                    <% } else { %> 
+                        <span>Nome nao passado</span>
+                    <% } %> 
                 </div>
                 <div class="menu-mobile__botao fundo-arredondado-cinza">
                     <img class="menu-mobile__icone" src="../assets/img/edit-perfil.svg" alt="papel e caneta">
