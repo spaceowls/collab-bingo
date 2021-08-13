@@ -4,13 +4,9 @@
 </div> -->
 
 <!-- caso a varivel parte nao seja passada da um erro -->
-<%// if(typeof parte === 'undefined'){throw new Error('A variavel "parte" nao foi passada para o fundo')} %> 
-<%// if(parte === 'abrir') {%> 
-
-<%// } else if(parte == 'fechar'){%> 
-
-<%// } %> 
-
-<div class="conteudo">
-        
-</div>
+<%if(typeof parte === 'undefined'){throw new Error('A variavel "parte" nao foi passada para o fundo')} %> 
+<%if(parte === 'abrir') {%> 
+    <div class="conteudo">
+<%} else if(parte == 'fechar'){%> 
+    </div>
+<%} %> 
