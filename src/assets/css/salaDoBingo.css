@@ -32,12 +32,12 @@ main .center-number{
     
 }
 
-.pedras-ants {
+.circulos {
     display: flex;
     justify-content: space-around;
 }
 
-.ant-number1{
+.circulos__puntuacao{
 
     margin-top: 1rem;
     display: flex;
@@ -68,7 +68,7 @@ main .center-number{
     border-radius: 100%;
     border: 3px solid var(--white);
 }
-.ant-number3{
+.circulos__ranking{
     margin-top: 1rem;
     display: flex;
     align-items: center;

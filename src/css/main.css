@@ -154,3 +154,123 @@ body {
   --roxo-opacity: rgba(106, 90, 205, 50%);
   --black-modal: rgba(0, 0, 0, 60%);
 }
+
+.sala-de-espera {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.texto-id {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 5rem;
+}
+.texto-id h2 {
+  color: var(--white);
+}
+
+.texto-id__fundo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16rem;
+  height: 4rem;
+  background-color: var(--white);
+  border-radius: 1rem;
+}
+.texto-id__fundo span {
+  color: var(--roxo-ligth);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.texto-id__fundo h3 {
+  color: var(--roxo-ligth);
+  font-size: 2.5rem;
+}
+
+.sala-de-espera .info-sala {
+  width: 85%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 10%;
+  background-color: var(--white);
+}
+.sala-de-espera .info-sala h5 {
+  color: var(--roxo-ligth);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.sala-de-espera .info-sala__participantes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 16rem;
+  height: 5.5rem;
+  padding: 2.5rem;
+  background-color: var(--ciano-medio);
+  margin-bottom: 2.3rem;
+  border-radius: 1rem;
+  -webkit-box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+}
+.sala-de-espera .info-sala__participantes img {
+  width: 5rem;
+  height: 5rem;
+}
+.sala-de-espera .info-sala__participantes h2 {
+  font-size: 4rem;
+}
+
+.info-sala__btn {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.info-sala__btn-gerar {
+  border: none;
+  width: 12rem;
+  height: 3.5rem;
+  background: var(--ciano-medio);
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  color: var(--roxo-ligth);
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  cursor: pointer;
+  -webkit-box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  transition: background 0.3s;
+}
+.info-sala__btn-gerar:hover {
+  background: var(--roxo-ligth);
+  color: var(--ciano-medio);
+}
+
+.info-sala__mensagem-de-criacao {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+.info-sala__mensagem-de-criacao h3 {
+  font-size: 1.5rem;
+  color: var(--roxo-ligth);
+  background: var(--ciano-medio);
+  padding: 1rem 4rem;
+  border-radius: 1rem;
+}

@@ -1,12 +1,12 @@
-.pedras-ants{
+.circulos{
     margin-top: 1rem;
 }
 
-.name-usuario h2{
+.circulos__nome-usuario h2{
     margin-top: 6rem;
     color: var(--white);
 }
-.ant-number1{
+.circulos__puntuacao{
     width: 10rem;
     height: 10rem;
 }
@@ -15,31 +15,31 @@
     height: 10rem;
 }
 
-.pedras-ants .ant-number1{
+.circulos .circulos__puntuacao{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.pedras-ants .ant-number1 img{
+.circulos .circulos__puntuacao img{
     width: 5rem;
     height: 3.5rem;
 }
-.pedras-ants .ant-number3{
+.circulos .circulos__ranking{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.pedras-ants .ant-number3 img{
+.circulos .circulos__ranking img{
     margin-bottom: 0.7rem;
     width: 5rem;
     height: 3.5rem;
 }
-.pedras-ants .ant-number1 {
+.pedras-ants .circulos__puntuacao {
     font-size: 2rem;
 }
-.pedras-ants .ant-number3 {
+.circulos .circulos__ranking {
     font-size: 2rem;
 }
 
