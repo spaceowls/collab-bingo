@@ -1,0 +1,72 @@
+#players {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 22px;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    margin-top: 3px;
+}
+
+.player-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000055;
+    color: #FFFFFF;
+    border-radius: 20px;
+    margin-left: 7px;
+    padding: 0 20px 0 20px;
+    font-weight: bold;
+    font-size: 20px;
+    width: 260px;
+    height: 43px;
+}
+
+.player-name {
+    margin-right: auto;
+}
+
+.player-punctuation {
+    margin-left: auto;
+}
+
+.player-placing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
+    width: 55px;
+    height: 55px;
+}
+
+#first-place {
+    margin-top: 27px;
+}
+
+#first-place-data {
+    color: #FFF500;
+    border: 2px solid #FFF500;
+}
+
+#second-place-data {
+    color: #E9E9E9;
+    border: 2px solid #E9E9E9;
+}
+
+#third-place-data {
+    color: #CD7F32;
+    border: 2px solid #CD7F32;
+}
+
+
+#first-place-img, #second-place-img, #third-place-img {
+    width: 57px;
+    height: 57px;
+}

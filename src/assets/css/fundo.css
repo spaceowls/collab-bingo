@@ -79,7 +79,6 @@ html{
 
 .ball{
     clip-path: circle();
-    
     position: fixed;
 }
 
