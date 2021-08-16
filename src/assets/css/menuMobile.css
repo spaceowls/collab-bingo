@@ -9,6 +9,7 @@
     height: 100vh;
     background: rgba(0, 0, 0, 0.7);
 }
+
 .menu-mobile .menu-content {
     width: 70%;
     height: 100vh;
@@ -52,8 +53,6 @@
     align-items: center;
     margin: 0 auto;
 }
-
-
 
 .img-perfil{
     margin-top: 3rem;

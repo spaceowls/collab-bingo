@@ -1,6 +1,6 @@
 const menu = document.querySelector('.btn-menu');
 const closeMenu = document.querySelector('.close-menu');
-const menuTela = document.querySelector('.menu-mobile')
+const menuTela = document.querySelector('.menu-mobile');
 
 function abrirMenu() {
     if(menu.classList.contains('btn-menu')){
