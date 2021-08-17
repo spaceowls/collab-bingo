@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Criar sala</title>
+</head>
+<body>
+    <%- include('modulos/cabecalho', {salaAnterior: 'Teste'}) %> 
+
+     <!-- e aquela parte roxa da tela -->
+    <%- include('modulos/conteudo', {parte: 'abrir'}) %> 
+        <div class="pedras">
+            
+        </div>
+        <div class="cartela"></div>
+        <div class="botao-bingo"></div>
+    <%- include('modulos/conteudo', {parte: 'fechar'}) %>
+</body>
+</html>

@@ -34,3 +34,9 @@
     width: 100%;
     height: auto;
 }
+
+@mixin fundo-arr-branco {
+    border-radius: 5px;
+    border: none;
+    background: var(--white);
+}

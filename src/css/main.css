@@ -274,3 +274,66 @@ body {
   padding: 1rem 4rem;
   border-radius: 1rem;
 }
+
+.criar-sala {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: var(--roxo-ligth);
+}
+.criar-sala__item-form {
+  border-radius: 5px;
+  border: none;
+  background: var(--white);
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  width: 80%;
+}
+.criar-sala__label {
+  margin: 0 2rem;
+}
+.criar-sala__select {
+  flex-grow: 2;
+  min-width: 0;
+  text-align: center;
+  border-radius: 5px;
+  padding: 0.8rem 0;
+  background: var(--ciano-medio);
+  border: none;
+  outline: none;
+}
+.criar-sala__input {
+  flex-grow: 2;
+  min-width: 0;
+  border-radius: 5px;
+  padding: 0.8rem 0;
+  background: var(--ciano-medio);
+  border: none;
+  outline: none;
+}
+.criar-sala__submit-wrapper {
+  width: 100%;
+  display: flex;
+}
+.criar-sala__submit {
+  border: none;
+  width: 12rem;
+  height: 3.5rem;
+  background: var(--ciano-medio);
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  color: var(--roxo-ligth);
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  cursor: pointer;
+  -webkit-box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  transition: background 0.3s;
+  margin: 0 auto;
+}
+.criar-sala__submit:hover {
+  background: var(--roxo-ligth);
+  color: var(--ciano-medio);
+}
