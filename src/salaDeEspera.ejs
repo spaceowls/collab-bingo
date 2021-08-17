@@ -8,7 +8,6 @@
     <title>Tela Perfil</title>
 </head>
 <body>
-    <% if (typeof numParticipantes !== undefined) {var numParticipantes = 25} %>
     <%- include('./modulos/cabecalho', {salaAnterior: 'Anterior'}) %> 
 
      <!-- e aquela parte roxa da tela -->
@@ -26,8 +25,10 @@
                 <div class="info-sala__participantes">
                     <img src="../assets/img/users.svg" alt="Quantidade de usuarios na sala">
 
-                    <% if (typeof numParticipantes !== undefined) { %>
+                    <% if (typeof numParticipantes !== 'undefined') { %>
                         <h2 class="info-sala__numeros-participantes"><%= numParticipantes %></h2>
+                    <% } else { %>
+                        <h2 class="info-sala__numeros-participantes">15</h2>
                     <% } %>
                     
                 </div>

@@ -293,6 +293,7 @@ body {
   justify-content: center;
   margin: 2rem auto;
   width: 80%;
+  padding: 0.5rem;
 }
 .criar-sala__label {
   margin: 0 1rem;
@@ -306,6 +307,10 @@ body {
   background: var(--ciano-medio);
   border: none;
   outline: none;
+  font-weight: bold;
+  color: var(--roxo-ligth);
+  font-family: "Raleway", sans-serif;
+  font-size: 2rem;
 }
 .criar-sala__input {
   flex-grow: 2;
@@ -315,6 +320,11 @@ body {
   background: var(--ciano-medio);
   border: none;
   outline: none;
+  font-weight: bold;
+  color: var(--roxo-ligth);
+  font-family: "Raleway", sans-serif;
+  font-size: 2rem;
+  padding: 0.5rem;
 }
 .criar-sala__submit-wrapper {
   width: 100%;
