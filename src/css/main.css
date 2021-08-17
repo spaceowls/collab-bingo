@@ -121,18 +121,20 @@ h2 {
   width: auto;
 }
 
-.conteudo {
-  width: 100%;
-  flex: 1 1 auto;
-  background-color: var(--roxo-ligth);
-  margin-top: 15rem;
-  border-radius: 30px 30px 0 0;
-}
-
 body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+
+.vazio-cima-conteudo {
+  flex-basis: 15rem;
+}
+
+.conteudo {
+  background-color: var(--roxo-ligth);
+  border-radius: 30px 30px 0 0;
+  flex-grow: 2;
 }
 
 .fundo-arredondado-cinza {
@@ -280,6 +282,13 @@ body {
   font-weight: bold;
   color: var(--roxo-ligth);
 }
+.criar-sala__titulo {
+  color: var(--white);
+  width: 100%;
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 2.5rem;
+}
 .criar-sala__item-form {
   border-radius: 5px;
   border: none;
@@ -292,7 +301,7 @@ body {
   width: 80%;
 }
 .criar-sala__label {
-  margin: 0 2rem;
+  margin: 0 1rem;
 }
 .criar-sala__select {
   flex-grow: 2;

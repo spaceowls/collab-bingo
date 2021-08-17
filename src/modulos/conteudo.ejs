@@ -1,11 +1,6 @@
-<!-- <div id="fundo">
-    <div class="fundo--circulo__alto"></div>
-    <div class="fundo--circulo__baixo"></div>
-</div> -->
-
-<!-- caso a varivel parte nao seja passada da um erro -->
 <%if(typeof parte === 'undefined'){throw new Error('A variavel "parte" nao foi passada para o fundo')} %> 
 <%if(parte === 'abrir') {%> 
+    <div class="vazio-cima-conteudo"></div>
     <div class="conteudo">
 <%} else if(parte == 'fechar'){%> 
     </div>

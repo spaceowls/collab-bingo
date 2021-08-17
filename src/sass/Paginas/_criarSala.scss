@@ -5,6 +5,14 @@
     font-weight: bold;
     color: var(--roxo-ligth);
 
+    &__titulo {
+        color: var(--white);
+        width: 100%;
+        text-align: center;
+        margin: 2rem 0;
+        font-size: 2.5rem;
+    }
+
     &__item-form {
         @include mixins.fundo-arr-branco;
         display: flex;
@@ -16,7 +24,7 @@
     }
 
     &__label {
-        margin: 0 2rem;
+        margin: 0 1rem;
     }
 
     &__select {
