@@ -24,35 +24,21 @@
             </div>
             
             <div class="menu-mobile__lista-centrada">
-
-                <div class="menu-mobile__foto-jogador" alt="imagem do jogador">
-                    <img class="menu-mobile__imagem-jogador" src="http://astraios.herokuapp.com/api/200x200/" alt="foto de usuario">
-                    <img class="menu-mobile__frame-foto" src="../assets/img/frame-redondo.svg">
-                </div>
-
-                <div class="menu-mobile__botao fundo-arredondado-cinza">
+                <a class="menu-mobile__botao fundo-arredondado-cinza" href="#">
                     <% if(typeof nomeUsuario !== 'undefined'){ %> 
-                        <span><%= nomeUsuario %></span>
+                        <span class="menu-mobile__texto"><%= nomeUsuario %></span>
                     <% } else { %> 
                         <span>Nome nao passado</span>
                     <% } %> 
-                </div>
-                <div class="menu-mobile__botao fundo-arredondado-cinza">
-                    <img class="menu-mobile__icone" src="../assets/img/edit-perfil.svg" alt="papel e caneta">
-                    <span>Editar Perfil</span>
-                </div>
-                <div class="menu-mobile__botao fundo-arredondado-cinza">
-                    <img class="menu-mobile__icone" src="../assets/img/cria-sala.svg" alt="sinal de mais">
-                    <span>Criar Sala</span>
-                </div>
-                <div class="menu-mobile__botao fundo-arredondado-cinza">
-                    <img class="menu-mobile__icone" src="../assets/img/users.svg" alt="grupo de pessoas">
-                    <span>Salas Publicas</span>
-                </div>
-                <div class="menu-mobile__botao fundo-arredondado-cinza">
+                </a>
+                <a class="menu-mobile__botao fundo-arredondado-cinza" href="#">
+                    <img class="menu-mobile__icone" src="../assets/img/github.svg" alt="icone github">
+                    <span class="menu-mobile__texto">Créditos</span>
+                </a>
+                <a class="menu-mobile__botao fundo-arredondado-cinza" href="#">
                     <img class="menu-mobile__icone" src="../assets/img/logout.svg" alt="imagem sair">
-                    <span>Logout</span>
-                </div>
+                    <span class='menu-mobile__texto--vermelho'>Logout</span>
+                </a>
             </div>
         </div>
     </div>

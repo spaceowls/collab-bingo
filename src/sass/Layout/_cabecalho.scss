@@ -69,20 +69,6 @@
         width: auto;
     }
 
-    &__foto-jogador {
-        position: relative;
-    }
-
-    &__imagem-jogador {   
-        border-radius: 50%;
-    }
-
-    &__frame-foto {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
     &__botao {
         display: inline-flex;
         width: 100%;
@@ -96,10 +82,6 @@
         font-weight:bold;
         box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
         cursor: pointer;
-
-        span {
-            text-align: center;
-        }
     }
 
     &__lista-centrada {
@@ -112,5 +94,15 @@
         margin-right: .5em;
         //senao o elemento da imagem fica ocupando toda a largura, mesmo que a imagem nao esteja esticada
         width: auto;
+    }
+
+    &__texto {
+        text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+        &--vermelho{
+            color: #f55;
+        }
     }
 }
