@@ -5,15 +5,9 @@ exports.up = function(knex) {
 
         tbl.string('name');
 
-        tbl.string('password');
-
         tbl.integer('members');
 
         tbl.integer('max_members');
-
-        tbl.integer('FKuserID').references('id').inTable('users').notNullable().onDelete('CASCADE');
-    
-        tbl.integer('premiacao');
     
         tbl.boolean('private');
     

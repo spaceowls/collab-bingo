@@ -6,13 +6,9 @@ exports.up = function(knex) {
   
       tbl.string('password');
   
-      tbl.string('avatar');
+      tbl.string('role');
   
-      tbl.integer('coins');
-  
-      tbl.boolean('role');
-  
-      tbl.integer('victories');
+      tbl.integer('points');
     }); 
   };
   

@@ -1,4 +1,4 @@
-const knex = require('../database')
+const knex = require('../../database')
 const { hash } = require('bcrypt');
 const { v4: uuid } = require('uuid');
 
@@ -18,17 +18,17 @@ async function CreateUserService(username, password,) {
             id: uuid(),
             username,
             password: passwordHashed,
-            avatar: "https://milvus.online/wp-content/uploads/2017/05/avatar-default.jpg",
-            coins: 0,
-            role: 0,
-            victories: 0
+            points: 0,
+            role: "user",
         });
         return {
-            success: "usuário cadastrado com sucesso."
+            message: "usuário cadastrado com sucesso.",
+            status: 200
         }
     }else {
         return {
-            error: "usuário já existe no banco de dados."
+            message: "usuário já existe no banco de dados.",
+            status: 400
         }
     }
 

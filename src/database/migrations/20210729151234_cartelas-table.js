@@ -7,7 +7,7 @@ exports.up = function(knex) {
 
         tbl.integer('FKbingoID').references('id').inTable('bingo').notNullable().onDelete('CASCADE');
 
-        tbl.integer('FKuserID').references('id').inTable('users').notNullable().onDelete('CASCADE');
+        tbl.string('owner_user');
     
     });
 };

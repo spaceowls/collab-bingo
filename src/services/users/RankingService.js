@@ -1,12 +1,13 @@
-const knex = require('../database');
+const knex = require('../../database');
 
 async function RankingService() {
     const users = await knex('users').select().then(users => users);
     const usersNoPassword = users.map(user => {
         delete user.password;
+        delete user.role;
         return user;
     });
-    const ranking = usersNoPassword.sort((a, b) => a.victories > b.victories ? -1 : a.victories < b.victories ? 1 : 0);
+    const ranking = usersNoPassword.sort((a, b) => a.points > b.points ? -1 : a.points < b.points ? 1 : 0);
     return ranking;
 }
 

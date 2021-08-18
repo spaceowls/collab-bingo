@@ -1,4 +1,4 @@
-const knex = require('../database');
+const knex = require('../../database');
 const { sign } = require('jsonwebtoken');
 const { compare } = require('bcrypt');
 
@@ -7,7 +7,8 @@ async function AuthenticateUserService(username, password) {
 
     if(!user) {
         return {
-            error: "usuário/senha incorretos."
+            message: "usuário/senha incorretos.",
+            status: 400
         }
     }
     
@@ -15,17 +16,21 @@ async function AuthenticateUserService(username, password) {
     
     if(!comparePassword) {
         return {
-            error: "usuário/senha incorretos."
+            message: "usuário/senha incorretos.",
+            status: 400
         }
     }
 
-    const token = sign({ user_id: user.id }, '138a4a1e1e5c145a470f3874a4bf5483', {
+    const token = sign({ user_id: user.id, role: user.role }, '138a4a1e1e5c145a470f3874a4bf5483', {
         subject: user.id,
         expiresIn: '1d'
     });
 
 
-    return token;
+    return {
+        token,
+        status: 200
+    };
 }
 
 module.exports = AuthenticateUserService;

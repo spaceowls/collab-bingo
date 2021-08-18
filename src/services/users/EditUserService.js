@@ -1,4 +1,4 @@
-const knex = require('../database');
+const knex = require('../../database');
 const { compare, hash } = require('bcrypt');
 
 async function EditUserService(id, username, old_password, new_password) {
@@ -10,7 +10,8 @@ async function EditUserService(id, username, old_password, new_password) {
         });
 
         return {
-            message: "dados atualizados."
+            message: "dados atualizados.",
+            status: 200
         }
     }
 
@@ -18,7 +19,8 @@ async function EditUserService(id, username, old_password, new_password) {
 
     if(!comparePassword) {
         return {
-            error: "senha atual incorreta."
+            message: "senha atual incorreta.",
+            status: 400
         }
     }
 
@@ -30,7 +32,8 @@ async function EditUserService(id, username, old_password, new_password) {
     });
 
     return {
-        message: "dados atualizados."
+        message: "dados atualizados.",
+        status: 200
     }
 
 }
