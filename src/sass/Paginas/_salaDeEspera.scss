@@ -10,10 +10,11 @@
     @include mixins.tamanho-cem-auto;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 5rem;
 
     h2 {
+        margin-right: 2rem;
         color: var(--white);
     }
 }
@@ -62,7 +63,9 @@
         align-items: center;
         justify-content: space-between;
 
-        width: 16rem;
+        cursor:pointer;
+
+        width: 18rem;
         height: 5.5rem;
 
         padding: 2.5rem;
@@ -87,6 +90,7 @@
 .info-sala__btn {
     @include mixins.tamanho-cem-auto;
     @include mixins.flex-center;
+    flex-direction: column;
     margin-top: 2rem;
 
     &-gerar {

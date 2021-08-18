@@ -162,10 +162,11 @@ body {
   height: auto;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 5rem;
 }
 .texto-id h2 {
+  margin-right: 2rem;
   color: var(--white);
 }
 
@@ -209,7 +210,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 16rem;
+  cursor: pointer;
+  width: 18rem;
   height: 5.5rem;
   padding: 2.5rem;
   background-color: var(--ciano-medio);
@@ -232,6 +234,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   margin-top: 2rem;
 }
 .info-sala__btn-gerar {
@@ -269,6 +272,47 @@ body {
   background: var(--ciano-medio);
   padding: 1rem 4rem;
   border-radius: 1rem;
+}
+
+.info-sala__mensagem-de-criacao-dono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+  background: var(--white);
+  width: 30rem;
+  height: 5rem;
+  border-radius: 1rem;
+}
+.info-sala__mensagem-de-criacao-dono h3 {
+  font-size: 1.8rem;
+  color: var(--roxo-ligth);
+}
+
+.info-sala__btn-gerar-cancelar {
+  margin-top: 3rem;
+  border: none;
+  width: 12rem;
+  height: 3.5rem;
+  background: var(--ciano-medio);
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  color: var(--roxo-ligth);
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  cursor: pointer;
+  -webkit-box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  transition: background 0.3s;
+  color: var(--red-ligth);
+  width: 8.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  margin-bottom: 3rem;
+}
+.info-sala__btn-gerar-cancelar:hover {
+  background: var(--roxo-ligth);
+  color: var(--ciano-medio);
 }
 
 .criar-sala {
