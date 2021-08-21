@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+html {
+    font-family: 'Raleway', sans-serif;
+    font-size: 62.5%;
+}
+
+:root {
+   
+    /* VARIAVEIS DE CORES */
+
+     --roxo-dark: #5E49DA;
+     --roxo-ligth: #6A5ACD; 
+     --ciano-medio: #E7EDF7;
+     --ciano-light: #F0F5FC;
+     --white: #FFFFFF;
+     --grey-dark: #A5A2A2;
+     --green-light: #05FF00, 50%;
+     --red-ligth: #FF0000, 50%;
+     --roxo-opacity: #6A5ACD, 50%;
+     --black-modal: #000000, 60%;
+}
+
+html{
+    font-family: 'Raleway', sans-serif;
+    font-size: 62.5%;
+}
+
+body{
+    background: var(--ciano-light);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+}
+
+.header .back img {
+  position: absolute;
+  top: 2.166875rem;
+  left: 1.83125rem;
+}
+
+section.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 75%;
+    border-radius: 30px 30px 0 0;
+    background: var(--roxo-ligth);
+    overflow-y: hidden;
+}
+
+.ball {
+    position: fixed;
+    border-radius: 49%;
+}
+
+.ball.top{
+    background: var(--ciano-medio);
+    width: 47.3rem;
+    height: 21.9rem;
+    top: -8rem;
+    right: -23rem;
+}
+
+.ball.bottom{
+    width: 55rem;
+    height: 61.5rem;
+    background:var(--roxo-dark);
+    bottom: -41rem; /* 32rem*/
+    right: 3rem;
+}
+
+.header {
+    display: flex;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.logo img{
+  width: 19rem;
+  height: 19rem;
+  position: fixed;
+  top: 7rem;
+}
+
+.account form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    margin-top: 11.3125rem;
+}
+
+form input {
+    width: 306px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    text-indent: 1.5rem;
+}
+
+[type="email"]::placeholder {
+    background-image: url(../img/about.svg);
+    background-repeat: no-repeat;
+    background-position: 2rem;
+    background-size: contain;
+    font: normal 700 1.25rem 'Raleway', sans-serif;
+    color: var(--grey-dark);
+    padding-left: 47px;
+ }
+
+ [type="password"]::placeholder {
+    background-image: url(../img/senha-login\ 1.svg);
+    background-repeat: no-repeat;
+    background-position: 2rem;
+    background-size: contain;
+    font: normal 700 1.25rem 'Raleway', sans-serif;
+    color: var(--grey-dark);
+    padding-left: 47px;
+ }
+
+.email {
+    margin-top: 1.4375rem;
+}
+
+.password {
+    margin-top: 2.0625rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+input.erro {
+    border: 2px solid rgb(6, 6, 63) !important;
+}
+
+.btn {
+    width: 15.1rem;
+    height: 5rem;
+    margin-top: 1.9375rem;
+    border-radius: 3rem;
+    border: none;
+    background: var(--white);
+    color: var(--roxo-ligth);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font: normal 700 2.2rem 'Raleway', sans-serif;
+    cursor: pointer;
+}
+
+a.login-forms {
+    font: 1.2rem  'Raleway', sans-serif;
+    color: white;
+    margin-top: 22px;
+}
