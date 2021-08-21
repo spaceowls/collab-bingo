@@ -432,6 +432,7 @@ body {
 }
 
 .tela-bingo {
+  margin-bottom: 7vh;
   display: flex;
   flex-direction: column;
 }
@@ -479,27 +480,25 @@ body {
 
 .tabela-bingo {
   display: grid;
-  grid-template-columns: repeat(5, 3em);
-  grid-template-rows: repeat(5, 2em);
-  gap: 1em;
+  grid-template-columns: repeat(5, 2em);
+  grid-template-rows: repeat(5, 1.5em);
+  gap: 0.4em;
   font-family: "Roboto Mono", monospace;
-  font-size: 2vh;
-  margin: 2em auto;
-  padding: 1em;
+  font-size: 3.5vh;
+  margin: 0.5em auto;
+  padding: 0.5em;
   border-radius: 5%;
   background-color: var(--white);
 }
 .tabela-bingo__item {
   background-color: var(--ciano-medio);
   text-align: center;
-  line-height: 2em;
   border-radius: 10%;
 }
 .tabela-bingo__item--letra {
   color: var(--roxo-ligth);
   font-weight: bold;
-  font-size: 2em;
-  line-height: 1;
+  line-height: 1.5;
   font-family: "Raleway", sans-serif;
 }
 

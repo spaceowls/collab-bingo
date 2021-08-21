@@ -1,9 +1,10 @@
 @use '../mixins/mixins';
 
 .tela-bingo {
+    margin-bottom: 7vh;
     display: flex;
     flex-direction: column;
-    // transform: translateY(-50%); //talvez isso funcione, teste quando acabar cm o design
+    // transform: translateY(-20%); //talvez isso funcione, teste quando acabar cm o design
 }
 
 .bolas-bingo {
@@ -60,15 +61,15 @@
 
 .tabela-bingo {
     display: grid;
-    grid-template-columns: repeat(5, 3em);
-    grid-template-rows: repeat(5, 2em);
-    gap: 1em;
+    grid-template-columns: repeat(5, 2em);
+    grid-template-rows: repeat(5, 1.5em);
+    gap: .4em;
     
     font-family: "Roboto Mono", monospace;
-    font-size: 2vh;
+    font-size: 3.5vh;
 
-    margin: 2em auto;
-    padding: 1em;
+    margin: 0.5em auto;
+    padding: .5em;
 
     border-radius: 5%;
     background-color: var(--white);
@@ -77,14 +78,14 @@
     &__item {
         background-color: var(--ciano-medio);
         text-align: center;
-        line-height: 2em;
+        // line-height: 2em;
         border-radius: 10%;
 
         &--letra{
             color: var(--roxo-ligth);
             font-weight: bold;
-            font-size: 2em;
-            line-height: 1;
+            // font-size: 2em;
+            line-height: 1.5;
             font-family: "Raleway", sans-serif;
         }
     }
