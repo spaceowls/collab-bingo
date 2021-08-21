@@ -2,14 +2,45 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    overflow-y: hidden;
 }
 
 .vazio-cima-conteudo {
     flex-basis: 15rem;
 }    
 
-.conteudo {
+.fundo-principal-roxo {
     background-color: var(--roxo-ligth);
     border-radius: 30px 30px 0 0;
     flex-grow: 2;
+}
+
+.conteudo {
+    max-width: 40rem;
+    margin: auto;
+}
+
+// bolas nao estao implementadas, mas caso eu mude de ideia o codigo ta aqui
+
+.bola-baixo {
+    clip-path: circle();
+    background-color: var(--roxo-dark);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-50%) translateY(50%);
+    width: 100%;
+    height: 100%;
+}
+
+.bola-alto {
+    clip-path: circle();
+    background: var(--ciano-medio);
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(50%) translateY(-50%);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }

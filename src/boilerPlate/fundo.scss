@@ -30,26 +30,3 @@ body{
     background-position-x: -10rem;
 
 }
-
-.ball{
-    clip-path: circle();
-    
-    position: fixed;
-}
-
-.ball.top{
-    background: var(--ciano-medio);
-    width: 58.3rem;
-    height: 62.3rem;
-    top: -45rem;
-    right: -24rem;
-}
-
-.ball.bottom{
-    width: 55rem;
-    height: 65rem;
-    background:var(--roxo-dark);
-    bottom: -32rem;
-    right: 3.6rem;
-}
-

@@ -12,11 +12,41 @@
 
      <!-- e aquela parte roxa da tela -->
     <%- include('modulos/conteudo', {parte: 'abrir'}) %> 
-        <div class="pedras">
-            
+    <div class="tela-bingo">
+        <div class="tela-bingo__bolas-bingo bolas-bingo">
+            <div class="bolas-bingo__principal ">
+                <span class="bolas-bingo__principal-valor">12</span>
+            </div>
+
+            <div class="bolas-bingo__secundarias">
+                <div class="bolas-secundarias bolas-secundarias__esquerda">
+                    <span>0</span>
+                </div>
+                
+                <div class="bolas-secundarias bolas-secundarias__meio">
+                    <span>69</span>
+                </div>
+                
+                <div class="bolas-secundarias bolas-secundarias__direita">
+                    <span>99</span>
+                </div>
+            </div>
         </div>
-        <div class="cartela"></div>
-        <div class="botao-bingo"></div>
+
+        <div class="tela-bingo__tabela-bingo tabela-bingo">
+            <div class="tabela-bingo__item tabela-bingo__item--letra">B</div>
+            <div class="tabela-bingo__item tabela-bingo__item--letra">I</div>
+            <div class="tabela-bingo__item tabela-bingo__item--letra">N</div>
+            <div class="tabela-bingo__item tabela-bingo__item--letra">G</div>
+            <div class="tabela-bingo__item tabela-bingo__item--letra">O</div>
+            <% for( let i = 0; i < 25; i++ ) { %>
+                <div class="tabela-bingo__item"><%= i _%> </div>
+            <% } %>
+        </div>
+
+        <button class="botao-bingo">Bingo!!!</button>
+
+    </div>  
     <%- include('modulos/conteudo', {parte: 'fechar'}) %>
 </body>
 </html>
