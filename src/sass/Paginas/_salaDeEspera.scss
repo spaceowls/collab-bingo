@@ -20,6 +20,7 @@
 }
 
 .texto-id__fundo{
+    cursor: pointer;
     @include mixins.flex-center;
     width: 16rem;
     height: 4rem;
