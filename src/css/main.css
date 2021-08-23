@@ -679,3 +679,174 @@ footer h2 {
   font-size: 1rem;
   margin-top: 2rem;
 }
+
+#modal {
+  width: 100%;
+  height: 100%;
+  background-color: var(--black-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#modal .content__lista-users {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 31rem;
+  height: 50rem;
+  background: var(--white);
+  z-index: 1;
+  border-radius: 20px;
+  padding: 1rem;
+  overflow-y: scroll;
+  flex-direction: column;
+}
+#modal .content__lista-users-fechar-modal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 2rem;
+}
+#modal .content__lista-users-fechar-modal img {
+  width: 2rem;
+  height: 2rem;
+}
+#modal .content__lista-users__container {
+  margin-top: 1rem;
+  width: 27rem;
+  height: 3.5rem;
+  background: var(--ciano-medio);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+#modal .content__lista-users__container img {
+  width: 2.1rem;
+  height: 2.1rem;
+}
+
+.content__logo {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 7rem;
+  right: 0;
+}
+.content__logo img {
+  width: 19rem;
+  height: 27rem;
+}
+
+.content__formulario-login__github {
+  margin-top: 13rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+}
+.content__formulario-login__github img {
+  margin-bottom: 0.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.content__formulario-login__github a {
+  color: var(--white);
+  font-weight: bold;
+}
+
+.content__formulario-login-form {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.content__formulario-login-form fieldset {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  width: 30rem;
+  height: 5rem;
+  border: none;
+  background: var(--white);
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+.content__formulario-login-form fieldset img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.content__formulario-login-form-input {
+  width: 100%;
+  height: 5rem;
+  border: none;
+  border-radius: 20rem;
+  padding: 1rem;
+  outline: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--roxo-dark);
+  background-color: var(--white);
+}
+.content__formulario-login-form-input::placeholder {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--grey-dark);
+  font-family: "Raleway", sans-serif;
+}
+.content__formulario-login-form-btn {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.content__formulario-login-form-btn-acessar {
+  border: none;
+  width: 16rem;
+  height: 5rem;
+  background: var(--white);
+  border-radius: 5rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  color: var(--roxo-ligth);
+  font-size: 2.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  -webkit-box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+}
+.content__formulario-login-form-btn-acessar:hover {
+  background: var(--roxo-dark);
+  color: var(--white);
+}
+
+.content__formulario-login-form-links {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.content__formulario-login-form-links a {
+  color: var(--white);
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+}
