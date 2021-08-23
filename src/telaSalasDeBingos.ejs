@@ -39,7 +39,7 @@
             <% if (typeof salaPublica !== 'undefined') { %>
                 <h2><%= 'Erro ao Criar Sala' %></h2>
             <% } else { %>
-                <% for( let i = 0; i < 15; i++ ) { %>
+                <% for( let i = 0; i < 4; i++ ) { %>
                     <div class="content__salas-publicas">
                         <div class="content__text-nome-sala-e-users">
                             <div class="content__salas-publicas-text">
@@ -50,7 +50,7 @@
                             <div class="content__salas-publicas__user-na-sala">
                                 <a href="#">
                                     <img src="/assets/img/users.svg" alt="usuarios na sala">
-                                    <h2><%= '10' %></h2>
+                                    <h2><%= '0' %><span>/</span><%= '10' %></h2>
                                 </a>
                             </div>
                         </div>

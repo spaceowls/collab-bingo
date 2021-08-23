@@ -599,7 +599,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
-  width: 7rem;
+  width: 10rem;
   height: 3rem;
   background-color: var(--ciano-medio);
   border-radius: 5px;
@@ -621,4 +621,61 @@ body {
   width: 5rem;
   height: 4.5rem;
   border-radius: 5px;
+}
+
+.content__creditos-dev {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.content__creditos-dev h2 {
+  margin-top: 4rem;
+  color: var(--white);
+  margin-bottom: 2rem;
+}
+.content__creditos-dev__user {
+  width: 35rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 0 2rem;
+  margin-top: 1.5rem;
+}
+.content__creditos-dev__user-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content__creditos-dev__user-text h2 {
+  color: var(--roxo-ligth);
+  margin: 0;
+}
+.content__creditos-dev__user-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content__creditos-dev__user-links img {
+  width: 2.5rem;
+  height: auto;
+  margin-right: 2rem;
+}
+
+footer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer h2 {
+  color: var(--white);
+  font-size: 1rem;
+  margin-top: 2rem;
 }
