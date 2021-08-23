@@ -1,0 +1,93 @@
+@use '../mixins/mixins';
+
+.texto-id__entrar{
+    @include mixins.flex-center;
+    
+    width: 6rem;
+    height: 4rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.content__criar-sala{
+    margin-top: 3rem;
+    @include mixins.flex-center;
+    padding: 0 1rem;
+    justify-content: space-between;
+    width: 38rem;
+    height: 6rem;
+    background-color: var(--white);
+    border-radius: 1rem;
+}
+
+.content__img {
+    width: 5rem;
+    height: 4.5rem;
+    @include mixins.flex-center;
+    background-color: var(--ciano-medio);
+    border-radius: 1rem;
+    
+}
+
+.sala-text {
+    width: 90%;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.content__salas-publicas {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white);
+    border-radius: 1rem;
+    width: 38rem;
+    height: 8rem;
+    
+    padding: 0.5rem 1rem;
+
+    &-text{
+        width: 100%;
+        align-items: center;
+        @include mixins.flex-center;
+        
+
+        h3 {
+            color: #695acd88;
+            font-size: 1.5rem;
+        }
+    }
+
+    &__user-na-sala{
+        width: 100%;
+        @include mixins.flex-center; 
+        margin-top: 1rem;
+        
+        width: 7rem;
+        height: 3rem;
+        background-color: var(--ciano-medio);
+        border-radius: 5px;
+
+        a{
+            @include mixins.flex-center;  
+        }
+
+        img{
+            margin-right: 0.5rem;
+            width: 2.5rem;
+        }
+    }
+
+    &__inspecionar-sala{
+        @include mixins.flex-center;
+        background-color: var(--ciano-medio);
+        width: 5rem;
+        height: 4.5rem;
+        border-radius: 5px;
+
+    }
+}

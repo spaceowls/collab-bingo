@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Salas do Bingo</title>
+</head>
+<body>
+    <%- include('./modulos/cabecalho', {salaAnterior: 'Anterior'}) %> 
+
+     <!-- e aquela parte roxa da tela -->
+    <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
+        <section class="sala-de-espera">
+            <div class="texto-id">
+                <h2>ID sala:</h2>
+                <div class="texto-id__fundo">
+                    <span>#</span><h3> <%= '980347' %> </h3> 
+                </div>
+                <div class="texto-id__entrar">
+                    <a href="#">
+                        <img src="/assets/img/entrar.svg" alt= 'Enter'>
+                    </a> 
+                </div>
+            </div>
+
+            <div class="content__criar-sala">
+                <h2>Criar sala</h2>
+                <div class="content__img">
+                    <a href="#">
+                        <img src="/assets/img/cria-sala.svg" alt="Criar sala">
+                    </a>
+                </div>
+            </div>
+
+            <h2 class="sala-text">Salas públicas:</h2>
+            <!-- Aqui vai uma condicao: se a sala for criada com sucesso add a sala publica se nao da um erro -->
+            <% if (typeof salaPublica !== 'undefined') { %>
+                <h2><%= 'Erro ao Criar Sala' %></h2>
+            <% } else { %>
+                <% for( let i = 0; i < 15; i++ ) { %>
+                    <div class="content__salas-publicas">
+                        <div class="content__text-nome-sala-e-users">
+                            <div class="content__salas-publicas-text">
+                                <h2><%= 'Nome Sala' %></h2>
+                                <h3><span>#</span><%= '980347' %></h3>
+                            </div>
+            
+                            <div class="content__salas-publicas__user-na-sala">
+                                <a href="#">
+                                    <img src="/assets/img/users.svg" alt="usuarios na sala">
+                                    <h2><%= '10' %></h2>
+                                </a>
+                            </div>
+                        </div>
+        
+                        <div class="content__salas-publicas__inspecionar-sala">
+                            <a href="#">
+                                <img src="/assets/img/eye.svg" alt="Inspecionar sala">
+                            </a>
+                        </div>
+                        
+                    </div>    
+                <% } %>
+            <% } %>
+
+           
+
+
+        </section>
+    <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 
+</body>
+</html>
