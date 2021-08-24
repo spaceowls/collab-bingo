@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Salas do Bingo</title>
+</head>
+<body>
+    <%- include('./modulos/cabecalho', {salaAnterior: 'Anterior'}) %> 
+
+     <!-- e aquela parte roxa da tela -->
+    <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
+        <section class="tela-login">
+           <div class="content__logo">
+               <img src="/assets/img/logo-bingo-login.svg" alt="logo">
+           </div> 
+
+           <div class="content__formulario-login">
+               <div class="content__formulario-login__github">
+                   <a href="#">
+                    <img src="/assets/img/github.svg" alt="Entrar com Github">
+                   </a>
+                   <a href="#">Entrar com Github</a>
+               </div>
+
+               <form method="post">
+                   <div class="content__formulario-login-form">
+                        <fieldset>
+                            <img src="/assets/img/user-login.svg" alt="usuario login">
+                            <input class="content__formulario-login-form-input" type="text" name="usuario-login" placeholder="Usuário">
+                        </fieldset>
+
+                        <div class="login-erro login-erro--invisivel">Usuario e/ou senha incorretos</div>
+    
+                        <fieldset>
+                            <img src="/assets/img/senha-login 1.svg" alt="senha login">
+                            <input class="content__formulario-login-form-input" type="password" name="password-login" placeholder="Senha">
+                        </fieldset>
+                   </div>
+
+                   <div class="content__formulario-login-form-btn">
+                        <button class="content__formulario-login-form-btn-acessar">ACESSAR</button>
+                   </div>
+                   
+                   <div class="content__formulario-login-form-links">
+                       <a href="#">Criar uma conta</a>
+                       <a class = 'entrar-como-convidado' href="#">Entrar como convidado</a>
+                   </div>
+               </form>
+           </div>
+        </section>
+    <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 
+    <script>
+    //NOTE: talvez use um https aqui
+    const urlApi = '/'
+    const queryNome = 'input[type=text]'
+    const querySenha = 'input[type=password]'
+    const queryForm = 'form'
+
+    const queryErro = '.login-erro'
+
+    document.querySelector(queryForm).addEventListener('submit', async evento =>{
+      evento.preventDefault();
+      //TODO: faz a tratação dos dados no html, e depois a sanatização no servidor//
+      const formData = new FormData(evento.target);
+      const nome = formData.get('usuario-login');
+      const senha = formData.get('password-login');
+    //   const textoNome = document.querySelector(queryNome).value
+    //   const textoSenha = document.querySelector(querySenha).value
+
+      await fetch('/api/authentication', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: nome,
+          password: senha
+        })
+      }).then(resposta => resposta.json()).then(resposta => {
+        let elementoErro = document.querySelector(queryErro)
+        if(resposta.status !== 200){
+          elementoErro.classList.remove('login-erro--invisivel')
+          console.log(resposta.message);
+        }else{
+          elementoErro.classList.add('login-erro--invisivel')
+          console.log(resposta.token);
+          document.cookie = `usuarioLogado=${resposta.token}`;
+        }
+      })
+    })
+    const entrarConvidado = document.querySelector('.entrar-como-convidado');
+
+    entrarConvidado.addEventListener('click', async (e)=> {
+      e.preventDefault()
+      await fetch('/api/authenticationGuest').then(resposta => resposta.json())
+      .then(resposta => {
+        document.cookie = `usuarioLogado=${resposta.token}`;
+        console.log(resposta.token)
+      });
+    });
+  </script>
+
+</body>
+</html>

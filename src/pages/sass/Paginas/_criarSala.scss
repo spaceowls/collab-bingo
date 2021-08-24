@@ -1,0 +1,70 @@
+@use '../mixins/mixins';
+
+.criar-sala {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: var(--roxo-ligth);
+
+    &__titulo {
+        color: var(--white);
+        width: 100%;
+        text-align: center;
+        margin: 2rem 0;
+        font-size: 2.5rem;
+    }
+
+    &__item-form {
+        @include mixins.fundo-arr-branco;
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem auto;
+        width: 80%;
+        padding: .5rem;
+    }
+
+    &__label {
+        margin: 0 1rem;
+    }
+
+    &__select {
+        flex-grow: 2;
+        min-width: 0;
+        text-align: center;
+        border-radius: 5px;
+        padding: .8rem 0;
+        background: var(--ciano-medio);
+        border: none;
+        outline: none;
+        font-weight: bold;
+        color: var(--roxo-ligth);
+        font-family: 'Raleway', sans-serif;
+        font-size: 2rem;
+    }
+
+    &__input {
+        flex-grow: 2;
+        min-width: 0;
+        border-radius: 5px;
+        padding: .8rem 0;
+        background: var(--ciano-medio);
+        border: none;
+        outline: none;
+        font-weight: bold;
+        color: var(--roxo-ligth);
+        font-family: 'Raleway', sans-serif;
+        font-size: 2rem;
+        padding: .5rem;
+    }
+
+    &__submit-wrapper {
+        width: 100%;
+        display: flex;
+    }
+
+    &__submit {
+        @include mixins.botao-padrao;
+        margin: 0 auto;
+    }
+}
