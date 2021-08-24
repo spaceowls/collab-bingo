@@ -1,9 +1,10 @@
-const CreateUserService = require('../services/CreateUserService');
+const CreateUserService = require('../services/users/CreateUserService');
 
 async function CreateUserController(req, res) {
     const { username, password } = req.body;
     const user = await CreateUserService(username, password);
-    res.json(user);
+    console.log(user.status);
+    res.status(user.status).json(user.message);
 }
 
 module.exports = CreateUserController;

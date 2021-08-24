@@ -1,4 +1,4 @@
-const ListUsersService = require('../services/ListUsersService');
+const ListUsersService = require('../services/users/ListUsersService');
 
 async function ListUsersController(req, res) {
     const users = await ListUsersService();
