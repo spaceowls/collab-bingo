@@ -46,7 +46,7 @@
                    
                    <div class="content__formulario-login-form-links">
                        <a href="#">Criar uma conta</a>
-                       <a href="#">Entrar como convidado</a>
+                       <a class = 'entrar-como-convidado' href="#">Entrar como convidado</a>
                    </div>
                </form>
            </div>
@@ -59,7 +59,7 @@
     const querySenha = 'input[type=password]'
     const queryForm = 'form'
 
-    const queryErro = '.erro'
+    const queryErro = '.login-erro'
 
     document.querySelector(queryForm).addEventListener('submit', async evento =>{
       evento.preventDefault();
@@ -70,10 +70,7 @@
     //   const textoNome = document.querySelector(queryNome).value
     //   const textoSenha = document.querySelector(querySenha).value
 
-      console.log(nome, senha)
-      console.log(evento.target)
-
-      let resposta = await fetch('/api/authentication', {
+      await fetch('/api/authentication', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -83,21 +80,28 @@
           username: nome,
           password: senha
         })
-      })
-      console.log(resposta)
-
-      if(resposta.status === 400){
+      }).then(resposta => resposta.json()).then(resposta => {
         let elementoErro = document.querySelector(queryErro)
-        elementoErro.classList.remove('erro--escondido')
-        return
-      }
-
-      console.log(resposta)
-
-      document.cookie = `usuarioLogado=${await resposta.json()}`
-
-      window.location.reload(true); 
+        if(resposta.status !== 200){
+          elementoErro.classList.remove('login-erro--invisivel')
+          console.log(resposta.message);
+        }else{
+          elementoErro.classList.add('login-erro--invisivel')
+          console.log(resposta.token);
+          document.cookie = `usuarioLogado=${resposta.token}`;
+        }
+      })
     })
+    const entrarConvidado = document.querySelector('.entrar-como-convidado');
+
+    entrarConvidado.addEventListener('click', async (e)=> {
+      e.preventDefault()
+      await fetch('/api/authenticationGuest').then(resposta => resposta.json())
+      .then(resposta => {
+        document.cookie = `usuarioLogado=${resposta.token}`;
+        console.log(resposta.token)
+      });
+    });
   </script>
 
 </body>

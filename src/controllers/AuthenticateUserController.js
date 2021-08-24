@@ -6,7 +6,7 @@ async function AuthenticateUserController(req, res) {
 
     const user = await AuthenticateUserService(username, password);
 
-    res.status(user.status).json(user.token || user.message);
+    res.status(user.status).json(user);
 }
 
 module.exports = AuthenticateUserController;
