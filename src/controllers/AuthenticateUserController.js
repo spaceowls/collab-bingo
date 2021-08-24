@@ -6,10 +6,6 @@ async function AuthenticateUserController(req, res) {
 
     const user = await AuthenticateUserService(username, password);
 
-    if(user.token) {
-        res.cookie('usuarioLogado', user.token, { maxAge: 9000000, httpOnly: true });
-    }
-
     res.status(user.status).json(user.token || user.message);
 }
 

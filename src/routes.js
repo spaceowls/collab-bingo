@@ -16,12 +16,12 @@ const AuthenticateUserController = require('./controllers/AuthenticateUserContro
 // const DeleteRoomController = require('./controllers/DeleteRoomController');
 
 router.get('/', (req, res) => {
-    res.render('telaLogin')
+    res.render('telaLogin')//redirensionar pra um ejs
 })
 
 router.get('/users', ListUsersController);
-router.post('/register', CreateUserController);
-router.post('/login', AuthenticateUserController);
+router.post('/api/register', CreateUserController);
+router.post('/api/authentication', AuthenticateUserController);
 // router.put('/edit/avatar/:id', UpdateAvatarController);
 // router.delete('/delete//user/:id', DeleteUserController);
 // router.delete('/delete/room/:id', DeleteRoomController);

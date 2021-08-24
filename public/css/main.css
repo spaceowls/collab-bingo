@@ -850,3 +850,14 @@ footer h2 {
   font-weight: bold;
   font-family: "Raleway", sans-serif;
 }
+
+.login-erro {
+  background-color: lightcoral;
+  color: red;
+  padding: 1em;
+  border: 3px solid red;
+}
+
+.login-erro {
+  display: none;
+}
