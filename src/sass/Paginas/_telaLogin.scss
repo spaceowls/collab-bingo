@@ -3,9 +3,9 @@
 .content__logo{
     width: 100%;
     height: auto;
-    position: fixed;
+    position: absolute;
     @include mixins.flex-center;
-    top: 7rem;
+    top: 4rem;
     right: 0;
 
     img{
@@ -16,7 +16,7 @@
 
 .content__formulario-login{
     &__github{
-        margin-top: 13rem;
+        margin-top: 17rem;
         @include mixins.flex-center;
         width: 100%;
         height: auto;

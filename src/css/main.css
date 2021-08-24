@@ -731,11 +731,11 @@ footer h2 {
 .content__logo {
   width: 100%;
   height: auto;
-  position: fixed;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 7rem;
+  top: 4rem;
   right: 0;
 }
 .content__logo img {
@@ -744,7 +744,7 @@ footer h2 {
 }
 
 .content__formulario-login__github {
-  margin-top: 13rem;
+  margin-top: 17rem;
   display: flex;
   align-items: center;
   justify-content: center;
