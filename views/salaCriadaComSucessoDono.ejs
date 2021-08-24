@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Tela Perfil</title>
+</head>
+<body>
+    <%- include('./modulos/cabecalho', {salaAnterior: 'Anterior'}) %> 
+
+     <!-- e aquela parte roxa da tela -->
+    <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
+        <section class="sala-de-espera">
+            <div class="info-sala__mensagem-de-criacao-dono">
+
+                <!-- Verificação se a sala foi criada com sucesso ou deu algum erro -->
+                <% if (typeof salaCriadaComSucesso !== 'undefined') { %>
+                    <h3><%= 'Sala criada com sucesso!' %></h3>
+                <% } else { %>
+                    <h3><%= 'Sala criada com sucesso!' %></h3>
+                <% } %>
+                
+            </div>
+            <div class="texto-id">
+                <h2>ID da sala:</h2>
+                <div class="texto-id__fundo">
+                    <!-- Id gerado após criar sala criada com sucesso -->
+                    <span>#</span><h3> <%= '980347' %> </h3> 
+                </div>
+            </div>
+
+            <div class="info-sala">
+                <h5>Ver participantes:</h5>
+                <div class="info-sala__participantes">
+                    <img src="../assets/img/users.svg" alt="Quantidade de usuarios na sala">
+                    <!-- Ejs para mostrar as pessoas que for entrando na sala de espera do bingo, vai atualizando -->
+                    <h2 class="info-sala__numeros-participantes"><%= '0' %><span>/</span><%= '10' %></h2>
+                </div>
+
+                <div class="info-sala__btn">
+                    <button class="info-sala__btn-gerar">COMEÇAR</button>
+                    <button class="info-sala__btn-gerar-cancelar">CANCELAR</button>
+                </div>
+
+            </div>
+        </section>
+    <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 
+</body>
+</html>

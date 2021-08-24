@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Criar Sala</title>
+</head>
+<body>
+    <%- include('modulos/cabecalho', {salaAnterior: 'Criar sala'}) %> 
+
+    <%- include('modulos/conteudo', {parte: 'abrir'}) %> 
+    <div class="criar-sala">    
+        <div class="criar-sala__titulo">Criando Sala:</div>
+        <form action="#" method="GET">
+            <fieldset class="criar-sala__item-form">
+                <label class="criar-sala__label" for="salaNome">Nome:</label>
+                <input class="criar-sala__input" type="text" name="salaNome" id="salaNome">
+            </fieldset>
+
+            <fieldset class="criar-sala__item-form">
+                <label class="criar-sala__label" for="maxParticipantes">Máx de Participantes:</label>
+                <select class="criar-sala__select" name="maxParticipantes" id="maxParticipantes">
+                    <option value="10">10</option>
+                    <option value="15" selected>15</option>
+                    <option value="25">25</option>
+                </select>
+            </fieldset>
+
+            <fieldset class="criar-sala__item-form">
+                <label class="criar-sala__label" for="tipoSala">Tipo da sala:</label>
+                <select class="criar-sala__select" name="tipoSala" id="tipoSala">
+                    <option value ="Publica">Pública</option>
+                    <option value="Privada">Privada</option>
+                </select>
+            </fieldset>
+
+            <!-- puta gambiarra mas eu nao ligo -->
+            <div class="criar-sala__submit-wrapper">
+                <input class="criar-sala__submit" type="submit" value="CRIAR">
+            </div>
+        </form>
+    </div>
+    <%- include('modulos/conteudo', {parte: 'fechar'}) %> 
+</body>
+</html>
+

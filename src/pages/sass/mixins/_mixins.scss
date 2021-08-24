@@ -1,0 +1,42 @@
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin sombra-elementos {
+    -webkit-box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58);
+    box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58);
+}
+
+@mixin botao-padrao {
+    border: none;
+
+    width: 12rem;
+    height: 3.5rem;
+    background: var(--ciano-medio);
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    color: var(--roxo-ligth);
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    cursor: pointer;
+    @include sombra-elementos;
+    transition: background .3s;
+
+    &:hover {
+        background: var(--roxo-ligth);
+        color: var(--ciano-medio);
+    }
+}
+
+@mixin tamanho-cem-auto {
+    width: 100%;
+    height: auto;
+}
+
+@mixin fundo-arr-branco {
+    border-radius: 5px;
+    border: none;
+    background: var(--white);
+}

@@ -15,6 +15,10 @@ const AuthenticateUserController = require('./controllers/AuthenticateUserContro
 // const EnterRoomController = require('./controllers/EnterRoomController');
 // const DeleteRoomController = require('./controllers/DeleteRoomController');
 
+router.get('/', (req, res) => {
+    res.render('telaLogin')
+})
+
 router.get('/users', ListUsersController);
 router.post('/register', CreateUserController);
 router.post('/login', AuthenticateUserController);

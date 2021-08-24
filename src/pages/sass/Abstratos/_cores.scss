@@ -1,0 +1,16 @@
+/* VARIAVEIS DE CORES */
+:root {
+    --roxo-dark: #5E49DA;
+    --roxo-ligth: #6A5ACD; 
+    --ciano-medio: #E7EDF7;
+    --ciano-light: #F0F5FC;
+    --white: #FFFFFF;
+    --grey-dark: #A5A2A2;
+    // usando o padrao #000000, x nao funciona.
+    // poderia ser #000000XX, mas com rgba fica mais explicito
+    --green-light: rgba(4, 255, 0, 0.5);
+    --red-ligth: rgb(255, 0, 0, 50%);
+    --roxo-opacity: rgba(106, 90, 205, 50%);
+    --black-modal: rgba(0, 0, 0, 60%);
+
+}

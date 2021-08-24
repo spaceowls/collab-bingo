@@ -1,0 +1,126 @@
+@use '../mixins/mixins';
+
+.content__logo{
+    width: 100%;
+    height: auto;
+    position: fixed;
+    @include mixins.flex-center;
+    top: 7rem;
+    right: 0;
+
+    img{
+        width: 19rem;
+        height: 27rem;
+    }
+}
+
+.content__formulario-login{
+    &__github{
+        margin-top: 13rem;
+        @include mixins.flex-center;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+
+        img{
+            margin-bottom: 0.5rem;
+            width: 3.5rem ;
+            height: 3.5rem;
+        }
+
+        a{
+            color: var(--white);
+            font-weight: bold;
+        }
+    }
+}
+
+.content__formulario-login-form{
+    width: 100%;
+    height: auto;
+    @include mixins.flex-center;
+    flex-direction: column;
+
+    fieldset{
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        width: 30rem;
+        height: 5rem;
+        border: none;
+        background: var(--white);
+        border-radius: 2rem;
+        @include mixins.flex-center;
+        justify-content: space-between;
+        padding: 0 1rem;
+
+        img{
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        
+    }
+
+    &-input{
+        width: 100%;
+        height: 5rem;
+        border: none;
+        border-radius: 20rem;
+        padding: 1rem;
+        outline: none;
+        font-family: 'Raleway', sans-serif;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--roxo-dark);
+        background-color: var(--white);
+
+        &::placeholder{
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--grey-dark);
+            font-family: 'Raleway', sans-serif;
+        }
+    }
+
+    &-btn{
+        width: 100%;
+        height: auto;
+        @include mixins.flex-center;
+        margin-top: 2rem;
+
+        &-acessar{
+            border: none;
+            width: 16rem;
+            height: 5rem;
+            background: var(--white);
+            border-radius: 5rem;
+            font-family: 'Raleway', sans-serif;
+            font-weight: bold;
+            color: var(--roxo-ligth);
+            font-size: 2.2rem;
+            cursor: pointer;
+            transition: background .2s;
+            @include mixins.sombra-elementos;
+
+            &:hover{
+                background: var(--roxo-dark);
+                color: var(--white);
+            }
+
+        }
+    }
+}
+
+.content__formulario-login-form-links{
+    width: 100%;
+    height: auto;
+    @include mixins.flex-center;
+    flex-direction: column;
+
+    a{
+        color:var(--white);
+        margin-top: 2rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        font-family: 'Raleway', sans-serif;
+    }
+}
