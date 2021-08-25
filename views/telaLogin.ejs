@@ -84,10 +84,8 @@
         let elementoErro = document.querySelector(queryErro)
         if(resposta.status !== 200){
           elementoErro.classList.remove('login-erro--invisivel')
-          console.log(resposta.message);
         }else{
           elementoErro.classList.add('login-erro--invisivel')
-          console.log(resposta.token);
           document.cookie = `usuarioLogado=${resposta.token}`;
         }
       })
@@ -99,7 +97,6 @@
       await fetch('/api/authenticationGuest').then(resposta => resposta.json())
       .then(resposta => {
         document.cookie = `usuarioLogado=${resposta.token}`;
-        console.log(resposta.token)
       });
     });
   </script>
