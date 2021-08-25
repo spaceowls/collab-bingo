@@ -735,7 +735,7 @@ footer h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 7rem;
+  top: 6rem;
   right: 0;
 }
 .content__logo img {
@@ -853,12 +853,38 @@ footer h2 {
 
 .login-erro {
   display: block;
-  background-color: lightcoral;
-  color: red;
-  padding: 1em;
-  border: 3px solid red;
+  background-color: rgba(255, 67, 67, 0.623);
+  color: rgb(255, 255, 255);
+  padding: .5rem 4rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
 }
 
 .login-erro--invisivel {
   display: none;
+}
+
+.texto-id__fundo-input{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.texto-id__fundo-input .input-sala-id-entrar{
+  width: 13.5rem;
+  height: 4rem;
+  outline: none;
+  border: none;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 2.5rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  color: var(--roxo-ligth);
+}
+.texto-id__fundo-input .input-sala-id-entrar::placeholder{
+  color: #695acd9a;
+  font-size: 2.5rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
 }

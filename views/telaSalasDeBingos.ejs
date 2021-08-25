@@ -15,8 +15,8 @@
         <section class="sala-de-espera">
             <div class="texto-id">
                 <h2>ID sala:</h2>
-                <div class="texto-id__fundo">
-                    <span>#</span><h3> <%= '980347' %> </h3>
+                <div class="texto-id__fundo-input">
+                    <input class="input-sala-id-entrar" type="number" placeholder="#565365" name="id-sala-entrar">
                 </div>
                 <div class="texto-id__entrar">
                     <a href="#">
@@ -38,7 +38,7 @@
             <script>
                 const atualizar = document.querySelector('#atualizar');
                 atualizar.addEventListener('click', () => {
-                    window.location.href = 'https://swift-panda-18.loca.lt/'
+                    window.location.href = 'http://localhost:3000/'
                 });
             </script>
             <br>
@@ -75,11 +75,6 @@
                 <% }); %>
             <% } %>
             </div>
-
-            
-           
-
-
         </section>
     <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 
 </body>
