@@ -124,3 +124,30 @@
         font-family: 'Raleway', sans-serif;
     }
 }
+
+.content__atualizar-salas{
+    width: 90%;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    button {
+        border: none;
+        background: transparent;
+        padding: .5rem 1.2rem;
+        cursor: pointer;
+        transition: background .2s;
+        border-radius: 5px;
+
+        &:hover{
+            
+            background: var(--roxo-dark);
+        }
+
+        img{
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+}
