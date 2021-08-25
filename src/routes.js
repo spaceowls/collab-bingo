@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = Router();
+const verifyToken = require('./middlewares/verifyToken');
 
 const CreateUserController = require('./controllers/CreateUserController');
 const ListUsersController = require('./controllers/ListUsersController');
@@ -24,11 +25,11 @@ router.get('/login', (req, res) => {
     res.render('telaLogin');
 });
 
-router.get('/users', ListUsersController);
+router.get('/api/users', ListUsersController);
 router.post('/api/register', CreateUserController);
 router.post('/api/authentication', AuthenticateUserController);
 router.get('/api/authenticationGuest', AuthenticateGuestController);
-router.get('/', ListPublicRoomsController);
+router.get('/', verifyToken, ListPublicRoomsController);
 // router.put('/edit/avatar/:id', UpdateAvatarController);
 // router.delete('/delete//user/:id', DeleteUserController);
 // router.delete('/delete/room/:id', DeleteRoomController);
