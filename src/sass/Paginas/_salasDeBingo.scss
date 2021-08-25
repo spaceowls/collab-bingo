@@ -1,14 +1,24 @@
 @use '../mixins/mixins';
 
-.texto-id__entrar{
+.texto-id{
+
+    &__entrar{
     @include mixins.flex-center;
-    
+        
     width: 6rem;
     height: 4rem;
     background-color: var(--white);
     border-radius: 10px;
     cursor: pointer;
     margin-left: 1rem;
+    }
+
+    &__fundo-input{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 }
 
 .content__criar-sala{
@@ -72,6 +82,8 @@
         background-color: var(--ciano-medio);
         border-radius: 5px;
 
+        //não se usa tags dentro do sass pls (joao)
+
         a{
             @include mixins.flex-center;  
         }
@@ -89,5 +101,25 @@
         height: 4.5rem;
         border-radius: 5px;
 
+    }
+}
+
+.input-sala-id-entrar {
+    width: 13.5rem;
+    height: 4rem;
+    outline: none;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 2.5rem;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    color: var(--roxo-ligth);
+
+    &::placeholder{
+        color: #695acd9a;
+        font-size: 2.5rem;
+        font-family: "Raleway", sans-serif;
+        font-weight: bold;
     }
 }
