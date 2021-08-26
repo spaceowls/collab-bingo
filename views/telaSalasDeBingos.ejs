@@ -16,7 +16,7 @@
             <div class="texto-id">
                 <h2>ID sala:</h2>
                 <div class="texto-id__fundo-input">
-                    <input class="input-sala-id-entrar" type="number" placeholder="#565365" name="id-sala-entrar">
+                    <input class="input-sala-id-entrar" type="number" maxlength="6" max="6" placeholder="#565365" name="id-sala-entrar">
                 </div>
                 <div class="texto-id__entrar">
                     <a href="#">
@@ -40,26 +40,14 @@
             <script>
                 const atualizar = document.querySelector('#atualizar');
                 atualizar.addEventListener('click', () => {
-                    window.location.reload(true)
+                    window.location.href = 'http://localhost:3000/'
                 });
             </script>
             <br>
-            <div style="height: 100%; overflow-y: scroll; padding-bottom: 20px; width: 90%;">
+            <div style="height: 300px; overflow-y: scroll; padding-bottom: 20px;">
                 
             <!-- Aqui vai uma condicao: se a sala for criada com sucesso add a sala publica se nao da um erro -->
-            <% let salas = [
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-            ]
-            
-            if (typeof salaPublica !== 'undefined') { %>
+            <% if (typeof salaPublica !== 'undefined') { %>
                 <h2><%= 'Erro ao Criar Sala' %></h2>
             <% } else { %>
                 <%  salas.forEach(sala => { %>

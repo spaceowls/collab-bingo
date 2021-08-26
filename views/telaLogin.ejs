@@ -89,6 +89,7 @@
         }else{
           elementoErro.classList.add('login-erro--invisivel')
           document.cookie = `usuarioLogado=${resposta.token}`;
+          window.location.replace('/')
         }
       })
     })
