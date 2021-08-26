@@ -3,20 +3,19 @@
 .content__logo{
     width: 100%;
     height: auto;
-    position: absolute;
+    position: relative;
     @include mixins.flex-center;
-    top: 4rem;
-    right: 0;
+    
 
     img{
-        width: 19rem;
-        height: 27rem;
+        width: 40%;
+        height: 40%;
     }
 }
 
 .content__formulario-login{
     &__github{
-        margin-top: 17rem;
+        margin-top: 2rem;
         @include mixins.flex-center;
         width: 100%;
         height: auto;

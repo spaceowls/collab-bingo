@@ -122,3 +122,41 @@
         font-weight: bold;
     }
 }
+
+.content__atualizar-salas {
+    margin-top: .5rem;
+    width: 90%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2{
+        color: var(--white);
+        margin-right: 10rem;
+    }
+  }
+
+.content__atualizar-salas button {
+    border: none;
+    background: transparent;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 5px;
+}
+.content__atualizar-salas button:hover {
+    background: var(--roxo-dark);
+}
+.content__atualizar-salas button img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.sala-de-espera .list-salas-scroll{
+    border-radius: 10px;
+    overflow-y:scroll; 
+    padding-bottom: 20px; 
+    width: 90%;
+    height: 40vh;
+}

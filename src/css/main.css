@@ -645,6 +645,45 @@ body {
   font-weight: bold;
 }
 
+.content__atualizar-salas {
+  margin-top: 0.5rem;
+  width: 90%;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.content__atualizar-salas h2 {
+  color: var(--white);
+  margin-right: 10rem;
+}
+
+.content__atualizar-salas button {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 5px;
+}
+
+.content__atualizar-salas button:hover {
+  background: var(--roxo-dark);
+}
+
+.content__atualizar-salas button img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.sala-de-espera .list-salas-scroll {
+  border-radius: 10px;
+  overflow-y: scroll;
+  padding-bottom: 20px;
+  width: 90%;
+  height: 40vh;
+}
+
 .content__creditos-dev {
   width: 100%;
   height: auto;
@@ -753,20 +792,18 @@ footer h2 {
 .content__logo {
   width: 100%;
   height: auto;
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 4rem;
-  right: 0;
 }
 .content__logo img {
-  width: 19rem;
-  height: 27rem;
+  width: 40%;
+  height: 40%;
 }
 
 .content__formulario-login__github {
-  margin-top: 17rem;
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
