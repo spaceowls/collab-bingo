@@ -8,8 +8,6 @@
     <title>Salas do Bingo</title>
 </head>
 <body>
-    <%- include('./modulos/cabecalho') %> 
-
      <!-- e aquela parte roxa da tela -->
     <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
         <section class="tela-login">
@@ -100,6 +98,7 @@
       await fetch('/api/authenticationGuest').then(resposta => resposta.json())
       .then(resposta => {
         document.cookie = `usuarioLogado=${resposta.token}`;
+        window.location.replace('/')
       });
     });
   </script>

@@ -40,7 +40,7 @@
             <script>
                 const atualizar = document.querySelector('#atualizar');
                 atualizar.addEventListener('click', () => {
-                    window.location.href = 'http://localhost:3000/'
+                    window.location.replace('/');
                 });
             </script>
             <br>
@@ -55,7 +55,7 @@
                         <div class="content__text-nome-sala-e-users">
                             <div class="content__salas-publicas-text">
                                 <h2><%= sala.name %></h2>
-                                <h3><%= sala.code %></h3>
+                                <h3>#<%= sala.code %></h3>
                             </div>
             
                             <div class="content__salas-publicas__user-na-sala">
@@ -67,7 +67,7 @@
                         </div>
         
                         <div class="content__salas-publicas__inspecionar-sala">
-                            <a href="#">
+                            <a href="/room/<%= sala.code %>">
                                 <img src="/assets/img/eye.svg" alt="Inspecionar sala">
                             </a>
                         </div>

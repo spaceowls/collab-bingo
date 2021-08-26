@@ -1,14 +1,14 @@
 <header class="cabecalho">
     <% if (typeof salaAnterior !== 'undefined') {%> 
     <div class="cabecalho__voltar-sala voltar-sala">
-        <a href="#" class="voltar-sala__link">
+        <a href="/" class="voltar-sala__link">
             <img class="voltar-sala__imagem" src="../assets/img/arrow-left.svg" alt="Voltar na tela anterior">
         </a>
         <h2 class="voltar-sala__texto"><%= salaAnterior %></h2>
     </div>
     <% } %> 
     <div class="cabecalho__menu-hamburger menu-hamburger">
-        <a href="#" class="menu-hamburger__link" onclick="aparecerMenu()">
+        <a href="#" class="menu-hamburger__link" onclick="aparecerMenu(event)">
             <img class="menu-hamburger__imagem" src="../assets/img/menu.svg" alt="Menu Mobile">
         </a>
     </div>
@@ -18,42 +18,49 @@
         <!-- aqui que tem oque interessa -->
         <div class="menu-mobile__fg">
             <div class="menu-mobile__div-fechar">
-                <img src="../assets/img/close.svg" alt="fechar menu" onclick="esconderMenu()" 
+                <img src="../assets/img/close.svg" alt="fechar menu" onclick="esconderMenu(event)" 
                     class="menu-mobile__imagem-fechar"
                 >
             </div>
             
             <div class="menu-mobile__lista-centrada">
-                <a class="menu-mobile__botao fundo-arredondado-cinza" href="#">
-                    <% if(typeof nomeUsuario !== 'undefined'){ %> 
-                        <span class="menu-mobile__texto"><%= nomeUsuario %></span>
-                    <% } else { %> 
-                        <span class="menu-mobile__texto">Nome nao passado</span>
-                    <% } %> 
+                <a class="menu-mobile__botao fundo-arredondado-cinza">
+                    <span class="menu-mobile__texto"><%= user.username %></span>
                 </a>
                 <a class="menu-mobile__botao fundo-arredondado-cinza" href="#">
                     <img class="menu-mobile__icone" src="../assets/img/github-pequeno.svg" alt="icone github">
                     <span class="menu-mobile__texto">Créditos</span>
                 </a>
-                <a class="menu-mobile__botao fundo-arredondado-cinza" href="#">
+                <a class="menu-mobile__botao fundo-arredondado-cinza" id="logout" href="#">
                     <img class="menu-mobile__icone" src="../assets/img/logout.svg" alt="imagem sair">
                     <span class='menu-mobile__texto--vermelho'>Logout</span>
                 </a>
+
+                <script>
+                    const logout = document.querySelector('#logout')
+                    logout.addEventListener('click', (e)=> {
+                        e.preventDefault();
+                        document.cookie = "usuarioLogado=; path=/"
+                        window.location.replace('/');
+                    })
+                </script>
             </div>
         </div>
     </div>
 
     <!-- parte que abre e fecha o menu mobile -->
     <script>
-        function aparecerMenu(){
+        function aparecerMenu(e){
+            e.preventDefault();
             let elemento = document.getElementsByClassName('menu-mobile--escondido')[0]
             if (elemento) {
                 elemento.classList.remove('menu-mobile--escondido')
                 elemento.classList.add('menu-mobile--visivel')
             }
         }
-
-        function esconderMenu(){
+        
+        function esconderMenu(e){
+            e.preventDefault();
             let elemento = document.getElementsByClassName('menu-mobile--visivel')[0]
             if (elemento) {
                 elemento.classList.remove('menu-mobile--visivel')

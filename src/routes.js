@@ -13,15 +13,17 @@ const ListPublicRoomsController = require('./controllers/ListPublicRoomsControll
 // const EditUserController = require('./controllers/EditUserController');
 // const RemoveCoinsController = require('./controllers/RemoveCoinsController');
 const CreateRoomController = require('./controllers/CreateRoomController');
+const redirectLogin = require('./middlewares/redirectLogin');
 // const ListPublicRoomsController = require('./controllers/ListPublicRoomsController');
 // const RankingController = require('./controllers/RankingController');
-// const EnterRoomController = require('./controllers/EnterRoomController');
+const EnterRoomController = require('./controllers/EnterRoomController');
+const CreateCartelaController = require('./controllers/CreateCartelaController');
 // const DeleteRoomController = require('./controllers/DeleteRoomController');
 
 // router.get('/', (req, res) => {
 //     res.render('telaLogin')//redirensionar pra um ejs
 // })
-router.get('/login', (req, res) => {
+router.get('/login', redirectLogin, (req, res) => {
     res.render('telaLogin');
 });
 
@@ -29,6 +31,7 @@ router.get('/api/users', ListUsersController);
 router.post('/api/register', CreateUserController);
 router.post('/api/authentication', AuthenticateUserController);
 router.get('/api/authenticationGuest', AuthenticateGuestController);
+router.post('/api/create/cartela', verifyToken, CreateCartelaController);
 router.get('/', verifyToken, ListPublicRoomsController);
 // router.put('/edit/avatar/:id', UpdateAvatarController);
 // router.delete('/delete//user/:id', DeleteUserController);
@@ -36,10 +39,10 @@ router.get('/', verifyToken, ListPublicRoomsController);
 // router.get('/victory/:id', AddVictoriesController);
 // router.put('/edit/user/:id', EditUserController);
 // router.put('/remove/coins/:id', RemoveCoinsController);
-router.post('/create/room', CreateRoomController);
+// router.post('/create/room', CreateRoomController);
+router.get('/room/:code', verifyToken, EnterRoomController);
 // router.get('/rooms', ListPublicRoomsController);
 // router.get('/ranking', RankingController);
-// router.get('/enter-room', EnterRoomController);
 
 // router.get('/profile/:user', userController.profile)
 // router.delete('/profile/:user', userController.delete)
