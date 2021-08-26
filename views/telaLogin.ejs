@@ -8,7 +8,7 @@
     <title>Salas do Bingo</title>
 </head>
 <body>
-    <%- include('./modulos/cabecalho', {salaAnterior: 'Anterior'}) %> 
+    <%- include('./modulos/cabecalho') %> 
 
      <!-- e aquela parte roxa da tela -->
     <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
@@ -82,7 +82,9 @@
         })
       }).then(resposta => resposta.json()).then(resposta => {
         let elementoErro = document.querySelector(queryErro)
-        if(resposta.status !== 200){
+        const inputNome = document.querySelector('.content__formulario-login-form-input').value
+
+        if(resposta.status !== 200 || inputNome === ''){
           elementoErro.classList.remove('login-erro--invisivel')
         }else{
           elementoErro.classList.add('login-erro--invisivel')
