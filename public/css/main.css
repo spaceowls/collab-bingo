@@ -136,7 +136,6 @@ body {
   border-radius: 30px 30px 0 0;
   flex-grow: 2;
   padding: 1rem;
-  padding-bottom: 0;
 }
 
 .conteudo {
@@ -540,6 +539,11 @@ body {
   cursor: pointer;
   margin-left: 1rem;
 }
+.texto-id__fundo-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .content__criar-sala {
   margin-top: 3rem;
@@ -548,7 +552,7 @@ body {
   justify-content: center;
   padding: 0 1rem;
   justify-content: space-between;
-  width: 38rem;
+  width: 90%;
   height: 6rem;
   background-color: var(--white);
   border-radius: 1rem;
@@ -578,7 +582,6 @@ body {
   justify-content: space-between;
   background-color: var(--white);
   border-radius: 1rem;
-  width: 38rem;
   height: 8rem;
   padding: 0.5rem 1rem;
 }
@@ -621,6 +624,25 @@ body {
   width: 5rem;
   height: 4.5rem;
   border-radius: 5px;
+}
+
+.input-sala-id-entrar {
+  width: 13.5rem;
+  height: 4rem;
+  outline: none;
+  border: none;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 2.5rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  color: var(--roxo-ligth);
+}
+.input-sala-id-entrar::placeholder {
+  color: #695acd9a;
+  font-size: 2.5rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
 }
 
 .content__creditos-dev {
@@ -731,11 +753,11 @@ footer h2 {
 .content__logo {
   width: 100%;
   height: auto;
-  position: fixed;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 6rem;
+  top: 4rem;
   right: 0;
 }
 .content__logo img {
@@ -744,7 +766,7 @@ footer h2 {
 }
 
 .content__formulario-login__github {
-  margin-top: 13rem;
+  margin-top: 17rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -851,40 +873,48 @@ footer h2 {
   font-family: "Raleway", sans-serif;
 }
 
-.login-erro {
-  display: block;
-  background-color: rgba(255, 67, 67, 0.623);
-  color: rgb(255, 255, 255);
-  padding: .5rem 4rem;
-  border-radius: 5px;
-  font-size: 1.2rem;
-}
-
-.login-erro--invisivel {
-  display: none;
-}
-
-.texto-id__fundo-input{
+.content__atualizar-salas {
+  width: 90%;
+  height: 4.5rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+}
+.content__atualizar-salas button {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 5px;
+}
+.content__atualizar-salas button:hover {
+  background: var(--roxo-dark);
+}
+.content__atualizar-salas button img {
+  width: 2rem;
+  height: 2rem;
 }
 
-.texto-id__fundo-input .input-sala-id-entrar{
-  width: 13.5rem;
-  height: 4rem;
-  outline: none;
-  border: none;
-  text-align: center;
-  border-radius: 10px;
-  font-size: 2.5rem;
-  font-family: "Raleway", sans-serif;
-  font-weight: bold;
-  color: var(--roxo-ligth);
+.content__atualizar-salas {
+  width: 90%;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-.texto-id__fundo-input .input-sala-id-entrar::placeholder{
-  color: #695acd9a;
-  font-size: 2.5rem;
-  font-family: "Raleway", sans-serif;
-  font-weight: bold;
+.content__atualizar-salas button {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 5px;
+}
+.content__atualizar-salas button:hover {
+  background: var(--roxo-dark);
+}
+.content__atualizar-salas button img {
+  width: 2rem;
+  height: 2rem;
 }
