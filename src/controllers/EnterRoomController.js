@@ -11,10 +11,14 @@ async function EnterRoomController(req, res) {
     }else{
         user = await GetUserService(userAuthenticated.user_id);
     }
+
     const room = await EnterRoomService(code);
 
     res.render('salaDeEspera', {
-        user,
+        user: {
+            id: userAuthenticated.username ? userAuthenticated.user_id : user.id,
+            ...user
+        },
         sala: room.room
     });
 }

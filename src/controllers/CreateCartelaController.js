@@ -94,8 +94,7 @@ async function CreateCartelaController(req, res) {
             }
         }
 
-    numeros.push(...b, ...i, ...n, ...g, ...o)
-    console.log(numeros, numeros.length)       
+    numeros.push(...b, ...i, ...n, ...g, ...o)       
     await CreateCartelaService(bingo_id, user_id, numeros);
 }
 
