@@ -1,0 +1,25 @@
+@use '../mixins/mixins';
+
+.info-sala__mensagem-de-criacao-dono{
+    @include mixins.flex-center;
+    margin-top: 4rem;
+    background: var(--white);
+    width: 30rem;
+    height: 5rem;
+    border-radius: 1rem;
+
+    h3 {
+        font-size: 1.8rem;
+        color: var(--roxo-ligth);
+    }
+}
+
+.info-sala__btn-gerar-cancelar{
+    margin-top: 3rem;
+    @include mixins.botao-padrao;
+    color: var(--red-ligth);
+    width: 8.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    margin-bottom :3rem;
+}
