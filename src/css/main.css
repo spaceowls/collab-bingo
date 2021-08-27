@@ -515,17 +515,24 @@ body {
   padding: 0.5em;
   border-radius: 5%;
   background-color: var(--white);
+  user-select: none;
 }
 .tabela-bingo__item {
   background-color: var(--ciano-medio);
   text-align: center;
   border-radius: 10%;
+  transition: outline 50ms;
+  outline: 0 var(--roxo-dark) solid;
 }
 .tabela-bingo__item--letra {
   color: var(--roxo-ligth);
   font-weight: bold;
   line-height: 1.5;
   font-family: "Raleway", sans-serif;
+}
+.tabela-bingo__item--selecionado {
+  outline: 3px var(--roxo-dark) solid;
+  transition: outline 50ms;
 }
 
 .botao-bingo {
@@ -548,6 +555,15 @@ body {
 .botao-bingo:hover {
   background: var(--roxo-ligth);
   color: var(--ciano-medio);
+}
+
+.bolas-giratorias--ativado {
+  transition: transform 1s ease-in;
+  transform: rotateX(0.5turn) scale(0%);
+}
+.bolas-giratorias--desativado {
+  transition: transform 1s ease-out;
+  transform: rotateX(0) scale(100%);
 }
 
 .texto-id__entrar {
