@@ -1,0 +1,121 @@
+@use '../mixins/mixins';
+
+.sala-de-espera{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 1rem
+}
+
+.texto-id {
+    width: 100%;
+    height: auto;
+    @include mixins.tamanho-cem-auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5rem;
+
+    h2 {
+        margin-right: 2rem;
+        color: var(--white);
+    }
+}
+
+.texto-id__fundo{
+    cursor: pointer;
+    @include mixins.flex-center;
+    width: 16rem;
+    height: 4rem;
+    background-color: var(--white);
+    border-radius:1rem;
+
+    span {
+        color: var(--roxo-ligth);
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    h3 {
+        color: var(--roxo-ligth);
+        font-size: 2.5rem;
+    }
+
+}
+
+.sala-de-espera .info-sala{
+    width: 85%;
+    height: auto;
+
+    @include mixins.flex-center;
+    flex-direction: column;
+
+    border-radius: 1rem;
+    padding: 1rem;
+
+    margin-top: 10%;
+    background-color: var(--white);
+
+    h5 {
+        color: var(--roxo-ligth);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    &__participantes {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        cursor:pointer;
+
+        width: 18rem;
+        height: 5.5rem;
+
+        padding: 2.5rem;
+        background-color: var(--ciano-medio);
+        margin-bottom: 2.3rem;
+        border-radius: 1rem;
+        @include mixins.sombra-elementos;
+        
+        img {
+            width: 5rem;
+            height: 5rem;
+        }
+
+        h2{
+            font-size: 4rem;
+        }
+    }
+}
+
+// Botão Gerar da tela sala de espera
+
+.info-sala__btn {
+    @include mixins.tamanho-cem-auto;
+    @include mixins.flex-center;
+    flex-direction: column;
+    margin-top: 2rem;
+
+    &-gerar {
+        @include mixins.botao-padrao;
+    }
+}
+
+// Mensagem se a cartela foi gerada com sucesso
+
+.info-sala__mensagem-de-criacao {
+    @include mixins.tamanho-cem-auto;
+    @include mixins.flex-center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+
+    h3 {
+        font-size: 1.5rem;
+        color: var(--roxo-ligth);
+        background: var(--ciano-medio);
+        padding: 1rem 4rem;
+        border-radius: 1rem;
+    }
+}

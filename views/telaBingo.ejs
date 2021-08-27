@@ -20,15 +20,15 @@
 
             <div class="bolas-bingo__secundarias">
                 <div class="bolas-secundarias bolas-secundarias__esquerda">
-                    <span>0</span>
+                    <span class='bolas-secundarias__esquerda-valor'>0</span>
                 </div>
                 
                 <div class="bolas-secundarias bolas-secundarias__meio">
-                    <span>69</span>
+                    <span class='bolas-secundarias__meio-valor'>69</span>
                 </div>
                 
                 <div class="bolas-secundarias bolas-secundarias__direita">
-                    <span>99</span>
+                    <span class='bolas-secundarias__direita-valor'>99</span>
                 </div>
             </div>
         </div>
@@ -40,7 +40,9 @@
             <div class="tabela-bingo__item tabela-bingo__item--letra">G</div>
             <div class="tabela-bingo__item tabela-bingo__item--letra">O</div>
             <% for( let i = 0; i < 25; i++ ) { %>
-                <div class="tabela-bingo__item"><%= i _%> </div>
+                <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                    <span><%= i _%></span>
+                </div>
             <% } %>
         </div>
 
@@ -48,5 +50,52 @@
 
     </div>  
     <%- include('modulos/conteudo', {parte: 'fechar'}) %>
+    <script>
+        const bolaPrincipal = document.querySelector('.bolas-bingo__principal-valor')
+        const bolaEsquerda = document.querySelector('.bolas-secundarias__esquerda-valor')
+        const bolaMeio = document.querySelector('.bolas-secundarias__meio-valor')
+        const bolaDireita = document.querySelector('.bolas-secundarias__direita-valor')
+
+        const listaBolas = [bolaPrincipal, bolaEsquerda, bolaMeio, bolaDireita]
+
+        function mudancaItemCartela(elemento){
+            if (!(elemento instanceof Element)){
+                return
+            }
+
+            elemento.classList.toggle('tabela-bingo__item--selecionado')
+        }
+
+        function atualizarPedras(novaPedra){
+            if (typeof novaPedra !== 'number'){
+                return
+            }
+
+            const bolasNovoValor = [novaPedra,  bolaPrincipal.innerHTML, bolaEsquerda.innerHTML, bolaMeio.innerHTML]
+            const temposTimeOut = [0, .2, .4, .6]   
+
+            listaBolas.forEach((bola, index) => {
+                setTimeout(() => {
+                    bola.classList.remove('bolas-giratorias--desativado')
+                    bola.classList.add('bolas-giratorias--ativado')
+                    // precisa ser 'ontransitionend' aqui, para ele poder ser desatribuido depois
+                    bola.ontransitionend = () => mudarNumero(bola, bolasNovoValor[index])
+                }, temposTimeOut[index] * 1000)
+            })
+
+            function mudarNumero(elemento, novoValor){
+                if (!(elemento instanceof Element)){
+                    return
+                }
+
+                elemento.innerHTML = novoValor
+                elemento.classList.add('bolas-giratorias--desativado')
+                elemento.classList.remove('bolas-giratorias--ativado')
+                //aqui ele eh desatribuido
+                elemento.ontransitionend = null
+            }
+            
+        }
+    </script>
 </body>
 </html>
