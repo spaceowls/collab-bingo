@@ -14,15 +14,42 @@
     <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
         <section class="sala-de-espera">
             <div class="texto-id">
-                <h2>ID sala:</h2>
+                <h2>Código sala:</h2>
                 <div class="texto-id__fundo-input">
-                    <input class="input-sala-id-entrar" type="number" maxlength="6" max="6" placeholder="#565365" name="id-sala-entrar">
+                    <input class="input-sala-id-entrar" type="number" placeholder="#565365" name="id-sala-entrar">
                 </div>
                 <div class="texto-id__entrar">
-                    <a href="#">
+                    <a class="botao_entrar" href="#">
                         <img src="/assets/img/entrar.svg" alt= 'Enter'>
                     </a> 
                 </div>
+                <div class="sala-erro"></div>
+                
+                <script>
+                    const codigoSala = document.querySelector('.input-sala-id-entrar');
+                    const entrarNaSala = document.querySelector(".botao_entrar");
+                    const menssagem = document.querySelector('.sala-erro');
+                    entrarNaSala.addEventListener('click', async (e)=>{
+                        e.preventDefault();
+                        await fetch('/api/verifyRoom', {
+                            method: 'POST',
+                            headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                            body: JSON.stringify({
+                                code: codigoSala.value
+                            })
+                        }).then(resposta => resposta.json())
+                        .then(resposta => {
+                            if(resposta.status !== 200){
+                                menssagem.innerHTML = resposta.message;
+                            }else{
+                                window.location.replace(`/room/${codigoSala.value}`);
+                            }
+                        });
+                    })
+                </script>
             </div>
 
             <div class="content__criar-sala">
@@ -44,7 +71,7 @@
                 });
             </script>
             <br>
-            <div style="height: 300px; overflow-y: scroll; padding-bottom: 20px;">
+            <div class="list-salas-scroll">
                 
             <!-- Aqui vai uma condicao: se a sala for criada com sucesso add a sala publica se nao da um erro -->
             <% if (typeof salaPublica !== 'undefined') { %>

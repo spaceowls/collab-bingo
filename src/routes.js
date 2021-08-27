@@ -18,6 +18,7 @@ const redirectLogin = require('./middlewares/redirectLogin');
 // const RankingController = require('./controllers/RankingController');
 const EnterRoomController = require('./controllers/EnterRoomController');
 const CreateCartelaController = require('./controllers/CreateCartelaController');
+const EnterRoomService = require('./services/rooms/EnterRoomService');
 // const DeleteRoomController = require('./controllers/DeleteRoomController');
 
 // router.get('/', (req, res) => {
@@ -28,6 +29,13 @@ router.get('/login', redirectLogin, (req, res) => {
 });
 
 router.get('/api/users', ListUsersController);
+router.post('/api/verifyRoom', async (req, res) => {
+    const { code } = req.body;
+    const response = await EnterRoomService(code);
+
+    res.json(response);
+});
+
 router.post('/api/register', CreateUserController);
 router.post('/api/authentication', AuthenticateUserController);
 router.get('/api/authenticationGuest', AuthenticateGuestController);

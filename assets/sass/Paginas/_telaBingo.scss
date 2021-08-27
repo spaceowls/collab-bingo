@@ -1,0 +1,119 @@
+@use '../mixins/mixins';
+
+.tela-bingo {
+    margin-bottom: 7vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.bolas-bingo {
+    font-family: 'Roboto Mono', monospace;
+    margin-bottom: 2rem;
+
+    &__principal {    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto; 
+        
+        width: 2em;
+        height: 2em;
+
+        background: var(--white);
+        border-radius: 50%;
+        border: 5px solid var(--roxo-ligth);
+        box-shadow: 0 7px 4px rgba(0, 0, 0, 25%);
+
+        font-size: 11vh;
+        color: var(--roxo-ligth);
+
+    }
+
+    &__secundarias {
+        display: flex;
+        justify-content: space-evenly;
+        transform: translateY(-25%);
+    }
+    
+}
+
+.bolas-secundarias {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2em;
+    height: 2em;
+
+    font-size: 5vh;
+    color: var(--white);
+
+    border: 2px solid var(--white);
+    border-radius: 50%;
+
+    padding: .5em;
+    box-shadow: inset 0 5px 5px rgba(0, 0, 0, 25%), 0 5px 5px rgba(0, 0, 0, 25%);
+
+    &__meio {
+        transform: translateY(50%);
+    }
+}
+
+.tabela-bingo {
+    display: grid;
+    grid-template-columns: repeat(5, 2em);
+    grid-template-rows: repeat(5, 1.5em);
+    gap: .4em;
+    
+    font-family: "Roboto Mono", monospace;
+    font-size: 3.5vh;
+
+    margin: 0.5em auto;
+    padding: .5em;
+
+    border-radius: 5%;
+    background-color: var(--white);
+
+    user-select: none;
+
+
+    &__item {
+        background-color: var(--ciano-medio);
+        text-align: center;
+        // line-height: 2em;
+        border-radius: 10%;
+        transition: outline 50ms;
+        outline: 0 var(--roxo-dark) solid ;
+
+        &--letra{
+            color: var(--roxo-ligth);
+            font-weight: bold;
+            // font-size: 2em;
+            line-height: 1.5;
+            font-family: "Raleway", sans-serif;
+        }
+
+        &--selecionado {
+            outline: 3px var(--roxo-dark) solid ;
+            transition: outline 50ms;
+        }
+    }
+}
+
+.botao-bingo {
+    @include mixins.botao-padrao;
+    margin: 0 auto;
+    margin-bottom: 1em;
+}
+
+.bolas-giratorias {
+    &--ativado {
+        transition: transform 1s ease-in;
+        transform: rotateX(.5turn) scale(0%);
+    }
+    
+    &--desativado {
+        transition: transform 1s ease-out;
+        transform: rotateX(0) scale(100%);       
+    }
+}
