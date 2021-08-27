@@ -16,7 +16,21 @@
             <div class="texto-id">
                 <h2>ID da sala:</h2>
                 <div class="texto-id__fundo">
-                    <span>#</span><h3> <%= '980347' %> </h3> 
+                    <fieldset id="copy-id">
+                        <img id="copy" src="/assets/img/copy.svg" alt="Copiar">
+                        <input class="input-sala-id-entrar" type="number"  name="id-sala-entrar" value="4563643" readonly>
+                    </fieldset>
+
+                    <script>
+                        const copiarID = document.querySelector('#copy')
+                        copiarID.addEventListener('click', ()=> {
+                            let id = document.querySelector('.input-sala-id-entrar')
+                            id.select();
+                            document.execCommand("copy");
+                            
+                            console.log(`texto copiado: ${id.value}`)
+                        })
+                    </script>
                 </div>
             </div>
 
@@ -24,13 +38,7 @@
                 <h5>Participantes:</h5>
                 <div class="info-sala__participantes">
                     <img src="../assets/img/users.svg" alt="Quantidade de usuarios na sala">
-
-                    <% if (typeof numParticipantes !== 'undefined') { %>
-                        <h2 class="info-sala__numeros-participantes"><%= numParticipantes %></h2>
-                    <% } else { %>
-                        <h2 class="info-sala__numeros-participantes">15</h2>
-                    <% } %>
-                    
+                    <h2 class="info-sala__numeros-participantes">10/15</h2>
                 </div>
 
                 <h2>GERAR MINHA</h2>

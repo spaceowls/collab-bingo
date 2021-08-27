@@ -251,9 +251,7 @@ body {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  width: 18rem;
-  height: 5.5rem;
-  padding: 2.5rem;
+  padding: 0.7rem 2.5rem;
   background-color: var(--ciano-medio);
   margin-bottom: 2.3rem;
   border-radius: 1rem;
@@ -312,6 +310,30 @@ body {
   background: var(--ciano-medio);
   padding: 1rem 4rem;
   border-radius: 1rem;
+}
+
+#copy-id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  width: 15rem;
+  height: 4rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--white);
+  padding: 1rem;
+}
+#copy-id input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+#copy-id input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+#copy-id img {
+  width: 1.8rem;
+  height: 1.8rem;
 }
 
 .info-sala__mensagem-de-criacao-dono {

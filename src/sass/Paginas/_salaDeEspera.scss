@@ -70,10 +70,10 @@
 
         cursor:pointer;
 
-        width: 18rem;
-        height: 5.5rem;
+        // width: 50%;
+        // height: 5.5rem;
 
-        padding: 2.5rem;
+        padding:  .7rem 2.5rem;
         background-color: var(--ciano-medio);
         margin-bottom: 2.3rem;
         border-radius: 1rem;
@@ -117,5 +117,31 @@
         background: var(--ciano-medio);
         padding: 1rem 4rem;
         border-radius: 1rem;
+    }
+}
+
+#copy-id{
+    @include mixins.flex-center;
+    justify-content: space-between;
+    width: 15rem;
+    height: 4rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--white);
+    padding: 1rem;
+
+    input[type=number]::-webkit-inner-spin-button { 
+        -webkit-appearance: none;
+        
+    }
+    input[type=number] { 
+       -moz-appearance: textfield;
+       appearance: textfield;
+    
+    }
+    
+    img{
+        width: 1.8rem;
+        height: 1.8rem;
     }
 }
