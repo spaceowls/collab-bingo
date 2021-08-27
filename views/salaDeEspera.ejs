@@ -8,7 +8,7 @@
     <title>Tela Perfil</title>
 </head>
 <body>
-    <%- include('./modulos/cabecalho', {salaAnterior:  sala.name }) %> 
+    <%- include('./modulos/cabecalho', {salaAnterior: 'Anterior'}) %> 
 
      <!-- e aquela parte roxa da tela -->
     <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
@@ -16,52 +16,29 @@
             <div class="texto-id">
                 <h2>ID da sala:</h2>
                 <div class="texto-id__fundo">
-                    <span>#</span><h3> <%=sala.code%></h3>
+                    <span>#</span><h3> <%= '980347' %> </h3> 
                 </div>
-
-                
-                <script>
-                    const copiarID = document.querySelector('.texto-id__fundo h3')
-                    copiarID.addEventListener('click', ()=> {
-                        copiarID.select()
-                        copyID.setSelectionRange(0, 99999);
-                        navigator.clipboard.writeText(copiarID);
-                    })    
-                </script>
             </div>
 
             <div class="info-sala">
                 <h5>Participantes:</h5>
                 <div class="info-sala__participantes">
                     <img src="../assets/img/users.svg" alt="Quantidade de usuarios na sala">
-                    <h2 class="info-sala__numeros-participantes"><%= sala.members %><span>/</span><%= sala.max_members %></h2>
+
+                    <% if (typeof numParticipantes !== 'undefined') { %>
+                        <h2 class="info-sala__numeros-participantes"><%= numParticipantes %></h2>
+                    <% } else { %>
+                        <h2 class="info-sala__numeros-participantes">15</h2>
+                    <% } %>
+                    
                 </div>
 
                 <h2>GERAR MINHA</h2>
                 <h2>CARTELA:</h2>
 
                 <div class="info-sala__btn">
-                    <button class="info-sala__btn-gerar" id="gerar">GERAR</button>
+                    <button class="info-sala__btn-gerar">GERAR</button>
                 </div>
-
-                <script>
-                    const gerar = document.querySelector('#gerar');
-
-                    gerar.addEventListener('click', async () => {
-                        await fetch('/api/create/cartela', {
-                            method: "post",
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                bingo_id: "<%= sala.id %>",
-                                user_id: "<%= user.id %>"
-                            })
-                        })
-                    })
-                        
-                </script>
 
                 <div class="info-sala__mensagem-de-criacao">
                     <h3><%= 'Gerada com sucesso' %></h3>
