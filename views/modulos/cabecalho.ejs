@@ -12,9 +12,9 @@
             <img class="menu-hamburger__imagem" src="../assets/img/menu.svg" alt="Menu Mobile">
         </a>
     </div>
-    <div class="menu-mobile--escondido">
+    <div class="menu-mobile menu-mobile--escondido">
         <!-- aquele fundo preto na pagina toda -->
-        <div class="menu-mobile__bg"></div>
+        <div class="menu-mobile__bg" onclick="esconderMenu(event)"></div>
         <!-- aqui que tem oque interessa -->
         <div class="menu-mobile__fg">
             <div class="menu-mobile__div-fechar">
@@ -24,47 +24,51 @@
             </div>
             
             <div class="menu-mobile__lista-centrada">
-                <a class="menu-mobile__botao fundo-arredondado-cinza">
+                <div class="menu-mobile__botao fundo-arredondado-cinza">
                     <span class="menu-mobile__texto"><%= user.username %></span>
+                </div>
+                
+                <a class="menu-mobile__botao fundo-arredondado-cinza" href="#">
+                    <span class="menu-mobile__texto">Ranking</span>
                 </a>
+
                 <a class="menu-mobile__botao fundo-arredondado-cinza" href="#">
                     <img class="menu-mobile__icone" src="../assets/img/github-pequeno.svg" alt="icone github">
                     <span class="menu-mobile__texto">Créditos</span>
                 </a>
+
                 <a class="menu-mobile__botao fundo-arredondado-cinza" id="logout" href="#">
                     <img class="menu-mobile__icone" src="../assets/img/logout.svg" alt="imagem sair">
                     <span class='menu-mobile__texto--vermelho'>Logout</span>
                 </a>
 
-                <script>
-                    const logout = document.querySelector('#logout')
-                    logout.addEventListener('click', (e)=> {
-                        e.preventDefault();
-                        document.cookie = "usuarioLogado=; path=/"
-                        window.location.replace('/');
-                    })
-                </script>
+
             </div>
         </div>
     </div>
-
-    <!-- parte que abre e fecha o menu mobile -->
+    
     <script>
+        const logout = document.querySelector('#logout')
+        logout.addEventListener('click', (e)=> {
+            e.preventDefault();
+            document.cookie = "usuarioLogado=; path=/"
+            window.location.replace('/');
+        })
+
+        //parte que abre e fecha o menu mobile
         function aparecerMenu(e){
             e.preventDefault();
             let elemento = document.getElementsByClassName('menu-mobile--escondido')[0]
             if (elemento) {
-                elemento.classList.remove('menu-mobile--escondido')
-                elemento.classList.add('menu-mobile--visivel')
+                elemento.classList.toggle('menu-mobile--escondido')
             }
         }
         
         function esconderMenu(e){
             e.preventDefault();
-            let elemento = document.getElementsByClassName('menu-mobile--visivel')[0]
+            let elemento = document.getElementsByClassName('menu-mobile')[0]
             if (elemento) {
-                elemento.classList.remove('menu-mobile--visivel')
-                elemento.classList.add('menu-mobile--escondido')
+                elemento.classList.toggle('menu-mobile--escondido')
             }
         }
     </script>
