@@ -252,9 +252,7 @@ body {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  width: 18rem;
-  height: 5.5rem;
-  padding: 2.5rem;
+  padding: 0.7rem 2.5rem;
   background-color: var(--ciano-medio);
   margin-bottom: 2.3rem;
   border-radius: 1rem;
@@ -906,5 +904,39 @@ footer h2 {
 }
 .content__atualizar-salas #atualizar:hover{
   background-color: var(--roxo-dark);
+}
+#copy-id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  width: 15rem;
+  height: 4rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--white);
+  padding: 1rem;
+
+}
+
+#copy-id .input-sala-id-entrar{
+  border: none;
+  width: 100%;
+  height: 4rem;
+  background-color: transparent;
+  border-radius: 5px;
+  outline: none;
+}
+
+#copy-id input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+#copy-id input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+#copy-id img {
+  width: 1.8rem;
+  height: 1.8rem;
 }
 

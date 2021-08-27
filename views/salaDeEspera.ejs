@@ -16,18 +16,22 @@
             <div class="texto-id">
                 <h2>ID da sala:</h2>
                 <div class="texto-id__fundo">
-                    <span>#</span><h3> <%=sala.code%></h3>
-                </div>
+                    <fieldset id="copy-id">
+                        <img id="copy" src="/assets/img/copy.svg" alt="Copiar">
+                        <input class="input-sala-id-entrar" type="number"  name="id-sala-entrar" value= '<% sala.code %>'  readonly>
+                    </fieldset>
 
-                
-                <script>
-                    const copiarID = document.querySelector('.texto-id__fundo h3')
-                    copiarID.addEventListener('click', ()=> {
-                        copiarID.select()
-                        copyID.setSelectionRange(0, 99999);
-                        navigator.clipboard.writeText(copiarID);
-                    })    
-                </script>
+                    <script>
+                        const copiarID = document.querySelector('#copy')
+                        copiarID.addEventListener('click', ()=> {
+                            let id = document.querySelector('.input-sala-id-entrar')
+                            id.select();
+                            document.execCommand("copy");
+                            
+                            console.log(`texto copiado: ${id.value}`)
+                        })
+                    </script>
+                </div>
             </div>
 
             <div class="info-sala">
