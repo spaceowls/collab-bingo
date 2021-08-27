@@ -7,9 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "sass-build" :"npx sass --no-source-map assets/sass/main.scss public/css/main.css",
-    "sass-dev" : "npx sass --watch --no-source-map assets/sass/main.scss public/css/main.css"
-
+    "sass-build": "npx sass --no-source-map assets/sass/main.scss public/css/main.css",
+    "sass-dev": "npx sass --watch --no-source-map assets/sass/main.scss public/css/main.css"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

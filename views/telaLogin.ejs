@@ -49,7 +49,7 @@
 
                     <div class="content__formulario-login-form-links">
                         <a href="#">Criar uma conta</a>
-                        <a href="#">Entrar como convidado</a>
+                        <a class = 'entrar-como-convidado' href="#">Entrar como convidado</a>
                     </div>
                 </form>
             </div>
@@ -91,6 +91,7 @@
                         }
                     })
                 })
+
                 const entrarConvidado = document.querySelector('.entrar-como-convidado');
                 entrarConvidado.addEventListener('click', async (e) => {
                     e.preventDefault()

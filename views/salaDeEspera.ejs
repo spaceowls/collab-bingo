@@ -18,7 +18,7 @@
                 <div class="texto-id__fundo">
                     <fieldset id="copy-id">
                         <img id="copy" src="/assets/img/copy.svg" alt="Copiar">
-                        <input class="input-sala-id-entrar" type="number"  name="id-sala-entrar" value= '<% sala.code %>'  readonly>
+                        <input class="input-sala-id-entrar" type="number"  name="id-sala-entrar" value= '<%= sala.code %>'  readonly>
                     </fieldset>
 
                     <script>
@@ -46,6 +46,7 @@
 
                 <div class="info-sala__btn">
                     <button class="info-sala__btn-gerar" id="gerar">GERAR</button>
+                    <button class="info-sala__btn-cancelar">CANCELAR</button>
                 </div>
 
                 <div class="info-sala__mensagem-de-criacao">

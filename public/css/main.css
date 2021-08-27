@@ -251,7 +251,7 @@ body {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  padding: 0.7rem 2.5rem;
+  padding: 0.5rem 2rem;
   background-color: var(--ciano-medio);
   margin-bottom: 2.3rem;
   border-radius: 1rem;
@@ -310,6 +310,55 @@ body {
   background: var(--ciano-medio);
   padding: 1rem 4rem;
   border-radius: 1rem;
+}
+
+#copy-id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  width: 15rem;
+  height: 4rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--white);
+  padding: 1rem;
+}
+#copy-id input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+#copy-id input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+#copy-id img {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.info-sala__btn-cancelar {
+  border: none;
+  width: 12rem;
+  height: 3.5rem;
+  background: var(--ciano-medio);
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  color: var(--roxo-ligth);
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  cursor: pointer;
+  -webkit-box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  transition: background 0.3s;
+  color: rgba(255, 0, 0, 0.63);
+  width: 8rem;
+  height: 3rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+.info-sala__btn-cancelar:hover {
+  background: var(--roxo-ligth);
+  color: var(--ciano-medio);
 }
 
 .info-sala__mensagem-de-criacao-dono {
@@ -584,8 +633,6 @@ body {
 
 .sala-text {
   width: 90%;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
   color: var(--white);
 }
 
@@ -696,6 +743,15 @@ body {
   padding-bottom: 20px;
   width: 90%;
   height: 40vh;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .content__creditos-dev {
@@ -946,38 +1002,16 @@ footer h2 {
   width: 2rem;
   height: 2rem;
 }
-#copy-id {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-content: space-between;
-  width: 15rem;
-  height: 4rem;
-  border: none;
-  border-radius: 10px;
-  background-color: var(--white);
-  padding: 1rem;
 
-}
-
-#copy-id .input-sala-id-entrar{
-  border: none;
-  width: 100%;
-  height: 4rem;
-  background-color: transparent;
+.login-erro {
+  display: block;
+  background-color: rgba(255, 67, 67, 0.623);
+  color: white;
+  padding: 0.5rem 4rem;
   border-radius: 5px;
-  outline: none;
+  font-size: 1.2rem;
 }
 
-#copy-id input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+.login-erro--invisivel {
+  display: none;
 }
-#copy-id input[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-#copy-id img {
-  width: 1.8rem;
-  height: 1.8rem;
-}
-
