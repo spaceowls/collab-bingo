@@ -18,7 +18,7 @@
                 <div class="texto-id__fundo">
                     <fieldset id="copy-id">
                         <img id="copy" src="/assets/img/copy.svg" alt="Copiar">
-                        <input class="input-sala-id-entrar" type="number"  name="id-sala-entrar" value="4563643" readonly>
+                        <input class="input-sala-id-entrar" type="number"  name="id-sala-entrar" value="<%= '786767'%>" readonly>
                     </fieldset>
 
                     <script>
@@ -27,8 +27,6 @@
                             let id = document.querySelector('.input-sala-id-entrar')
                             id.select();
                             document.execCommand("copy");
-                            
-                            console.log(`texto copiado: ${id.value}`)
                         })
                     </script>
                 </div>
@@ -46,6 +44,7 @@
 
                 <div class="info-sala__btn">
                     <button class="info-sala__btn-gerar">GERAR</button>
+                    <button class="info-sala__btn-cancelar">CANCELAR</button>
                 </div>
 
                 <div class="info-sala__mensagem-de-criacao">

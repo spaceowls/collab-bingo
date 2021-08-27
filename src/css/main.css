@@ -195,7 +195,7 @@ body {
 }
 
 .texto-id {
-  width: 100%;
+  width: 90%;
   height: auto;
   width: 100%;
   height: auto;
@@ -214,10 +214,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16rem;
+  width: 13rem;
   height: 4rem;
   background-color: var(--white);
   border-radius: 1rem;
+  margin-right: 1.5rem;
 }
 .texto-id__fundo span {
   color: var(--roxo-ligth);
@@ -230,7 +231,7 @@ body {
 }
 
 .sala-de-espera .info-sala {
-  width: 85%;
+  width: 90%;
   height: auto;
   display: flex;
   align-items: center;
@@ -251,7 +252,7 @@ body {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  padding: 0.7rem 2.5rem;
+  padding: 0.5rem 2rem;
   background-color: var(--ciano-medio);
   margin-bottom: 2.3rem;
   border-radius: 1rem;
@@ -263,7 +264,7 @@ body {
   height: 5rem;
 }
 .sala-de-espera .info-sala__participantes h2 {
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 
 .info-sala__btn {
@@ -334,6 +335,31 @@ body {
 #copy-id img {
   width: 1.8rem;
   height: 1.8rem;
+}
+
+.info-sala__btn-cancelar {
+  border: none;
+  width: 12rem;
+  height: 3.5rem;
+  background: var(--ciano-medio);
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  color: var(--roxo-ligth);
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  cursor: pointer;
+  -webkit-box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  transition: background 0.3s;
+  color: rgba(255, 0, 0, 0.63);
+  width: 8rem;
+  height: 3rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+.info-sala__btn-cancelar:hover {
+  background: var(--roxo-ligth);
+  color: var(--ciano-medio);
 }
 
 .info-sala__mensagem-de-criacao-dono {

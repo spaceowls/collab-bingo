@@ -9,7 +9,7 @@
 }
 
 .texto-id {
-    width: 100%;
+    width: 90%;
     height: auto;
     @include mixins.tamanho-cem-auto;
     display: flex;
@@ -26,10 +26,11 @@
 .texto-id__fundo{
     cursor: pointer;
     @include mixins.flex-center;
-    width: 16rem;
+    width: 13rem;
     height: 4rem;
     background-color: var(--white);
     border-radius:1rem;
+    margin-right: 1.5rem;
 
     span {
         color: var(--roxo-ligth);
@@ -45,7 +46,7 @@
 }
 
 .sala-de-espera .info-sala{
-    width: 85%;
+    width: 90%;
     height: auto;
 
     @include mixins.flex-center;
@@ -73,7 +74,7 @@
         // width: 50%;
         // height: 5.5rem;
 
-        padding:  .7rem 2.5rem;
+        padding:  .5rem 2rem;
         background-color: var(--ciano-medio);
         margin-bottom: 2.3rem;
         border-radius: 1rem;
@@ -85,7 +86,7 @@
         }
 
         h2{
-            font-size: 4rem;
+            font-size: 3.5rem;
         }
     }
 }
@@ -143,5 +144,16 @@
     img{
         width: 1.8rem;
         height: 1.8rem;
+    }
+}
+
+.info-sala__btn{    
+    &-cancelar{
+        @include mixins.botao-padrao;
+        color: rgba(255, 0, 0, 0.63);
+        width: 8rem;
+        height: 3rem;
+        margin-top: 2rem;
+        font-size: 1rem;
     }
 }
