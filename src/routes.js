@@ -18,7 +18,8 @@ const redirectLogin = require('./middlewares/redirectLogin');
 // const RankingController = require('./controllers/RankingController');
 const EnterRoomController = require('./controllers/EnterRoomController');
 const CreateCartelaController = require('./controllers/CreateCartelaController');
-const EnterRoomService = require('./services/rooms/EnterRoomService');
+const VerifyRoomService = require('./services/rooms/VerifyRoomService');
+const CreateRoomPageController = require('./controllers/CreateRoomPageController');
 // const DeleteRoomController = require('./controllers/DeleteRoomController');
 
 // router.get('/', (req, res) => {
@@ -31,7 +32,7 @@ router.get('/login', redirectLogin, (req, res) => {
 router.get('/api/users', ListUsersController);
 router.post('/api/verifyRoom', async (req, res) => {
     const { code } = req.body;
-    const response = await EnterRoomService(code);
+    const response = await VerifyRoomService(code);
 
     res.json(response);
 });
@@ -41,6 +42,7 @@ router.post('/api/authentication', AuthenticateUserController);
 router.get('/api/authenticationGuest', AuthenticateGuestController);
 router.post('/api/create/cartela', verifyToken, CreateCartelaController);
 router.get('/', verifyToken, ListPublicRoomsController);
+router.get('/create', verifyToken, CreateRoomPageController);
 // router.put('/edit/avatar/:id', UpdateAvatarController);
 // router.delete('/delete//user/:id', DeleteUserController);
 // router.delete('/delete/room/:id', DeleteRoomController);
