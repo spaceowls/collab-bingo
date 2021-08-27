@@ -34,32 +34,20 @@
                 </div>
             </div>
             <div class="content__atualizar-salas">
-                <h2>Salas públicas:</h2>
-                <button id="atualizar" type="button"><img src="/assets/img/atualizar.svg" alt=""></button>
+                <h2 class="sala-text">Salas públicas:</h2>
+                <button id="atualizar" type="button"><img src="/assets/img/atualizar-white.svg" alt=""></button>
             </div>
             <script>
                 const atualizar = document.querySelector('#atualizar');
                 atualizar.addEventListener('click', () => {
-                    window.location.reload(true)
+                    window.location.replace('/');
                 });
             </script>
             <br>
             <div class="list-salas-scroll">
                 
             <!-- Aqui vai uma condicao: se a sala for criada com sucesso add a sala publica se nao da um erro -->
-            <% let salas = [
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-                {name: 'Joao', code: '#123456', members: '6', max_members: '7'},
-            ]
-            
-            if (typeof salaPublica !== 'undefined') { %>
+            <% if (typeof salaPublica !== 'undefined') { %>
                 <h2><%= 'Erro ao Criar Sala' %></h2>
             <% } else { %>
                 <%  salas.forEach(sala => { %>
@@ -79,7 +67,7 @@
                         </div>
         
                         <div class="content__salas-publicas__inspecionar-sala">
-                            <a href="#">
+                            <a href="/room/<%= sala.code %>">
                                 <img src="/assets/img/eye.svg" alt="Inspecionar sala">
                             </a>
                         </div>
