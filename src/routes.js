@@ -37,6 +37,10 @@ router.post('/api/verifyRoom', async (req, res) => {
     res.json(response);
 });
 
+router.get('/', (req, res) => {
+    res.render('modalPerdedor')
+  });
+
 router.post('/api/register', CreateUserController);
 router.post('/api/authentication', AuthenticateUserController);
 router.get('/api/authenticationGuest', AuthenticateGuestController);
