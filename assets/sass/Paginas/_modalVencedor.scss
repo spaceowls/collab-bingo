@@ -58,11 +58,22 @@
     }
     &__botao{
         button {
-            @include mixins.botao-padrao;
-            width: 17rem;
-            padding: 1rem;
-            font-size: 1rem;
+            border: none;
+            padding: 1rem 2rem;
+            background: var(--ciano-medio);
+            border-radius: 2rem;
+            font-size: 1.5rem;
+            color: var(--roxo-ligth);
+            font-weight: bold;
+            font-family: 'Raleway', sans-serif;
+            cursor: pointer;
+            @include mixins.sombra-elementos;
+            transition: background .3s;
 
+            &:hover {
+            background: var(--roxo-ligth);
+            color: var(--ciano-medio);
+            }
         }
     }
 }
