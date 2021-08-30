@@ -2,14 +2,14 @@
     <% if (typeof salaAnterior !== 'undefined') {%> 
     <div class="cabecalho__voltar-sala voltar-sala">
         <a href="/" class="voltar-sala__link">
-            <img class="voltar-sala__imagem" src="../assets/img/arrow-left.svg" alt="Voltar na tela anterior">
+            <img class="voltar-sala__imagem" src="/assets/img/arrow-left.svg" alt="Voltar na tela anterior">
         </a>
         <h2 class="voltar-sala__texto"><%= salaAnterior %></h2>
     </div>
     <% } %> 
     <div class="cabecalho__menu-hamburger menu-hamburger">
         <a href="#" class="menu-hamburger__link" onclick="aparecerMenu(event)">
-            <img class="menu-hamburger__imagem" src="../assets/img/menu.svg" alt="Menu Mobile">
+            <img class="menu-hamburger__imagem" src="/assets/img/menu.svg" alt="Menu Mobile">
         </a>
     </div>
     <div class="menu-mobile menu-mobile--escondido">
@@ -18,7 +18,7 @@
         <!-- aqui que tem oque interessa -->
         <div class="menu-mobile__fg">
             <div class="menu-mobile__div-fechar">
-                <img src="../assets/img/close.svg" alt="fechar menu" onclick="esconderMenu(event)" 
+                <img src="/assets/img/close.svg" alt="fechar menu" onclick="esconderMenu(event)" 
                     class="menu-mobile__imagem-fechar"
                 >
             </div>
@@ -34,12 +34,12 @@
                 </a>
 
                 <a class="menu-mobile__botao fundo-arredondado-cinza" href="#">
-                    <img class="menu-mobile__icone" src="../assets/img/github-pequeno.svg" alt="icone github">
+                    <img class="menu-mobile__icone" src="/assets/img/github-pequeno.svg" alt="icone github">
                     <span class="menu-mobile__texto">Créditos</span>
                 </a>
 
                 <a class="menu-mobile__botao fundo-arredondado-cinza" id="logout" href="#">
-                    <img class="menu-mobile__icone" src="../assets/img/logout.svg" alt="imagem sair">
+                    <img class="menu-mobile__icone" src="/assets/img/logout.svg" alt="imagem sair">
                     <span class='menu-mobile__texto--vermelho'>Logout</span>
                 </a>
 

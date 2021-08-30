@@ -3,6 +3,8 @@ exports.up = function(knex) {
         
         tbl.string('id').primary();
 
+        tbl.string('user_id');
+
         tbl.string('name');
 
         tbl.integer('members');

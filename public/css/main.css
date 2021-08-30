@@ -213,7 +213,7 @@ body {
   margin-top: 5rem;
 }
 .texto-id h2 {
-  margin-right: 2rem;
+  margin-right: 1rem;
   color: var(--white);
 }
 
@@ -367,6 +367,11 @@ body {
 .info-sala__btn-cancelar:hover {
   background: var(--roxo-ligth);
   color: var(--ciano-medio);
+}
+
+.texto-id h2 {
+  font-size: 1.7rem;
+  margin-right: 0;
 }
 
 .info-sala__mensagem-de-criacao-dono {
@@ -642,6 +647,9 @@ body {
   background-color: var(--ciano-medio);
   border-radius: 1rem;
 }
+.content__img img {
+  width: 2.7rem;
+}
 
 .sala-text {
   width: 90%;
@@ -898,8 +906,7 @@ footer h2 {
 }
 .modal-container__botao button {
   border: none;
-  width: 12rem;
-  height: 3.5rem;
+  padding: 1rem 2rem;
   background: var(--ciano-medio);
   border-radius: 2rem;
   font-size: 1.5rem;
@@ -910,9 +917,6 @@ footer h2 {
   -webkit-box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
   box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
   transition: background 0.3s;
-  width: 17rem;
-  padding: 1rem;
-  font-size: 1rem;
 }
 .modal-container__botao button:hover {
   background: var(--roxo-ligth);
@@ -937,11 +941,7 @@ footer h2 {
   height: auto;
 }
 .modal-container__botao button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 10rem;
-  font-size: 1.5rem;
+  padding: 1rem 3rem;
 }
 
 .content__logo {
