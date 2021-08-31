@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
-    <title>Tela Perfil</title>
+    <title>Bingolin | <%= sala.name%></title>
 </head>
 <body>
     <%- include('./modulos/cabecalho', {salaAnterior: sala.name}) %> 
@@ -14,7 +14,7 @@
     <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
         <section class="sala-de-espera">
             <div class="texto-id">
-                <h2>ID da sala:</h2>
+                <h2>Código sala:</h2>
                 <div class="texto-id__fundo">
                     <fieldset id="copy-id">
                         <img id="copy" src="/assets/img/copy.svg" alt="Copiar">

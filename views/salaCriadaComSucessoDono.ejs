@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/main.css">
-    <title>Tela Perfil</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <title>Bingolin | <%= sala.name %></title>
 </head>
 <body>
-    <%- include('./modulos/cabecalho', {salaAnterior: 'Anterior'}) %> 
+    <%- include('./modulos/cabecalho', {salaAnterior: sala.name}) %> 
 
      <!-- e aquela parte roxa da tela -->
     <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
@@ -24,19 +24,33 @@
                 
             </div>
             <div class="texto-id">
-                <h2>ID da sala:</h2>
+                <h2>Código sala:</h2>
                 <div class="texto-id__fundo">
                     <!-- Id gerado após criar sala criada com sucesso -->
-                    <span>#</span><h3> <%= '980347' %> </h3> 
+                    <fieldset id="copy-id">
+                        <img id="copy" src="/assets/img/copy.svg" alt="Copiar">
+                        <input class="input-sala-id-entrar" type="number"  name="id-sala-entrar" value= '<%= sala.code %>'  readonly>
+                    </fieldset>
+
+                    <script>
+                        const copiarID = document.querySelector('#copy')
+                        copiarID.addEventListener('click', ()=> {
+                            let id = document.querySelector('.input-sala-id-entrar')
+                            id.select();
+                            document.execCommand("copy");
+                            
+                            console.log(`texto copiado: ${id.value}`)
+                        })
+                    </script> 
                 </div>
             </div>
 
             <div class="info-sala">
                 <h5>Ver participantes:</h5>
                 <div class="info-sala__participantes">
-                    <img src="../assets/img/users.svg" alt="Quantidade de usuarios na sala">
+                    <img src="/assets/img/users.svg" alt="Quantidade de usuarios na sala">
                     <!-- Ejs para mostrar as pessoas que for entrando na sala de espera do bingo, vai atualizando -->
-                    <h2 class="info-sala__numeros-participantes"><%= '0' %><span>/</span><%= '10' %></h2>
+                    <h2 class="info-sala__numeros-participantes"><%= sala.members %><span>/</span><%= sala.max_members %></h2>
                 </div>
 
                 <div class="info-sala__btn">

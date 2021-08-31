@@ -1,7 +1,6 @@
-const ListPublicRoomsService = require("../services/rooms/ListPublicRoomsService");
 const GetUserService = require("../services/users/GetUserService");
 
-async function ListPublicRoomsController(req, res) {
+async function CreateRoomPageController(req, res) {
     const { userAuthenticated } = req.body;
     let user;
     if(userAuthenticated.username){
@@ -9,15 +8,13 @@ async function ListPublicRoomsController(req, res) {
     }else{
         user = await GetUserService(userAuthenticated.user_id);
     }
-    
-    const resposta = await ListPublicRoomsService();
-    res.render('telaSalasDeBingos', {
+
+    res.render('criarSala', {
         user: {
             id: userAuthenticated.username ? userAuthenticated.user_id : user.id,
             ...user
         },
-        salas: resposta.rooms
     });
 }
 
-module.exports = ListPublicRoomsController;
+module.exports = CreateRoomPageController;

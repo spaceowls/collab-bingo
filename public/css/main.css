@@ -213,7 +213,7 @@ body {
   margin-top: 5rem;
 }
 .texto-id h2 {
-  margin-right: 2rem;
+  margin-right: 1rem;
   color: var(--white);
 }
 
@@ -367,6 +367,11 @@ body {
 .info-sala__btn-cancelar:hover {
   background: var(--roxo-ligth);
   color: var(--ciano-medio);
+}
+
+.texto-id h2 {
+  font-size: 1.7rem;
+  margin-right: 0;
 }
 
 .info-sala__mensagem-de-criacao-dono {
@@ -609,6 +614,10 @@ body {
   border-radius: 10px;
   cursor: pointer;
   margin-left: 1rem;
+  transition: background 0.2s;
+}
+.texto-id__entrar:hover {
+  background-color: var(--ciano-medio);
 }
 .texto-id__fundo-input {
   display: flex;
@@ -637,6 +646,9 @@ body {
   justify-content: center;
   background-color: var(--ciano-medio);
   border-radius: 1rem;
+}
+.content__img img {
+  width: 3.5rem;
 }
 
 .sala-text {
@@ -762,6 +774,22 @@ input[type=number] {
   appearance: textfield;
 }
 
+.sala-erro {
+  display: none;
+  background-color: rgba(255, 67, 67, 0.623);
+  color: white;
+  padding: 0.5rem 6rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  margin-bottom: -3rem;
+  font-weight: 600;
+  margin-top: 1.1rem;
+}
+
+.inspecionar-sala__bingo {
+  cursor: pointer;
+}
+
 .content__creditos-dev {
   width: 100%;
   height: auto;
@@ -827,44 +855,93 @@ footer h2 {
   align-items: center;
   justify-content: center;
 }
-#modal .content__lista-users {
+
+.modal-container {
+  width: 90%;
+  height: auto;
+  background-color: var(--white);
+  border-radius: 15px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: 31rem;
-  height: 50rem;
-  background: var(--white);
-  z-index: 1;
-  border-radius: 20px;
-  padding: 1rem;
-  overflow-y: scroll;
+  justify-content: center;
   flex-direction: column;
+  padding: 2rem 0;
 }
-#modal .content__lista-users-fechar-modal {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 2rem;
-}
-#modal .content__lista-users-fechar-modal img {
-  width: 2rem;
-  height: 2rem;
-}
-#modal .content__lista-users__container {
+.modal-container__text-vencedor {
   margin-top: 1rem;
-  width: 27rem;
-  height: 3.5rem;
+  padding: 0.7rem 2rem;
   background: var(--ciano-medio);
   border-radius: 5px;
+}
+.modal-container__text-vencedor h2 {
+  font-size: 1.7rem;
+}
+.modal-container__vencedor {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
+  justify-content: center;
+  flex-direction: column;
 }
-#modal .content__lista-users__container img {
-  width: 2.1rem;
-  height: 2.1rem;
+.modal-container__vencedor img {
+  width: 45%;
+  height: auto;
+}
+.modal-container__vencedor h2 {
+  color: var(--green-light);
+}
+.modal-container__vencedor-score {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-container__vencedor-score h3 {
+  font-size: 1.2rem;
+  color: var(--roxo-ligth);
+  margin-right: 0.5rem;
+}
+.modal-container__vencedor-score h3 span {
+  font-size: 1.5rem;
+}
+.modal-container__botao button {
+  border: none;
+  padding: 1rem 2rem;
+  background: var(--ciano-medio);
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  color: var(--roxo-ligth);
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  cursor: pointer;
+  -webkit-box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  transition: background 0.3s;
+}
+.modal-container__botao button:hover {
+  background: var(--roxo-ligth);
+  color: var(--ciano-medio);
+}
+
+.modal-container__perdedor {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: auto;
+}
+.modal-container__perdedor h2 {
+  color: var(--red-ligth);
+  margin-right: 0.5rem;
+}
+.modal-container__perdedor img {
+  width: 3rem;
+  height: auto;
+}
+.modal-container__botao button {
+  padding: 1rem 3rem;
 }
 
 .content__logo {

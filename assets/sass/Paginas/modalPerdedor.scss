@@ -1,0 +1,24 @@
+@use '../mixins/mixins';
+.modal-container{
+    &__perdedor{
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        @include mixins.flex-center;
+        width: 90%;
+        height: auto;
+        h2{
+            color: var(--red-ligth);
+            margin-right: .5rem;
+        }
+        img{
+            width: 3rem;
+            height: auto;
+        }
+    }
+
+    &__botao{
+        button{
+            padding: 1rem 3rem;
+        }
+    }
+}

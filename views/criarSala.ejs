@@ -13,10 +13,10 @@
     <%- include('modulos/conteudo', {parte: 'abrir'}) %> 
     <div class="criar-sala">    
         <div class="criar-sala__titulo">Criando Sala:</div>
-        <form action="#" method="GET">
+        <form id="sala-dados">
             <fieldset class="criar-sala__item-form">
                 <label class="criar-sala__label" for="salaNome">Nome:</label>
-                <input class="criar-sala__input" type="text" name="salaNome" id="salaNome">
+                <input class="criar-sala__input" type="text" name="salaNome" id="salaNome" maxlength="15">
             </fieldset>
 
             <fieldset class="criar-sala__item-form">
@@ -31,16 +31,42 @@
             <fieldset class="criar-sala__item-form">
                 <label class="criar-sala__label" for="tipoSala">Tipo da sala:</label>
                 <select class="criar-sala__select" name="tipoSala" id="tipoSala">
-                    <option value ="Publica">Pública</option>
-                    <option value="Privada">Privada</option>
+                    <option value ="0">Pública</option>
+                    <option value="1">Privada</option>
                 </select>
             </fieldset>
 
             <!-- puta gambiarra mas eu nao ligo -->
             <div class="criar-sala__submit-wrapper">
-                <input class="criar-sala__submit" type="submit" value="CRIAR">
+                <button class="criar-sala__submit" type="submit">CRIAR</button>
             </div>
         </form>
+
+        <script>    
+            const form = document.querySelector('#sala-dados')
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                await fetch('api/create/sala', {
+                    method: 'post',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            user_id: "<%= user.id %>",
+                            name: formData.get('salaNome'),
+                            private: formData.get('tipoSala'),
+                            max_members: Number(formData.get('maxParticipantes'))
+                        })
+                }).then(resposta => resposta.json()).then(data => {
+                    if(data.status === 200) {
+                        window.location.replace(`/room/sucesso/${data.code}`)
+                    }
+                })
+            });
+        </script>
     </div>
     <%- include('modulos/conteudo', {parte: 'fechar'}) %> 
 </body>

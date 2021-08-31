@@ -18,6 +18,9 @@ const redirectLogin = require('./middlewares/redirectLogin');
 // const RankingController = require('./controllers/RankingController');
 const EnterRoomController = require('./controllers/EnterRoomController');
 const CreateCartelaController = require('./controllers/CreateCartelaController');
+const VerifyRoomService = require('./services/rooms/VerifyRoomService');
+const CreateRoomPageController = require('./controllers/CreateRoomPageController');
+const EnterRoomService = require('./services/rooms/EnterRoomService');
 // const DeleteRoomController = require('./controllers/DeleteRoomController');
 
 // router.get('/', (req, res) => {
@@ -28,18 +31,52 @@ router.get('/login', redirectLogin, (req, res) => {
 });
 
 router.get('/api/users', ListUsersController);
+router.post('/api/verifyRoom', async (req, res) => {
+    const { code } = req.body;
+    const response = await VerifyRoomService(code);
+
+    res.json(response);
+});
+
+router.get('/modalPerdedor', (req, res) => {
+    res.render('modalPerdedor')
+});
+router.get('/modalVencedor', (req, res) => {
+    res.render('modalVencedor')
+});
+
 router.post('/api/register', CreateUserController);
 router.post('/api/authentication', AuthenticateUserController);
 router.get('/api/authenticationGuest', AuthenticateGuestController);
 router.post('/api/create/cartela', verifyToken, CreateCartelaController);
+router.post('/api/create/sala', CreateRoomController);
 router.get('/', verifyToken, ListPublicRoomsController);
+router.get('/create', verifyToken, CreateRoomPageController);
+router.get('/room/sucesso/:code', verifyToken, async (req, res) => {
+    const { userAuthenticated } = req.body;
+    const { code } = req.params;
+    const room = await VerifyRoomService(code);
+
+    let user;
+    if(userAuthenticated.username){
+        user = userAuthenticated
+    }else{
+        user = await GetUserService(userAuthenticated.user_id);
+    }
+    res.render('salaCriadaComSucessoDono', {
+        user: {
+            id: userAuthenticated.username ? userAuthenticated.user_id : user.id,
+            ...user
+        },
+        sala: room.room
+    })
+});
 // router.put('/edit/avatar/:id', UpdateAvatarController);
 // router.delete('/delete//user/:id', DeleteUserController);
 // router.delete('/delete/room/:id', DeleteRoomController);
 // router.get('/victory/:id', AddVictoriesController);
 // router.put('/edit/user/:id', EditUserController);
 // router.put('/remove/coins/:id', RemoveCoinsController);
-// router.post('/create/room', CreateRoomController);
 router.get('/room/:code', verifyToken, EnterRoomController);
 // router.get('/rooms', ListPublicRoomsController);
 // router.get('/ranking', RankingController);

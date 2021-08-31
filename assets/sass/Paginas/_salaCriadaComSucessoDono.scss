@@ -1,5 +1,10 @@
 @use '../mixins/mixins';
-
+.texto-id{
+    h2 {
+        font-size: 1.7rem;
+        margin-right: 0;
+    }
+}
 .info-sala__mensagem-de-criacao-dono{
     @include mixins.flex-center;
     margin-top: 4rem;
