@@ -592,7 +592,7 @@ body {
 
 .bolas-giratorias--ativado {
   transition: transform 1s ease-in;
-  transform: rotateX(0.5turn) scale(0%);
+  transform: rotateX(0.75turn) scale(10%);
 }
 .bolas-giratorias--desativado {
   transition: transform 1s ease-out;
