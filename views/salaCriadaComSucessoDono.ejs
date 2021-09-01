@@ -17,6 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/main.css">
     <title>Bingolin | <%= sala.name %></title>
+    <script src="../../socket.io/socket.io.js"></script>
+
 </head>
 <body>
     <%- include('./modulos/cabecalho', {salaAnterior: sala.name}) %> 
@@ -69,6 +71,7 @@
             </div>
 
             <script>
+
                 const cancelar = document.querySelector('#cancelar');
 
                 cancelar.addEventListener('click', async () => {

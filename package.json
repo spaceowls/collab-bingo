@@ -21,6 +21,7 @@
     "knex-migrate": "^1.7.4",
     "localtunnel": "^2.0.1",
     "sass": "^1.38.1",
+    "socket.io": "^4.2.0",
     "sqlite3": "^5.0.2",
     "uuid": "^8.3.2"
   },

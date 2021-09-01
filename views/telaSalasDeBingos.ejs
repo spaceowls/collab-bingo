@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/main.css">
     <title>Bingolin | Home</title>
+    <script src="socket.io/socket.io.js"></script>
+
 </head>
 <body>
     <%- include('./modulos/cabecalho', {salaAnterior: ''}) %> 
@@ -107,6 +109,8 @@
             <% } %>
 
             <script>
+                var socket = io.connect();
+
                 async function entrarSala(e, code) {
                     e.preventDefault();
                     await fetch('/api/verifyRoom', {

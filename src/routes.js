@@ -64,7 +64,9 @@ router.get('/room/sucesso/:code', verifyToken, CreatedRoomController);
 router.get('/room/:code', verifyToken, EnterRoomController);
 router.delete('/room/delete/:id', DeleteRoomController);
 
-
+router.get('/register', (req, res) => {
+    res.render('telaCriarConta')
+});
 /* Cartelas */
 router.get('/cartela/:user_id', verifyToken, GetCartelasController);
 
@@ -75,8 +77,6 @@ router.get('/modalPerdedor', (req, res) => {
 router.get('/modalVencedor', (req, res) => {
     res.render('modalVencedor')
 });
-// router.get('/bingo', (req, res) => {
-//     res.render('telaBingo')
-// });
+
 
 module.exports = router;
