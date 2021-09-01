@@ -19,11 +19,11 @@ const CreatedRoomController = require('./controllers/CreatedRoomController');
 const DeleteRoomController = require('./controllers/DeleteRoomController');
 
 const CreateCartelaController = require('./controllers/CreateCartelaController');
+const GetCartelasController = require('./controllers/GetCartelasController');
 
 
 /* Import Services */
 const VerifyRoomService = require('./services/rooms/VerifyRoomService');
-
 
 /* Call API */ 
 router.post('/api/create/sala', CreateRoomController);
@@ -64,6 +64,9 @@ router.get('/room/sucesso/:code', verifyToken, CreatedRoomController);
 router.get('/room/:code', verifyToken, EnterRoomController);
 router.delete('/room/delete/:id', DeleteRoomController);
 
+
+/* Cartelas */
+router.get('/cartela/:user_id', verifyToken, GetCartelasController);
 
 /* Test routes */
 router.get('/modalPerdedor', (req, res) => {

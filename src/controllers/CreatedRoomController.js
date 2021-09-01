@@ -12,16 +12,17 @@ async function CreatedRoomController(req, res) {
         user = await GetUserService(userAuthenticated.user_id);
     }
 
-const room = await VerifyRoomService(code);
+  const room = await VerifyRoomService(code);
   res.render('salaCriadaComSucessoDono', {
       user: {
           id: userAuthenticated.username ? userAuthenticated.user_id : user.id,
           ...user
       },
-      sala: room.room
+      sala: room.room ? room.room : room.status
   })
 }
 
-
+// ? = if if = se : = else else = senão
+// || = or  or = ou && = and  and = e
 
 module.exports = CreatedRoomController;

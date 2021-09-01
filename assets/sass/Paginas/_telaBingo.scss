@@ -117,3 +117,9 @@
         transform: rotateX(0) scale(100%);       
     }
 }
+
+.gap-cartela {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}

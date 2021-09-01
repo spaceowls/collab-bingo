@@ -383,6 +383,7 @@ body {
   width: 30rem;
   height: 5rem;
   border-radius: 1rem;
+  animation: aparecer 1s;
 }
 .info-sala__mensagem-de-criacao-dono h3 {
   font-size: 1.8rem;
@@ -602,6 +603,12 @@ body {
 .bolas-giratorias--desativado {
   transition: transform 1s ease-out;
   transform: rotateX(0) scale(100%);
+}
+
+.gap-cartela {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .texto-id__entrar {

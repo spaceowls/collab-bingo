@@ -7,7 +7,7 @@
         </script>      
     <%} %>
 
-    <% if(sala.status !== 200) { %>
+    <% if(sala === 400) { %>
         <script>
             window.location.replace('/')
         </script>      
@@ -26,13 +26,13 @@
         <section class="sala-de-espera">
             <div class="info-sala__mensagem-de-criacao-dono">
 
-                <!-- Verificação se a sala foi criada com sucesso ou deu algum erro -->
-                <% if (typeof salaCriadaComSucesso !== 'undefined') { %>
-                    <h3><%= 'Sala criada com sucesso!' %></h3>
-                <% } else { %>
-                    <h3><%= 'Sala criada com sucesso!' %></h3>
-                <% } %>
-                
+                <h3><%= 'Sala criada com sucesso!' %></h3>
+                <script>
+                    const setTempoMensagem = document.querySelector('.info-sala__mensagem-de-criacao-dono')
+                    setTimeout(() => { 
+                        setTempoMensagem.style.display = 'none'
+                    }, 3000);
+                </script>
             </div>
             <div class="texto-id">
                 <h2>Código sala:</h2>
