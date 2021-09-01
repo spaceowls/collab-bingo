@@ -1,5 +1,6 @@
 @use '../mixins/mixins';
 
+
 .texto-id{
     
     &__entrar{
@@ -174,6 +175,7 @@
     padding-bottom: 20px; 
     width: 90%;
     height: 40vh;
+
 }
 
 input[type=number]::-webkit-inner-spin-button { 
