@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Tela Perfil</title>
+</head> 
+<body>
+    <%- include('./modulos/cabecalho', {salaAnterior: 'Anterior'}) %> 
+     <!-- e aquela parte roxa da tela -->
+    <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
+    <section class="login">
+        <header>
+         <div class="logo">
+           <img src="assets/img/logo-bingo.svg" alt="Logo do Collab Bingo">
+         </div>
+        </header>
+       <div class="account">
+        <form>
+           <input type="email" class="email" id="email" name="user" placeholder="Usuário">
+           <input type="password" class="password" id="password" name="password" placeholder="Senha">
+           <input type="password" class="password" id="confirm_password" name="password" placeholder="Confirmar senha">
+           <div class="button">
+             <button class="btn" id="btn">CADASTRAR</button>
+           </div>
+           <a href="login.html" class="login-forms">Já tenho uma conta</a>
+        </form>
+      </div> 
+    </section>
+    <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 
+</body>
+</html>
+ 

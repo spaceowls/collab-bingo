@@ -4,6 +4,10 @@
     justify-content: center;
 }
 
+@mixin form-input {
+    
+}
+
 @mixin sombra-elementos {
     -webkit-box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58);
     box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58);

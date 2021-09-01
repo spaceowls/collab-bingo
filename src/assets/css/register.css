@@ -12,7 +12,7 @@ html {
     font-family: 'Raleway', sans-serif;
     font-size: 62.5%;
 }
-
+  
 :root {
    
     /* VARIAVEIS DE CORES */
@@ -59,9 +59,9 @@ section.login{
     overflow-y: hidden;
 }
 
-.ball {
+.ball { 
     position: fixed;
-    border-radius: 49%;
+    border-radius: 49%; 
 }
 
 .ball.top{

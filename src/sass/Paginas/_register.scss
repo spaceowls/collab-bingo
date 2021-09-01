@@ -1,0 +1,26 @@
+@use '../mixins/mixins';
+
+.ball {
+ 
+  .top {
+    @include mixins.fundo-arr-branco; 
+  }
+
+  .bottom {
+    
+  }
+  
+}
+
+input {
+
+
+}
+
+.button {
+  @include mixins.flex-center;
+}
+
+.btn {
+  @include mixins.botao-padrao;
+}

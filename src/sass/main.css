@@ -1,16 +1,13 @@
 @use '../sass/mixins/mixins';
 @use 'Base/reset';
 @use 'Base/typography';
-
 @use 'Layout/cabecalho';
 @use 'Layout/conteudo';
-
 @use 'Componentes/fundo-arredondado-cinza';
-
 @use 'Abstratos/cores';
-
 @use 'Paginas/salaDeEspera';
 @use 'Paginas/salaCriadaComSucessoDono';
 @use 'Paginas/criarSala';
 @use 'Paginas/telaBingo';
 @use 'Paginas/register';
+/*# sourceMappingURL=main.css.map */
