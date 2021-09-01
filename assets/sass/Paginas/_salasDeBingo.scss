@@ -99,14 +99,23 @@
         }
     }
 
-    &__inspecionar-sala{
-        @include mixins.flex-center;
-        background-color: var(--ciano-medio);
-        width: 5rem;
-        height: 4.5rem;
-        border-radius: 5px;
+    // &__inspecionar-sala{
+    //     // @include mixins.flex-center;
+    //     // background-color: var(--ciano-medio);
+    //     // width: 5rem;
+    //     // height: 4.5rem;
+    //     // border-radius: 5px;
+    // }
+    
+}
 
-    }
+.inspecionar-sala__bingo{
+    @include mixins.flex-center;
+    background-color: var(--ciano-medio);
+    width: 5rem;
+    height: 4.5rem;
+    border-radius: 5px;
+    padding: 1.2rem;
 }
 
 .input-sala-id-entrar {

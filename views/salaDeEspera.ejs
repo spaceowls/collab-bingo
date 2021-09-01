@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <% if(sala.status === 400) {%> 
+        <script>
+            window.location.replace('/')
+        </script> <% } %> 
+        
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,8 +32,6 @@
                             let id = document.querySelector('.input-sala-id-entrar')
                             id.select();
                             document.execCommand("copy");
-                            
-                            console.log(`texto copiado: ${id.value}`)
                         })
                     </script>
                 </div>
@@ -46,7 +49,7 @@
 
                 <div class="info-sala__btn">
                     <button class="info-sala__btn-gerar" id="gerar">GERAR</button>
-                    <button class="info-sala__btn-cancelar">CANCELAR</button>
+                    <button class="info-sala__btn-cancelar" id="cancelar">CANCELAR</button>
                 </div>
 
                 <div class="info-sala__mensagem-de-criacao">
@@ -60,6 +63,7 @@
     <script>
         const gerar = document.querySelector('#gerar');
         gerar.addEventListener('click', async () => {
+
             await fetch('/api/create/cartela', {
                 method: "post",
                 headers: {

@@ -19,7 +19,7 @@ async function EnterRoomController(req, res) {
             id: userAuthenticated.username ? userAuthenticated.user_id : user.id,
             ...user
         },
-        sala: room.room
+        sala: room.status === 200 ? room.room : room
     });
 }
 

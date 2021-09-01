@@ -1,5 +1,6 @@
 const knex = require('../database');
 const CreateCartelaService = require('../services/cartelas/CreateCartelaService');
+// const GetCartelaService = require('../services/cartelas/GetCartelaService');
 
 async function CreateCartelaController(req, res) {
     const { bingo_id, user_id } = req.body;
@@ -96,6 +97,12 @@ async function CreateCartelaController(req, res) {
 
     numeros.push(...b, ...i, ...n, ...g, ...o)       
     await CreateCartelaService(bingo_id, user_id, numeros);
+
+        // testeee
+//         const cartela = await GetCartelaService(id)
+//         res.render('salaDeEspera', {
+//             num: cartela.cartela
+//         })
 }
 
 module.exports = CreateCartelaController;

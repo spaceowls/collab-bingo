@@ -697,7 +697,8 @@ body {
   margin-right: 0.5rem;
   width: 2.5rem;
 }
-.content__salas-publicas__inspecionar-sala {
+
+.inspecionar-sala__bingo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -705,6 +706,7 @@ body {
   width: 5rem;
   height: 4.5rem;
   border-radius: 5px;
+  padding: 1.2rem;
 }
 
 .input-sala-id-entrar {
