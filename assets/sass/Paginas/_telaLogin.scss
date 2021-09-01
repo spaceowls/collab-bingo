@@ -1,30 +1,37 @@
 @use '../mixins/mixins';
 
+.tela-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .content__logo{
     width: 100%;
     height: auto;
     position: relative;
     @include mixins.flex-center;
+    margin: 5% 0 ;
     
 
     img{
-        width: 40%;
-        height: 40%;
+        height: 30vh;
+        width: auto;
+        margin: auto 0;
     }
 }
 
 .content__formulario-login{
     &__github{
-        margin-top: 2rem;
         @include mixins.flex-center;
         width: 100%;
         height: auto;
         flex-direction: column;
+        margin-bottom: 5%;
 
         img{
-            margin-bottom: 0.5rem;
-            width: 3.5rem ;
-            height: 3.5rem;
+            height: 5vh;
+            width: auto;
         }
 
         a{
@@ -36,15 +43,13 @@
 
 .content__formulario-login-form{
     width: 100%;
-    height: auto;
+    height: 30vh;
     @include mixins.flex-center;
     flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 5%;
 
     fieldset{
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        width: 30rem;
-        height: 5rem;
         border: none;
         background: var(--white);
         border-radius: 2rem;
@@ -81,10 +86,6 @@
     }
 
     &-btn{
-        width: 100%;
-        height: auto;
-        @include mixins.flex-center;
-        margin-top: 2rem;
 
         &-acessar{
             border: none;
@@ -109,18 +110,20 @@
     }
 }
 
-.content__formulario-login-form-links{
-    width: 100%;
-    height: auto;
-    @include mixins.flex-center;
+.content__formulario-login-form-links {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 
-    a{
+    height: 3em;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+
+    a {
         color:var(--white);
-        margin-top: 2rem;
-        font-size: 1.2rem;
-        font-weight: bold;
-        font-family: 'Raleway', sans-serif;
     }
 }
 

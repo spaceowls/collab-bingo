@@ -59,6 +59,8 @@
 
         const listaBolas = [bolaPrincipal, bolaEsquerda, bolaMeio, bolaDireita]
 
+        const itensCartela =  document.querySelectorAll(".tabela-bingo__item:not(.tabela-bingo__item--letra)")
+
         function mudancaItemCartela(elemento){
             if (!(elemento instanceof Element)){
                 return
@@ -73,7 +75,7 @@
             }
 
             const bolasNovoValor = [novaPedra,  bolaPrincipal.innerHTML, bolaEsquerda.innerHTML, bolaMeio.innerHTML]
-            const temposTimeOut = [0, .2, .4, .6]   
+            const temposTimeOut = [0, .3, .6, .9]   
 
             listaBolas.forEach((bola, index) => {
                 setTimeout(() => {
@@ -97,6 +99,18 @@
             }
             
         }
+
+        window.addEventListener('load', () => {
+            function clicarDelay(elemento, delay) {
+                setTimeout(() => elemento.clicar(), delay)
+            }
+
+            let dale = Array.from(itensCartela.values())
+            dale.sort((a, b) => Math.random() > 0.5 ? 1 : -1)
+
+            dale.forEach(elemento => setTimeout(() => elemento.click(), 500))
+            dale.forEach(elemento => setTimeout(() => elemento.click(), 1000))
+        })
     </script>
 </body>
 </html>

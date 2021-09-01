@@ -109,7 +109,7 @@
 .bolas-giratorias {
     &--ativado {
         transition: transform 1s ease-in;
-        transform: rotateX(.5turn) scale(0%);
+        transform: rotateX(.75turn) scale(10%);
     }
     
     &--desativado {
