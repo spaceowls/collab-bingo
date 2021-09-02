@@ -1,5 +1,7 @@
 const knex = require('../../database');
 
+
+
 async function EnterRoomService(code) {
     const room = await knex('bingo').where({ code }).select().then(room => room[0]);
     
@@ -16,7 +18,7 @@ async function EnterRoomService(code) {
             status: 400
         }
     }
-
+                                                
     await knex('bingo').where({ code }).update({ members: room.members += 1 });
 
     return {

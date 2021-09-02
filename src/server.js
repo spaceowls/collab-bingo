@@ -7,7 +7,7 @@ const { Socket } = require('dgram');
 
 
 const app = express();
-const port = 3000;
+const port = 8080;
 
 
 const http = require('http').Server(app);
@@ -22,6 +22,12 @@ app.use(cookieParser());
 //nao usa isso em produção
 app.use(cors())
 app.use(router)
+app.use('/room/:code', (req, res, next) => {
+    io.on('connection', socket => {
+        io.to('sala').emit('entrou') 
+    })
+    next()
+})
 
 io.on('connection', socket => {
     console.log('+1 bingueiro online', socket.id)
@@ -29,12 +35,16 @@ io.on('connection', socket => {
     socket.on('disconnect', ()=> {
         console.log("menos 1 online");
     });
+
+    // socket.on('disconnect', ()=> {
+    //     console.log("menos 1 online");
+    // });
     
     // socket.on('sala', ()=>{
     //     console.log('entrou na sala')
-    //     socket.join('sala1');  
+        // socket.join('sala1');  
         
-    //     io.to('sala1').emit('entrou') 
+        // io.to('sala1').emit('entrou') 
     // } )
     
 });

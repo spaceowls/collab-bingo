@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
     <title>Bingolin | <%= sala.name%></title>
-    <script src="../socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.min.js"></script>
 
 </head>
 <body>
@@ -63,10 +63,19 @@
     <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 
     <!-- movi os scirpts para o final, ve se nao quebra nada (joao) -->
     <script>
-
+        
+        let socket = io.connect("", {port: 8080, transports: ["websocket"]});
+        
+        
+        socket.on('entrou', function() {
+            console.log('saas')
+        });
+        
+        
         const gerar = document.querySelector('#gerar');
-        gerar.addEventListener('click', async () => {
+        const cartelaGerada = document.querySelector('.info-sala__mensagem-de-criacao')
 
+        gerar.addEventListener('click', async () => {
             await fetch('/api/create/cartela', {
                 method: "post",
                 headers: {
@@ -78,6 +87,8 @@
                     user_id: "<%= user.id %>"
                 })
             })
+            cartelaGerada.classList.add('cartela-gerada')
+            gerar.style.display = 'none'
         })
     </script>
 </body>

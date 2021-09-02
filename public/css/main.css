@@ -304,6 +304,8 @@ body {
 }
 
 .info-sala__mensagem-de-criacao {
+  opacity: 0;
+  visibility: hidden;
   width: 100%;
   height: auto;
   display: flex;
@@ -318,6 +320,12 @@ body {
   background: var(--ciano-medio);
   padding: 1rem 4rem;
   border-radius: 1rem;
+}
+
+.info-sala__mensagem-de-criacao.cartela-gerada {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
 }
 
 #copy-id {
@@ -383,8 +391,7 @@ body {
   width: 30rem;
   height: 5rem;
   border-radius: 1rem;
-  animation: desaparecer 1s linear 3s;
-  animation-fill-mode: both;
+  animation: aparecer 1s;
 }
 .info-sala__mensagem-de-criacao-dono h3 {
   font-size: 1.8rem;
@@ -807,6 +814,10 @@ input[type=number] {
 
 .inspecionar-sala__bingo {
   cursor: pointer;
+}
+
+.cartela-gerada {
+  display: none;
 }
 
 .content__creditos-dev {
