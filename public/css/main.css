@@ -383,7 +383,8 @@ body {
   width: 30rem;
   height: 5rem;
   border-radius: 1rem;
-  animation: aparecer 1s;
+  animation: desaparecer 1s linear 3s;
+  animation-fill-mode: both;
 }
 .info-sala__mensagem-de-criacao-dono h3 {
   font-size: 1.8rem;
@@ -772,6 +773,15 @@ body {
   padding-bottom: 20px;
   width: 90%;
   height: 40vh;
+}
+
+.list-salas-scroll {
+  scrollbar-color: var(--roxo-ligth) var(--ciano-medio);
+}
+
+.list-salas-scroll::-webkit-scrollbar-thumb {
+  background: var(--ciano-medio);
+  color: var(--roxo-ligth);
 }
 
 input[type=number]::-webkit-inner-spin-button {
