@@ -3,7 +3,7 @@
 .tela-login {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .content__logo{
@@ -43,19 +43,21 @@
 
 .content__formulario-login-form{
     width: 100%;
-    height: 30vh;
+    height: 50%;
     @include mixins.flex-center;
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 5%;
 
     fieldset{
+        width: 30rem;
         border: none;
         background: var(--white);
         border-radius: 2rem;
         @include mixins.flex-center;
         justify-content: space-between;
         padding: 0 1rem;
+        margin-bottom: 1rem;
 
         img{
             width: 2.5rem;
@@ -88,6 +90,7 @@
     &-btn{
 
         &-acessar{
+            margin-top: 1rem;
             border: none;
             width: 16rem;
             height: 5rem;
@@ -121,6 +124,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
+    margin-bottom: 50%;
 
     a {
         color:var(--white);

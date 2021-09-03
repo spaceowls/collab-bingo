@@ -304,6 +304,8 @@ body {
 }
 
 .info-sala__mensagem-de-criacao {
+  opacity: 0;
+  visibility: hidden;
   width: 100%;
   height: auto;
   display: flex;
@@ -318,6 +320,12 @@ body {
   background: var(--ciano-medio);
   padding: 1rem 4rem;
   border-radius: 1rem;
+}
+
+.info-sala__mensagem-de-criacao.cartela-gerada {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
 }
 
 #copy-id {
@@ -774,6 +782,15 @@ body {
   height: 40vh;
 }
 
+.list-salas-scroll {
+  scrollbar-color: var(--roxo-ligth) var(--ciano-medio);
+}
+
+.list-salas-scroll::-webkit-scrollbar-thumb {
+  background: var(--ciano-medio);
+  color: var(--roxo-ligth);
+}
+
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
@@ -797,6 +814,10 @@ input[type=number] {
 
 .inspecionar-sala__bingo {
   cursor: pointer;
+}
+
+.cartela-gerada {
+  display: none;
 }
 
 .content__creditos-dev {
@@ -956,7 +977,7 @@ footer h2 {
 .tela-login {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .content__logo {
@@ -994,7 +1015,7 @@ footer h2 {
 
 .content__formulario-login-form {
   width: 100%;
-  height: 30vh;
+  height: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1003,6 +1024,7 @@ footer h2 {
   margin-bottom: 5%;
 }
 .content__formulario-login-form fieldset {
+  width: 30rem;
   border: none;
   background: var(--white);
   border-radius: 2rem;
@@ -1011,6 +1033,7 @@ footer h2 {
   justify-content: center;
   justify-content: space-between;
   padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 .content__formulario-login-form fieldset img {
   width: 2.5rem;
@@ -1036,6 +1059,7 @@ footer h2 {
   font-family: "Raleway", sans-serif;
 }
 .content__formulario-login-form-btn-acessar {
+  margin-top: 1rem;
   border: none;
   width: 16rem;
   height: 5rem;
@@ -1064,6 +1088,7 @@ footer h2 {
   font-size: 1.2rem;
   font-weight: bold;
   font-family: "Raleway", sans-serif;
+  margin-bottom: 50%;
 }
 .content__formulario-login-form-links a {
   color: var(--white);
@@ -1103,4 +1128,8 @@ footer h2 {
 
 .login-erro--invisivel {
   display: none;
+}
+
+.login-erro {
+  margin: 0.5rem;
 }

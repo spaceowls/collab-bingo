@@ -20,6 +20,7 @@ async function CreatedRoomController(req, res) {
       },
       sala: room.room ? room.room : room.status
   })
+
 }
 
 // ? = if if = se : = else else = senão

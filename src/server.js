@@ -4,17 +4,35 @@ const router = require('./routes');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
+
 const app = express();
-const port = 3000;
+const port = 3000;  
+
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
 //nao usa isso em produção
 app.use(cors())
+
+// AQUI COMEÇA SOCKET.IO
+app.use('/room/:code', (req, res, next) => {
+    io.on('connection', socket => {
+        console.log('entrei na sala')
+        socket.on('disconnect', () => {
+            console.log('sai')
+            socket.disconnect()
+            socket.onClose()
+        })
+    });
+    next();
+}) 
+
 app.use(router)
 
-app.listen(port, () => console.log(`Server rodando na porta ${port}`));
+                        
+http.listen(port, () => console.log(`Server rodando na porta ${port}`))

@@ -1,5 +1,6 @@
 @use '../mixins/mixins';
 
+
 .texto-id{
     
     &__entrar{
@@ -174,7 +175,17 @@
     padding-bottom: 20px; 
     width: 90%;
     height: 40vh;
+
 }
+
+.list-salas-scroll {
+    scrollbar-color: var(--roxo-ligth) var(--ciano-medio);
+}
+
+.list-salas-scroll::-webkit-scrollbar-thumb {
+    background: var(--ciano-medio);
+    color: var(--roxo-ligth);
+  }
 
 input[type=number]::-webkit-inner-spin-button { 
     -webkit-appearance: none;
@@ -200,4 +211,8 @@ input[type=number] {
 
 .inspecionar-sala__bingo{
     cursor: pointer;
+}
+
+.cartela-gerada{
+    display: none;
 }

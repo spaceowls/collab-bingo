@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
     <title>Bingolin | <%= sala.name%></title>
+    <script src="../socket.io/socket.io.js"></script>
+
 </head>
 <body>
     <%- include('./modulos/cabecalho', {salaAnterior: sala.name}) %> 
@@ -61,8 +63,18 @@
     <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 
     <!-- movi os scirpts para o final, ve se nao quebra nada (joao) -->
     <script>
-        const gerar = document.querySelector('#gerar');
+        var socket = io.connect();
+
+        document.querySelector('#cancelar').addEventListener('click', () => {
+            socket.emit('sai');
+        })
+
+        const gerar = document.querySelector('#gerar')
+        const cartelaGerada = document.querySelector('.info-sala__mensagem-de-criacao')
+
         gerar.addEventListener('click', async () => {
+            cartelaGerada.classList.add('cartela-gerada');
+            gerar.style.display = 'none';
 
             await fetch('/api/create/cartela', {
                 method: "post",
@@ -72,7 +84,7 @@
                 },
                 body: JSON.stringify({
                     bingo_id: "<%= sala.id %>",
-                    user_id: "<%= user.id %>"
+                    user_id: "<%= user.id %>",
                 })
             })
         })

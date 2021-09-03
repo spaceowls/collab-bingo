@@ -13,6 +13,7 @@ const AuthenticateGuestController = require('./controllers/AuthenticateGuestCont
 
 const CreateRoomController = require('./controllers/CreateRoomController');
 const EnterRoomController = require('./controllers/EnterRoomController');
+const LeaveRoomController = require('./controllers/LeaveRoomController');
 const ListPublicRoomsController = require('./controllers/ListPublicRoomsController');
 const CreateRoomPageController = require('./controllers/CreateRoomPageController');
 const CreatedRoomController = require('./controllers/CreatedRoomController');
@@ -27,11 +28,11 @@ const VerifyRoomService = require('./services/rooms/VerifyRoomService');
 
 /* Call API */ 
 router.post('/api/create/sala', CreateRoomController);
+router.post('/api/create/cartela', CreateCartelaController);
 router.post('/api/register', CreateUserController);
 router.get('/api/users', ListUsersController);
 router.post('/api/authentication', AuthenticateUserController);
 router.get('/api/authenticationGuest', AuthenticateGuestController);
-router.post('/api/create/cartela', verifyToken, CreateCartelaController);
 
 router.post('/api/create/:code', CreateRoomController);
 router.post('/api/verifyRoom', async (req, res) => {
@@ -40,8 +41,8 @@ router.post('/api/verifyRoom', async (req, res) => {
     
     res.json(response);
 });
+router.post('/api/leave-room', LeaveRoomController)
 
-router.post('/api/create/cartela', verifyToken, CreateCartelaController);
 
 
 /*=== Pages ===*/
@@ -64,7 +65,9 @@ router.get('/room/sucesso/:code', verifyToken, CreatedRoomController);
 router.get('/room/:code', verifyToken, EnterRoomController);
 router.delete('/room/delete/:id', DeleteRoomController);
 
-
+router.get('/register', (req, res) => {
+    res.render('telaCriarConta')
+});
 /* Cartelas */
 router.get('/cartela/:user_id', verifyToken, GetCartelasController);
 
@@ -75,8 +78,6 @@ router.get('/modalPerdedor', (req, res) => {
 router.get('/modalVencedor', (req, res) => {
     res.render('modalVencedor')
 });
-// router.get('/bingo', (req, res) => {
-//     res.render('telaBingo')
-// });
+
 
 module.exports = router;

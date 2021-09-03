@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/main.css">
-    <title>Bingolin | Login</title>
-    <script src="socket.io/socket.io.js"></script>
-
+    <title>Bingolin | Cadastrar Conta</title>
 </head>
 
 <body>
@@ -18,14 +16,6 @@
             <div class="content__logo">
                 <img src="/assets/img/logo-bingo-login.svg" alt="logo">
             </div>
-            
-            <div class="content__formulario-login__github">
-                <a href="#">
-                    <img src="/assets/img/github.svg" alt="Entrar com Github">
-                </a>
-                <a href="#">Entrar com Github</a>
-            </div>
-
             <form method="post" class="content__formulario-login">
                 <div class="content__formulario-login-form">
                     <fieldset>
@@ -36,73 +26,78 @@
 
                     <fieldset>
                         <img src="/assets/img/senha-login 1.svg" alt="senha login">
-                        <input class="content__formulario-login-form-input" type="password" name="password-login"
+                        <input class="content__formulario-login-form-input senha" type="password" name="password-login"
                             placeholder="Senha">
+                    </fieldset>
+
+                    <fieldset>
+                        <img src="/assets/img/senha-login 1.svg" alt="senha login">
+                        <input class="content__formulario-login-form-input senha1" type="password" name="confirmpassword-login"
+                            placeholder="Confirmar senha">
                     </fieldset>
 
                     <div class="login-erro login-erro--invisivel">Usuário e/ou senha incorretos</div>
                     <div class="content__formulario-login-form-btn">
-                        <button class="content__formulario-login-form-btn-acessar">ACESSAR</button>
+                        <button class="content__formulario-login-form-btn-acessar">CADASTRAR</button>
                     </div>
                 </div>
 
             </form>
             
             <div class="content__formulario-login-form-links">
-                <a href="/register">Criar uma conta</a>
-                <a class = 'entrar-como-convidado' href="#">Entrar como convidado</a>
+                <a href="/login">Já tenho uma conta</a>
             </div>
             
         </section>
         <%- include('./modulos/conteudo', {parte: 'fechar' }) %>
 
         <script>
-            var socket = io.connect();
-
             //NOTE: talvez use um https aqui
             const urlApi = '/'
-            const queryNome = 'input[type=text]'
-            const querySenha = 'input[type=password]'
             const queryForm = 'form'
             const queryErro = '.login-erro'
-            document.querySelector(queryForm).addEventListener('submit', async evento => {
-                evento.preventDefault();
+            document.querySelector(queryForm).addEventListener('submit', async e => {
+                e.preventDefault();
                 //TODO: faz a tratação dos dados no html, e depois a sanatização no servidor//
-                const formData = new FormData(evento.target);
-                const nome = formData.get('usuario-login');
-                const senha = formData.get('password-login');
-                await fetch('/api/authentication', {
+                const formData = new FormData(e.target);
+                const username = formData.get('usuario-login');
+                const password = formData.get('password-login');
+
+                const senhaInput1= document.querySelector('.senha').value
+                const senhaInput2 = document.querySelector('.senha1').value
+                
+                let elementoErro = document.querySelector(queryErro)
+                if(senhaInput1 !== senhaInput2) {
+                    elementoErro.classList.remove('login-erro--invisivel')
+                    elementoErro.innerHTML = 'As senhas não são iguais'
+                    
+                }else {
+                    await fetch('/api/register', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        username: nome,
-                        password: senha
+                        username,
+                        password
                     })
                 }).then(resposta => resposta.json()).then(resposta => {
-                    let elementoErro = document.querySelector(queryErro)
-                    const inputNome = document.querySelector('.content__formulario-login-form-input').value
-                    if (resposta.status !== 200) {
-                        elementoErro.classList.remove('login-erro--invisivel')
-                    } else {
+                    if(resposta.status === 200){
                         elementoErro.classList.add('login-erro--invisivel')
                         document.cookie = `usuarioLogado=${resposta.token}`;
-                        window.location.replace('/')
+                        window.location.replace('/');
+                    }else{
+                        elementoErro.classList.remove('login-erro--invisivel')
+                        elementoErro.innerHTML = resposta.message
                     }
                 })
-            })
+                }
 
-            const entrarConvidado = document.querySelector('.entrar-como-convidado');
-            entrarConvidado.addEventListener('click', async (e) => {
-                e.preventDefault()
-                await fetch('/api/authenticationGuest').then(resposta => resposta.json())
-                    .then(resposta => {
-                        document.cookie = `usuarioLogado=${resposta.token}`;
-                        window.location.replace('/')
-                    });
-            });
+
+
+                
+            })
         </script>
     </body>
 </html>
