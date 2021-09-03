@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/main.css">
     <title>Sala do dede</title>
 </head>
 <body>
@@ -39,11 +39,65 @@
             <div class="tabela-bingo__item tabela-bingo__item--letra">N</div>
             <div class="tabela-bingo__item tabela-bingo__item--letra">G</div>
             <div class="tabela-bingo__item tabela-bingo__item--letra">O</div>
-            <% for( let i = 0; i < 25; i++ ) { %>
-                <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
-                    <span><%= i _%></span>
+
+                    <%
+                        const numeros = cartela.numeros.split(',')
+                        const b_numeros = numeros.filter(num => num <= 15) 
+                        const i_numeros = numeros.filter(num => num >= 16 && num <= 30)
+                        const n_numeros = numeros.filter(num => num >= 31 && num <= 45)
+                        const g_numeros = numeros.filter(num => num >= 46 && num <= 60) 
+                        const o_numeros = numeros.filter(num => num >= 61)
+                        
+                        const n_numeros_1 = n_numeros.splice(0, 2)
+                        const n_numeros_2 = n_numeros.splice(0, 2)
+                    %>
+                <div class="gap-cartela">
+                    <% b_numeros.forEach(num => { %>
+                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                            <span><%= num %></span>
+                        </div>
+                    <% }) %>
                 </div>
-            <% } %>
+
+                <div class="gap-cartela">   
+                    <% i_numeros.forEach(num => { %>
+                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                            <span><%= num %></span>
+                        </div>
+                    <% }) %>
+                </div>
+                
+                <div class="gap-cartela">
+                    <% n_numeros_1.forEach(num => { %>
+                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                            <span><%= num %></span>
+                        </div>
+                    <% }) %>
+                    <div style="display: flex; align-items: center; justify-content: center;" class="tabela-bingo__item">
+                        <span><img style="width: 80%;" src="/assets/img/coringa.svg" alt="Coringa"></span>
+                    </div>
+                    <% n_numeros_2.forEach(num => { %>
+                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                            <span><%= num %></span>
+                        </div>
+                    <% }) %>
+                </div>
+                
+                <div class="gap-cartela">
+                    <% g_numeros.forEach(num => { %>
+                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                            <span><%= num %></span>
+                        </div>
+                    <% }) %>
+                </div>
+                
+                <div class="gap-cartela">
+                    <% o_numeros.forEach(num => { %>
+                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                            <span><%= num %></span>
+                        </div>
+                    <% }) %>
+                </div>
         </div>
 
         <button class="botao-bingo">Bingo!!!</button>
@@ -57,6 +111,8 @@
         const bolaDireita = document.querySelector('.bolas-secundarias__direita-valor')
 
         const listaBolas = [bolaPrincipal, bolaEsquerda, bolaMeio, bolaDireita]
+
+        const itensCartela =  document.querySelectorAll(".tabela-bingo__item:not(.tabela-bingo__item--letra)")
 
         function mudancaItemCartela(elemento){
             if (!(elemento instanceof Element)){
@@ -72,7 +128,7 @@
             }
 
             const bolasNovoValor = [novaPedra,  bolaPrincipal.innerHTML, bolaEsquerda.innerHTML, bolaMeio.innerHTML]
-            const temposTimeOut = [0, .2, .4, .6]   
+            const temposTimeOut = [0, .3, .6, .9]   
 
             listaBolas.forEach((bola, index) => {
                 setTimeout(() => {
@@ -96,6 +152,18 @@
             }
             
         }
+
+        window.addEventListener('load', () => {
+            function clicarDelay(elemento, delay) {
+                setTimeout(() => elemento.clicar(), delay)
+            }
+
+            let dale = Array.from(itensCartela.values())
+            dale.sort((a, b) => Math.random() > 0.5 ? 1 : -1)
+
+            dale.forEach(elemento => setTimeout(() => elemento.click(), 500))
+            dale.forEach(elemento => setTimeout(() => elemento.click(), 1000))
+        })
     </script>
 </body>
 </html>

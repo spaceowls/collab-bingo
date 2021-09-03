@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <% if(user.id !== sala.user_id) { %>
+        <script>
+            window.location.replace('/')
+        </script>      
+    <%} %>
+
+    <% if(sala === 400) { %>
+        <script>
+            window.location.replace('/')
+        </script>      
+    <%} %>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,13 +26,13 @@
         <section class="sala-de-espera">
             <div class="info-sala__mensagem-de-criacao-dono">
 
-                <!-- Verificação se a sala foi criada com sucesso ou deu algum erro -->
-                <% if (typeof salaCriadaComSucesso !== 'undefined') { %>
-                    <h3><%= 'Sala criada com sucesso!' %></h3>
-                <% } else { %>
-                    <h3><%= 'Sala criada com sucesso!' %></h3>
-                <% } %>
-                
+                <h3><%= 'Sala criada com sucesso!' %></h3>
+                <script>
+                    const setTempoMensagem = document.querySelector('.info-sala__mensagem-de-criacao-dono')
+                    setTimeout(() => { 
+                        setTempoMensagem.style.display = 'none'
+                    }, 3000);
+                </script>
             </div>
             <div class="texto-id">
                 <h2>Código sala:</h2>
@@ -38,8 +49,6 @@
                             let id = document.querySelector('.input-sala-id-entrar')
                             id.select();
                             document.execCommand("copy");
-                            
-                            console.log(`texto copiado: ${id.value}`)
                         })
                     </script> 
                 </div>
@@ -55,10 +64,22 @@
 
                 <div class="info-sala__btn">
                     <button class="info-sala__btn-gerar">COMEÇAR</button>
-                    <button class="info-sala__btn-gerar-cancelar">CANCELAR</button>
+                    <button class="info-sala__btn-gerar-cancelar" id="cancelar">CANCELAR</button>
                 </div>
-
             </div>
+
+            <script>
+                const cancelar = document.querySelector('#cancelar');
+
+                cancelar.addEventListener('click', async () => {
+                    await fetch(`/room/delete/<%= sala.id %>`, { method: 'delete' }).then(resposta => resposta.json())
+                    .then(data => {
+                        if(data.status === 200){
+                            window.location.replace('/');
+                        }
+                    });
+                });
+            </script>
         </section>
     <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 
 </body>

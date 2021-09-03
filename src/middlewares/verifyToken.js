@@ -6,9 +6,9 @@ function verifyToken(req, res, next) {
         if(err) {
             res.redirect('/login');
         }else {
-                req.body.userAuthenticated = decoded;
-                next();
-            }
+            req.body.userAuthenticated = decoded;
+            next();
+        }
     });
 }
 

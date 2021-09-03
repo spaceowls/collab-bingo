@@ -1,100 +1,82 @@
 const { Router } = require('express');
 const router = Router();
-const verifyToken = require('./middlewares/verifyToken');
 
+/* Import Middlewares */
+const verifyToken = require('./middlewares/verifyToken');
+const redirectLogin = require('./middlewares/redirectLogin');
+
+/* Import Controllers */
 const CreateUserController = require('./controllers/CreateUserController');
 const ListUsersController = require('./controllers/ListUsersController');
-// const UpdateAvatarController = require('./controllers/UpdateAvatarController');
 const AuthenticateUserController = require('./controllers/AuthenticateUserController');
 const AuthenticateGuestController = require('./controllers/AuthenticateGuestController');
-const ListPublicRoomsController = require('./controllers/ListPublicRoomsController');
-// const DeleteUserController = require('./controllers/DeleteUserController');
-// const AddVictoriesController = require('./controllers/AddVictoriesController');
-// const EditUserController = require('./controllers/EditUserController');
-// const RemoveCoinsController = require('./controllers/RemoveCoinsController');
+
 const CreateRoomController = require('./controllers/CreateRoomController');
-const redirectLogin = require('./middlewares/redirectLogin');
-// const ListPublicRoomsController = require('./controllers/ListPublicRoomsController');
-// const RankingController = require('./controllers/RankingController');
 const EnterRoomController = require('./controllers/EnterRoomController');
-const CreateCartelaController = require('./controllers/CreateCartelaController');
-const VerifyRoomService = require('./services/rooms/VerifyRoomService');
+const ListPublicRoomsController = require('./controllers/ListPublicRoomsController');
 const CreateRoomPageController = require('./controllers/CreateRoomPageController');
-const EnterRoomService = require('./services/rooms/EnterRoomService');
-// const DeleteRoomController = require('./controllers/DeleteRoomController');
+const CreatedRoomController = require('./controllers/CreatedRoomController');
+const DeleteRoomController = require('./controllers/DeleteRoomController');
 
-// router.get('/', (req, res) => {
-//     res.render('telaLogin')//redirensionar pra um ejs
-// })
-router.get('/login', redirectLogin, (req, res) => {
-    res.render('telaLogin');
-});
+const CreateCartelaController = require('./controllers/CreateCartelaController');
+const GetCartelasController = require('./controllers/GetCartelasController');
 
+
+/* Import Services */
+const VerifyRoomService = require('./services/rooms/VerifyRoomService');
+
+/* Call API */ 
+router.post('/api/create/sala', CreateRoomController);
+router.post('/api/register', CreateUserController);
 router.get('/api/users', ListUsersController);
+router.post('/api/authentication', AuthenticateUserController);
+router.get('/api/authenticationGuest', AuthenticateGuestController);
+router.post('/api/create/cartela', verifyToken, CreateCartelaController);
+
+router.post('/api/create/:code', CreateRoomController);
 router.post('/api/verifyRoom', async (req, res) => {
     const { code } = req.body;
     const response = await VerifyRoomService(code);
-
+    
     res.json(response);
 });
 
+router.post('/api/create/cartela', verifyToken, CreateCartelaController);
+
+
+/*=== Pages ===*/
+
+/* Login */ 
+router.get('/login', redirectLogin, (req, res) => {
+    res.render('telaLogin');
+});
+router.get('/sign-in', (req, res) => {
+    res.render('telaCadastro')
+});
+router.post('/sign-in', CreateUserController);
+
+/* Home */
+router.get('/', verifyToken, ListPublicRoomsController);
+
+/* Rooms */
+router.get('/create', verifyToken, CreateRoomPageController);
+router.get('/room/sucesso/:code', verifyToken, CreatedRoomController);
+router.get('/room/:code', verifyToken, EnterRoomController);
+router.delete('/room/delete/:id', DeleteRoomController);
+
+
+/* Cartelas */
+router.get('/cartela/:user_id', verifyToken, GetCartelasController);
+
+/* Test routes */
 router.get('/modalPerdedor', (req, res) => {
     res.render('modalPerdedor')
 });
 router.get('/modalVencedor', (req, res) => {
     res.render('modalVencedor')
 });
-
-router.post('/api/register', CreateUserController);
-router.post('/api/authentication', AuthenticateUserController);
-router.get('/api/authenticationGuest', AuthenticateGuestController);
-router.post('/api/create/cartela', verifyToken, CreateCartelaController);
-router.post('/api/create/sala', CreateRoomController);
-router.get('/', verifyToken, ListPublicRoomsController);
-router.get('/create', verifyToken, CreateRoomPageController);
-router.get('/room/sucesso/:code', verifyToken, async (req, res) => {
-    const { userAuthenticated } = req.body;
-    const { code } = req.params;
-    const room = await VerifyRoomService(code);
-
-    let user;
-    if(userAuthenticated.username){
-        user = userAuthenticated
-    }else{
-        user = await GetUserService(userAuthenticated.user_id);
-    }
-    res.render('salaCriadaComSucessoDono', {
-        user: {
-            id: userAuthenticated.username ? userAuthenticated.user_id : user.id,
-            ...user
-        },
-        sala: room.room
-    })
-});
-// router.put('/edit/avatar/:id', UpdateAvatarController);
-// router.delete('/delete//user/:id', DeleteUserController);
-// router.delete('/delete/room/:id', DeleteRoomController);
-// router.get('/victory/:id', AddVictoriesController);
-// router.put('/edit/user/:id', EditUserController);
-// router.put('/remove/coins/:id', RemoveCoinsController);
-router.get('/room/:code', verifyToken, EnterRoomController);
-// router.get('/rooms', ListPublicRoomsController);
-// router.get('/ranking', RankingController);
-
-// router.get('/profile/:user', userController.profile)
-// router.delete('/profile/:user', userController.delete)
-
-
-// router.post('/create-room', roomsController.create)
-
-// router.get('/created-room', roomsController.createdRoom)
-
-// router.get('/enter-room', roomsController.enterRoom)
-// router.post('/enter-room', roomsController.enterRoom)
-
-// router.post('/room/:room-id', roomsController.enterRoom)
-
-
-// router.get('/bingo/:bingo-id', bingoController.bingoMatch)
+// router.get('/bingo', (req, res) => {
+//     res.render('telaBingo')
+// });
 
 module.exports = router;

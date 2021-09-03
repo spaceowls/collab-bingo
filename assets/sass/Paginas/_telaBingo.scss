@@ -109,11 +109,17 @@
 .bolas-giratorias {
     &--ativado {
         transition: transform 1s ease-in;
-        transform: rotateX(.5turn) scale(0%);
+        transform: rotateX(.75turn) scale(10%);
     }
     
     &--desativado {
         transition: transform 1s ease-out;
         transform: rotateX(0) scale(100%);       
     }
+}
+
+.gap-cartela {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }

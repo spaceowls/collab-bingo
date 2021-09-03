@@ -8,7 +8,7 @@
     <title>Bingolin | Home</title>
 </head>
 <body>
-    <%- include('./modulos/cabecalho', {salaAnterior: 'Anterior'}) %> 
+    <%- include('./modulos/cabecalho', {salaAnterior: ''}) %> 
 
      <!-- e aquela parte roxa da tela -->
     <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
@@ -21,8 +21,9 @@
                 <div class="texto-id__fundo-input">
                     <input class="input-sala-id-entrar" type="number" placeholder="#565365" name="id-sala-entrar">
                 </div>
+                
                 <div class="texto-id__entrar">
-                    <a class="botao_entrar" href="#">
+                    <a class="botao_entrar">
                         <img src="/assets/img/entrar.svg" alt= 'Enter'>
                     </a> 
                 </div>
