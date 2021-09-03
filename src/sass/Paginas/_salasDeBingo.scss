@@ -1,0 +1,162 @@
+@use '../mixins/mixins';
+
+.texto-id{
+
+    &__entrar{
+    @include mixins.flex-center;
+        
+    width: 6rem;
+    height: 4rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 1rem;
+    }
+
+    &__fundo-input{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+.content__criar-sala{
+    margin-top: 3rem;
+    @include mixins.flex-center;
+    padding: 0 1rem;
+    justify-content: space-between;
+    width: 90%;
+    height: 6rem;
+    background-color: var(--white);
+    border-radius: 1rem;
+}
+
+.content__img {
+    width: 5rem;
+    height: 4.5rem;
+    @include mixins.flex-center;
+    background-color: var(--ciano-medio);
+    border-radius: 1rem;
+    
+}
+
+.sala-text {
+    width: 90%;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.content__salas-publicas {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white);
+    border-radius: 1rem;
+    height: 8rem;
+    
+    padding: 0.5rem 1rem;
+
+    &-text{
+        width: 100%;
+        align-items: center;
+        @include mixins.flex-center;
+        
+
+        h3 {
+            color: #695acd88;
+            font-size: 1.5rem;
+        }
+    }
+
+    &__user-na-sala{
+        width: 100%;
+        @include mixins.flex-center; 
+        margin-top: 1rem;
+        
+        width: 10rem;
+        height: 3rem;
+        background-color: var(--ciano-medio);
+        border-radius: 5px;
+
+        //não se usa tags dentro do sass pls (joao)
+
+        a{
+            @include mixins.flex-center;  
+        }
+
+        img{
+            margin-right: 0.5rem;
+            width: 2.5rem;
+        }
+    }
+
+    &__inspecionar-sala{
+        @include mixins.flex-center;
+        background-color: var(--ciano-medio);
+        width: 5rem;
+        height: 4.5rem;
+        border-radius: 5px;
+
+    }
+}
+
+.input-sala-id-entrar {
+    width: 13.5rem;
+    height: 4rem;
+    outline: none;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 2.5rem;
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    color: var(--roxo-ligth);
+
+    &::placeholder{
+        color: #695acd9a;
+        font-size: 2.5rem;
+        font-family: "Raleway", sans-serif;
+        font-weight: bold;
+    }
+}
+
+.content__atualizar-salas {
+    margin-top: .5rem;
+    width: 90%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2{
+        color: var(--white);
+        margin-right: 10rem;
+    }
+  }
+
+.content__atualizar-salas button {
+    border: none;
+    background: transparent;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 5px;
+}
+.content__atualizar-salas button:hover {
+    background: var(--roxo-dark);
+}
+.content__atualizar-salas button img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.sala-de-espera .list-salas-scroll{
+    border-radius: 10px;
+    overflow-y:scroll; 
+    padding-bottom: 20px; 
+    width: 90%;
+    height: 40vh;
+}

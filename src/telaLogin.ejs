@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Salas do Bingo</title>
+</head> 
+<body>
+    
+     <!-- e aquela parte roxa da tela -->
+    <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
+        <section class="tela-login">
+           <div class="content__logo">
+               <img src="/assets/img/logo-bingo-login.svg" alt="logo">
+           </div> 
+
+           <div class="content__formulario-login">
+               <div class="content__formulario-login__github">
+                   <a href="#">
+                    <img src="/assets/img/github.svg" alt="Entrar com Github">
+                   </a>
+                   <a href="#">Entrar com Github</a>
+               </div>
+
+               <form action="#" method="post">
+                   <div class="content__formulario-login-form">
+                        <fieldset>
+                            <img src="/assets/img/user-login.svg" alt="usuario login">
+                            <input class="content__formulario-login-form-input" type="text" name="usuario-login" placeholder="Usuário">
+                        </fieldset>
+    
+                        <fieldset>
+                            <img src="/assets/img/senha-login 1.svg" alt="senha login">
+                            <input class="content__formulario-login-form-input" type="password" name="password-login" placeholder="Senha">
+                        </fieldset>
+                   </div>
+
+                   <div class="content__formulario-login-form-btn">
+                        <button class="content__formulario-login-form-btn-acessar">ACESSAR</button>
+                   </div>
+                   
+                   <div class="content__formulario-login-form-links">
+                       <a href="#">Criar uma conta</a>
+                       <a href="#">Entrar como convidado</a>
+                   </div>
+               </form>
+           </div>
+        </section>
+    <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 
+</body>
+</html>

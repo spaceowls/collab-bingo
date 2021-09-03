@@ -1,0 +1,61 @@
+@use '../mixins/mixins';
+
+.content__creditos-dev{
+    width: 100%;
+    height: auto;
+    @include mixins.flex-center;
+    flex-direction: column;
+
+
+    h2{
+        margin-top: 4rem;
+        color: var(--white);;
+        margin-bottom: 2rem;
+    }
+
+    &__user{
+        width: 35rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--white);
+        border-radius: 10px;
+        padding: 0 2rem;
+        margin-top: 1.5rem;
+
+        &-text{
+            @include mixins.flex-center;
+
+            h2{
+                color: var(--roxo-ligth);
+                margin: 0;
+            }
+        }
+        
+
+        &-links{
+            @include mixins.flex-center; 
+
+            img {
+                width: 2.5rem;
+                height: auto;
+                margin-right: 2rem;
+            }
+        }
+    }
+
+
+}
+
+footer{
+    width: 100%;
+    height: auto;
+    @include mixins.flex-center;
+
+    h2{
+        color: var(--white);
+        font-size: 1rem;
+        margin-top: 2rem;
+    }
+}

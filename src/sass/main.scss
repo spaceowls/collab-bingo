@@ -10,7 +10,12 @@
 @use 'Abstratos/cores';
 
 @use 'Paginas/salaDeEspera';
-@use 'Paginas/salaCriadaComSucessoDono';
-@use 'Paginas/criarSala';
-@use 'Paginas/telaBingo';
+@use 'Paginas/salaCriadaComSucessoDono'; 
+@use 'Paginas/criarSala'; 
+@use 'Paginas/telaBingo'; 
 @use 'Paginas/register';
+@use 'Paginas/salasDeBingo';
+@use 'Paginas/telaCreditos'; 
+@use 'Paginas/modalRemoverDaSala';
+@use 'Paginas/telaLogin';
+

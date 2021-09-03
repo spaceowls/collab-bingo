@@ -4,8 +4,11 @@
     justify-content: center;
 }
 
-@mixin form-input {
-    
+@mixin img {
+    display: flex;
+    justify-content: center;
+    width: 19rem;
+    height: 19rem;
 }
 
 @mixin sombra-elementos {
@@ -13,20 +16,33 @@
     box-shadow: -1px 9px 8px -6px rgba(0,0,0,0.58);
 }
 
+@mixin inputs {  
+    width: 30.6rem;
+    height: 5rem;
+    border-radius: 2rem;
+    border: none; 
+    font: normal 700 1.5rem 'Raleway', sans-serif;
+    color: var(--grey-dark);
+    margin-top: 1.3rem;
+    padding-left: 1.7rem; 
+    text-indent: 3rem; 
+} 
+
 @mixin botao-padrao {
     border: none;
 
     width: 12rem;
     height: 3.5rem;
+    margin-top: 1.9375rem;
     background: var(--ciano-medio);
     border-radius: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.5rem; 
     color: var(--roxo-ligth);
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
     cursor: pointer;
     @include sombra-elementos;
-    transition: background .3s;
+    transition: background .3s; 
 
     &:hover {
         background: var(--roxo-ligth);
@@ -39,8 +55,8 @@
     height: auto;
 }
 
-@mixin fundo-arr-branco {
-    border-radius: 5px;
+@mixin fundo-arr-branco { 
+    border-radius: 0.5rem;
     border: none;
     background: var(--white);
 }

@@ -62,7 +62,7 @@ section.login{
 .ball { 
     position: fixed;
     border-radius: 49%; 
-}
+} 
 
 .ball.top{
     background: var(--ciano-medio);

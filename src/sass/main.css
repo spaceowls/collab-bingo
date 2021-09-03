@@ -10,4 +10,8 @@
 @use 'Paginas/criarSala';
 @use 'Paginas/telaBingo';
 @use 'Paginas/register';
+@use 'Paginas/salasDeBingo';
+@use 'Paginas/telaCreditos';
+@use 'Paginas/modalRemoverDaSala';
+@use 'Paginas/telaLogin';
 /*# sourceMappingURL=main.css.map */

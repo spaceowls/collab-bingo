@@ -1,6 +1,7 @@
 @use '../mixins/mixins';
 
 .sala-de-espera{
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -8,10 +9,12 @@
 }
 
 .texto-id {
+    width: 90%;
+    height: auto;
     @include mixins.tamanho-cem-auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     margin-top: 5rem;
 
     h2 {
@@ -23,10 +26,11 @@
 .texto-id__fundo{
     cursor: pointer;
     @include mixins.flex-center;
-    width: 16rem;
+    width: 13rem;
     height: 4rem;
     background-color: var(--white);
     border-radius:1rem;
+    margin-right: 1.5rem;
 
     span {
         color: var(--roxo-ligth);
@@ -42,7 +46,7 @@
 }
 
 .sala-de-espera .info-sala{
-    width: 85%;
+    width: 90%;
     height: auto;
 
     @include mixins.flex-center;
@@ -67,10 +71,10 @@
 
         cursor:pointer;
 
-        width: 18rem;
-        height: 5.5rem;
+        // width: 50%;
+        // height: 5.5rem;
 
-        padding: 2.5rem;
+        padding:  .5rem 2rem;
         background-color: var(--ciano-medio);
         margin-bottom: 2.3rem;
         border-radius: 1rem;
@@ -82,7 +86,7 @@
         }
 
         h2{
-            font-size: 4rem;
+            font-size: 3.5rem;
         }
     }
 }
@@ -114,5 +118,42 @@
         background: var(--ciano-medio);
         padding: 1rem 4rem;
         border-radius: 1rem;
+    }
+}
+
+#copy-id{
+    @include mixins.flex-center;
+    justify-content: space-between;
+    width: 15rem;
+    height: 4rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--white);
+    padding: 1rem;
+
+    input[type=number]::-webkit-inner-spin-button { 
+        -webkit-appearance: none;
+        
+    }
+    input[type=number] { 
+       -moz-appearance: textfield;
+       appearance: textfield;
+    
+    }
+    
+    img{
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+}
+
+.info-sala__btn{    
+    &-cancelar{
+        @include mixins.botao-padrao;
+        color: rgba(255, 0, 0, 0.63);
+        width: 8rem;
+        height: 3rem;
+        margin-top: 2rem;
+        font-size: 1rem;
     }
 }
