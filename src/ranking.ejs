@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">  
+    <title>Sala Criada</title>
+</head>
+<body>
+    <%- include('modulos/cabecalho', {salaAnterior: 'Criar sala'}) %> 
+
+    <%- include('modulos/conteudo', {parte: 'abrir'}) %> 
+        <div class="content-box">
+            <div id="players">
+                <div class="player" id="first-place">
+                    <img src="./assets/img/first-place.svg" id="first-place-img">
+                    <div class="player-data" id="first-place-data">
+                        <span class="player-name">Player 1</span>
+                        <span class="player-punctuation">9</span>
+                    </div>
+                </div>
+
+                <div class="player" id="second-place">
+                    <img src="./assets/img/second-place.svg" id="second-place-img">
+                    <div class="player-data" id="second-place-data">
+                        <span class="player-name">Player 2</span>
+                        <span class="player-punctuation">8</span>
+                    </div>
+                </div>
+
+                <div class="player" id="third-place">
+                    <img src="./assets/img/third-place.svg" id="third-place-img">
+                    <div class="player-data" id="third-place-data">
+                        <span class="player-name">Player 3</span>
+                        <span class="player-punctuation">6</span>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <span class="player-placing">
+                        4
+                    </span>
+                    <div class="player-data">
+                        <span class="player-name">Player 4</span>
+                        <span class="player-punctuation">5</span>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <span class="player-placing">
+                        5
+                    </span>
+                    <div class="player-data">
+                        <span class="player-name">Player 5</span>
+                        <span class="player-punctuation">5</span>
+                    </div>
+                </div>
+
+                <div class="player">
+                    <span class="player-placing">
+                        6
+                    </span>
+                    <div class="player-data">
+                        <span class="player-name">Player 6</span>
+                        <span class="player-punctuation">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%- include('modulos/conteudo', {parte: 'fechar'}) %> 
+</body>
+</html>
