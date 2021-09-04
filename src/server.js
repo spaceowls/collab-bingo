@@ -3,6 +3,7 @@ const express = require('express');
 const router = require('./routes');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const { Socket } = require('socket.io');
 
 
 const app = express();
@@ -82,6 +83,18 @@ io.on('connection', socket => {
         // socket.broadcast.to
         // io.sockets.emit
     // setInterval(fsort, 1000)
+  
+    })
+
+
+    // M O D A I S 
+
+    socket.on('alguem deu bingo', function(data){
+        if (data.numerosDoBingo == data.numerosDaCartela){
+            io.emit('win');
+        }else{
+            io.emit('loss');
+        }
     })
         
     

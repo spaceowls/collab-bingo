@@ -170,9 +170,9 @@
 
         const socket = io.connect()
     
-            function clicou(){
-                socket.emit('bingo')
-            }
+            // function clicou(){
+            //     socket.emit('bingo')
+            // }
     
             socket.on('respostaBingo', () => {
                 const hello = document.querySelector('#testee')
@@ -199,6 +199,27 @@
             socket.on('sorteadas', function(data){
                 atualizaNumeros(data.sorteadas);
             });
+
+            // M O D A I S SOCKETIO
+
+
+            let numerosDoBingo = [];
+            let numerosDaCartela = [];
+
+            function bingo(){
+                socket.emit('alguem deu bingo', {numerosDoBingo}, {numerosDaCartela})
+            }
+
+            socket.on('win', ()=>{
+                window.location.replace('/modalVencedor');
+            })
+
+            socket.on('loss', ()=>{
+                window.location.replace('/modalPerdedor');
+            })
+
+            // F I M DOS M O D A I S
+
 
     </script>
 
