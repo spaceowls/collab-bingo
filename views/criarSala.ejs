@@ -63,6 +63,7 @@
                 }).then(resposta => resposta.json()).then(data => {
                     if(data.status === 200) {
                         window.location.replace(`/room/sucesso/${data.code}`)
+                        console.log("<%= user.id %>")
                     }
                 })
             });

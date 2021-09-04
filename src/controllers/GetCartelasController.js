@@ -1,4 +1,5 @@
 const GetCartelaService = require('../services/cartelas/GetCartelaService');
+const GetUserService = require('../services/users/GetUserService');
 
 async function GetCartelas(req, res) {
     const { user_id } = req.params;

@@ -60,16 +60,28 @@
                 <div class="info-sala__participantes">
                     <img src="/assets/img/users.svg" alt="Quantidade de usuarios na sala">
                     <!-- Ejs para mostrar as pessoas que for entrando na sala de espera do bingo, vai atualizando -->
-                    <h2 class="info-sala__numeros-participantes"><%= sala.members %><span>/</span><%= sala.max_members %></h2>
+                    <h2 class="info-sala__numeros-participantes"><span class="members_atual"><%= sala.members %></span><span>/</span><%= sala.max_members %></h2>
                 </div>
 
                 <div class="info-sala__btn">
-                    <button class="info-sala__btn-gerar">COMEÇAR</button>
+                   
+                    <button onclick='mudarLocal()' class="info-sala__btn-gerar">COMEÇAR</button>                    
                     <button class="info-sala__btn-gerar-cancelar" id="cancelar">CANCELAR</button>
                 </div>
             </div>
 
             <script>
+               var socket = io.connect();
+
+                socket.on('recebi', (data)=>{
+                    const numero_members = document.querySelector('.members_atual');
+                    numero_members.innerHTML = data;
+                });
+                
+                function mudarLocal() {
+                    socket.emit('mudarLocal', () => {})
+                    window.location.replace('/cartela/<%= user.id %>');
+                }
 
                 const cancelar = document.querySelector('#cancelar');
 
