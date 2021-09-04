@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/main.css">
     <title>Bingolin | Home</title>
-    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
 
 </head>
 <body>
@@ -31,7 +31,7 @@
                 </div>
                     
                 <script>
-                    var socket = io.connect();
+                    // var socket = io.connect();
                     const codigoSala = document.querySelector('.input-sala-id-entrar');
                     const entrarNaSala = document.querySelector(".botao_entrar");
                     const menssagem = document.querySelector('.sala-erro');
@@ -110,7 +110,7 @@
             <% } %>
 
             <script>
-                var socket = io.connect();
+                // var socket = io.connect();
 
                 async function entrarSala(e, code) {
                     e.preventDefault();

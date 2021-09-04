@@ -43,7 +43,7 @@
                 <h5>Participantes:</h5>
                 <div class="info-sala__participantes">
                     <img src="../assets/img/users.svg" alt="Quantidade de usuarios na sala">
-                    <h2 class="info-sala__numeros-participantes"><%= sala.members %><span>/</span><%= sala.max_members %></h2>                    
+                    <h2 class="info-sala__numeros-participantes"><span class="members_atual"><%= sala.members %></span><span>/</span><%= sala.max_members %></h2>                    
                 </div>
 
                 <h2>GERAR MINHA</h2>
@@ -51,7 +51,7 @@
 
                 <div class="info-sala__btn">
                     <button class="info-sala__btn-gerar" id="gerar">GERAR</button>
-                    <button class="info-sala__btn-cancelar" id="cancelar">CANCELAR</button>
+                    <button onclick="sair()" class="info-sala__btn-cancelar" id="cancelar">CANCELAR</button>
                 </div>
 
                 <div class="info-sala__mensagem-de-criacao">
@@ -65,9 +65,19 @@
     <script>
         var socket = io.connect();
 
-        document.querySelector('#cancelar').addEventListener('click', () => {
-            socket.emit('sai');
+        function sair(){
+            socket.emit('<%= sala.code %>')
+        }
+
+        socket.on('recebi', (data)=>{
+            const numero_members = document.querySelector('.members_atual');
+            numero_members.innerHTML = data;
+        });
+
+        socket.on('redirect', () => {
+            window.location.replace('/cartela/<%= user.id %>')
         })
+       
 
         const gerar = document.querySelector('#gerar')
         const cartelaGerada = document.querySelector('.info-sala__mensagem-de-criacao')

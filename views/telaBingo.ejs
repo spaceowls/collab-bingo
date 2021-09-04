@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
+    <script src="../socket.io/socket.io.js"></script>
+
     <title>Sala do dede</title>
 </head>
 <body>
@@ -164,6 +166,52 @@
             dale.forEach(elemento => setTimeout(() => elemento.click(), 500))
             dale.forEach(elemento => setTimeout(() => elemento.click(), 1000))
         })
+
+
+        const socket = io.connect()
+    
+            function clicou(){
+                socket.emit('bingo')
+            }
+    
+            socket.on('respostaBingo', () => {
+                const hello = document.querySelector('#testee')
+                hello.style.display = 'block'
+            })
+    
+            
+    
+            function atualizaNumeros(data) {
+                const secundarias = document.querySelectorAll('.bolas-secundarias span');
+                const principal = document.querySelector('.bolas-bingo__principal span');
+                if(data.length >= 4) {
+                    secundarias.forEach((element, index) => {
+                    element.innerHTML = data[index + 1];
+                });
+
+                principal.innerHTML = data[0]; 
+                console.log(data)
+                console.log('array pronto para enviar os dados')
+            }
+        }
+    
+            
+            socket.on('sorteadas', function(data){
+                atualizaNumeros(data.sorteadas);
+            });
+
     </script>
+
+<% if(user.username === "llofyy"){ %>
+    <script>
+        function clicou2(){
+        socket.emit('pedras')
+    }
+
+    setInterval(() => {
+        clicou2();
+    }, 5000);
+    </script>
+<% } %>
 </body>
 </html>
