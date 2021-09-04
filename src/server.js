@@ -25,8 +25,6 @@ app.use('/room/:code', (req, res, next) => {
         console.log('entrei na sala')
         socket.on('disconnect', () => {
             console.log('sai')
-            socket.disconnect()
-            socket.onClose()
         })
     });
     next();
@@ -34,5 +32,5 @@ app.use('/room/:code', (req, res, next) => {
 
 app.use(router)
 
-                        
+
 http.listen(port, () => console.log(`Server rodando na porta ${port}`))
