@@ -3,6 +3,7 @@ const express = require('express');
 const router = require('./routes');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const { Socket } = require('socket.io');
 
 
 const app = express();
@@ -28,10 +29,6 @@ io.on('connection', socket => {
     
     socket.to('sala1').emit('recebi', usersCount);
     
-    socket.on('mudarLocal', () => {
-        socket.to('sala1').emit('redirect', 'salve');
-    })
-    
     if (io.sockets.adapter.rooms.has('sala1')) clientsInRoom = io.sockets.adapter.rooms.get('sala1').size
     console.log('o numero de pessoas na sala1 é', clientsInRoom)
     
@@ -44,6 +41,46 @@ io.on('connection', socket => {
         socket.to('sala1').emit('recebi', clientsInRoom)
     });
 
+    //Criação de salas socket.io
+    
+          
+    socket.on('join', (room)=> {		
+		socket.join(room);
+		// socket.broadcast.emit('new room', room);
+        socket.on('mensagem', () => {
+            socket.to(room).emit('salve', 'O dono da sala mandou essa mensagem');
+        })
+
+        socket.on('mudarLocal', () => {
+            socket.to(room).emit('redirect', 'salve');
+        })
+
+        let numerosDoBingo = [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+            23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
+            42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+            61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75,
+          ];
+        let sorteadas = [];
+    
+        function sortearNumero() {
+            const number = Math.floor(Math.random() * numerosDoBingo.length);
+            if(sorteadas.length !== numerosDoBingo.length){
+                if(sorteadas.includes(numerosDoBingo[number])) {
+                    sortearNumero()
+                }else{
+                    sorteadas.unshift(numerosDoBingo[number]);
+                }
+            }else{
+                socket.emit('finalizado');
+            }
+        }
+
+        socket.on('pedras', () => {
+            sortearNumero();
+            socket.to(room).emit('sorteadas', {sorteadas});
+        })
+	});
 
 
 
@@ -52,23 +89,15 @@ io.on('connection', socket => {
         console.log("alguem deu bingo")
         io.emit('respostaBingo');
     });
-    
 
-    let numerosDoBingo = [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
-        23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41,
-        42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
-        61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75,
-      ];
-      let sorteadas = [];
 
-        function sortearNumero() {
-            const number = Math.floor(Math.random() * numerosDoBingo.length);
-            sorteadas.unshift(numerosDoBingo[number]);
+    // M O D A I S 
+    socket.on('alguem deu bingo', function(data){
+        if (data.numerosDoBingo == data.numerosDaCartela){
+            io.emit('win');
+        }else{
+            io.emit('loss');
         }
-    socket.on('pedras', () => {
-        sortearNumero()
-        io.emit('sorteadas', {sorteadas});
     })
 }) 
 

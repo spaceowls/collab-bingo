@@ -69,6 +69,11 @@
             socket.emit('<%= sala.code %>')
         }
 
+        socket.emit('join', '<%= sala.id %>');
+        socket.on('salve', (data) => {
+            console.log(data);
+        })
+
         socket.on('recebi', (data)=>{
             const numero_members = document.querySelector('.members_atual');
             numero_members.innerHTML = data;

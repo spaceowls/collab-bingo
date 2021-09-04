@@ -94,7 +94,9 @@ async function CreateCartelaController(req, res) {
         }
 
     numeros.push(...b, ...i, ...n, ...g, ...o)       
-    await CreateCartelaService(bingo_id, user_id, numeros);
+    const data = await CreateCartelaService(bingo_id, user_id, numeros);
+
+    res.json(data);
 }
 
 module.exports = CreateCartelaController;

@@ -17,20 +17,20 @@
     <div class="tela-bingo">
         <div class="tela-bingo__bolas-bingo bolas-bingo">
             <div class="bolas-bingo__principal ">
-                <span class="bolas-bingo__principal-valor">12</span>
+                <span class="bolas-bingo__principal-valor"></span>
             </div>
 
             <div class="bolas-bingo__secundarias">
                 <div class="bolas-secundarias bolas-secundarias__esquerda">
-                    <span class='bolas-secundarias__esquerda-valor'>0</span>
+                    <span class='bolas-secundarias__esquerda-valor'></span>
                 </div>
                 
                 <div class="bolas-secundarias bolas-secundarias__meio">
-                    <span class='bolas-secundarias__meio-valor'>69</span>
+                    <span class='bolas-secundarias__meio-valor'></span>
                 </div>
                 
                 <div class="bolas-secundarias bolas-secundarias__direita">
-                    <span class='bolas-secundarias__direita-valor'>99</span>
+                    <span class='bolas-secundarias__direita-valor'></span>
                 </div>
             </div>
         </div>
@@ -169,10 +169,12 @@
 
 
         const socket = io.connect()
+
+            socket.emit('join', '<%= sala %>');
     
-            function clicou(){
-                socket.emit('bingo')
-            }
+            // function clicou(){
+            //     socket.emit('bingo')
+            // }
     
             socket.on('respostaBingo', () => {
                 const hello = document.querySelector('#testee')
@@ -189,9 +191,8 @@
                     element.innerHTML = data[index + 1];
                 });
 
-                principal.innerHTML = data[0]; 
-                console.log(data)
-                console.log('array pronto para enviar os dados')
+                principal.innerHTML = data[0];
+                console.log(data); 
             }
         }
     
@@ -200,17 +201,43 @@
                 atualizaNumeros(data.sorteadas);
             });
 
+            // M O D A I S SOCKETIO
+
+
+            let numerosDoBingo = [];
+            let numerosDaCartela = [];
+
+            function bingo(){
+                socket.emit('alguem deu bingo', {numerosDoBingo}, {numerosDaCartela})
+            }
+
+            socket.on('win', ()=>{
+                window.location.replace('/modalVencedor');
+            })
+
+            socket.on('loss', ()=>{
+                window.location.replace('/modalPerdedor');
+            })
+
+            // F I M DOS M O D A I S
+
+
     </script>
 
-<% if(user.username === "llofyy"){ %>
+<% if(user.id === criador){ %>
     <script>
         function clicou2(){
         socket.emit('pedras')
     }
 
-    setInterval(() => {
+    const gerarPedras = setInterval(() => {
         clicou2();
-    }, 5000);
+    }, 3000);
+
+    socket.on('finalizado', () => {
+        clearInterval(gerarPedras);
+        console.log('bingo finalizado')
+    });
     </script>
 <% } %>
 </body>

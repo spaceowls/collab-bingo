@@ -66,7 +66,7 @@
                 <div class="info-sala__btn">
                    
                     <button onclick='mudarLocal()' class="info-sala__btn-gerar">COMEÇAR</button>                    
-                    <button class="info-sala__btn-gerar-cancelar" id="cancelar">CANCELAR</button>
+                    <button  onclick="mandarMensagem()" class="info-sala__btn-gerar-cancelar" id="cancelar">CANCELAR</button>
                 </div>
             </div>
 
@@ -77,22 +77,46 @@
                     const numero_members = document.querySelector('.members_atual');
                     numero_members.innerHTML = data;
                 });
+
+                    
+                socket.emit('join', '<%= sala.id %>');
+
+
+                function mandarMensagem() {
+                    socket.emit('mensagem');
+                }
+
                 
-                function mudarLocal() {
-                    socket.emit('mudarLocal', () => {})
-                    window.location.replace('/cartela/<%= user.id %>');
+                async function mudarLocal() {
+                    await fetch('/api/create/cartela', {
+                        method: "post",
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            bingo_id: "<%= sala.id %>",
+                            user_id: "<%= user.id %>",
+                        })
+                    }).then(resposta => resposta.json())
+                    .then(data => {
+                        if(data.status === 200) {
+                            socket.emit('mudarLocal', () => {})
+                            window.location.replace('/cartela/<%= user.id %>');
+                        }
+                    })
                 }
 
                 const cancelar = document.querySelector('#cancelar');
 
-                cancelar.addEventListener('click', async () => {
-                    await fetch(`/room/delete/<%= sala.id %>`, { method: 'delete' }).then(resposta => resposta.json())
-                    .then(data => {
-                        if(data.status === 200){
-                            window.location.replace('/');
-                        }
-                    });
-                });
+                // cancelar.addEventListener('click', async () => {
+                //     await fetch(`/room/delete/<%= sala.id %>`, { method: 'delete' }).then(resposta => resposta.json())
+                //     .then(data => {
+                //         if(data.status === 200){
+                //             window.location.replace('/');
+                //         }
+                //     });
+                // });
             </script>
         </section>
     <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 
