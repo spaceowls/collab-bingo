@@ -108,7 +108,7 @@
                 </div>
         </div>
 
-        <button class="botao-bingo" style = "display: none;">Bingo!!!</button>
+        <button onclick="deubingo()" class="botao-bingo" style = "display: none;">Bingo!!!</button>
 
     </div>  
     <%- include('modulos/conteudo', {parte: 'fechar'}) %>
@@ -231,15 +231,16 @@
             // M O D A I S SOCKETIO
 
 
-            let numerosDoBingo = [];
-            let numerosDaCartela = [];
+            
 
-            function bingo(){
-                socket.emit('alguem deu bingo', {numerosDoBingo}, {numerosDaCartela})
+            function deubingo(){
+                socket.emit('alguemDeuBingo')
             }
 
             socket.on('win', ()=>{
+                socket.emit('osoutrosperderam')
                 window.location.replace('/modalVencedor');
+                
             })
 
             socket.on('loss', ()=>{
@@ -260,7 +261,7 @@
 
     const gerarPedras = setInterval(() => {
         clicou2();
-    }, 3000);
+    }, 100);
 
     socket.on('finalizado', () => {
         clearInterval(gerarPedras);

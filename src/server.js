@@ -81,25 +81,30 @@ io.on('connection', socket => {
             sortearNumero();
             io.in(room).emit('sorteadas', {sorteadas});
         })
-	});
 
-
-
-    // NUMEROSSSSS
+        // NUMEROSSSSS
     socket.on('bingo', ()=> {
         console.log("alguem deu bingo")
         io.emit('respostaBingo');
     });
 
 
+
     // M O D A I S 
-    socket.on('alguem deu bingo', function(data){
-        if (data.numerosDoBingo == data.numerosDaCartela){
-            io.emit('win');
-        }else{
-            io.emit('loss');
-        }
+    socket.on('alguemDeuBingo', ()=>{
+        
+            socket.emit('win');
+                   
     })
+
+    socket.on('osoutrosperderam', ()=>{
+            socket.broadcast.emit('loss'); 
+    })
+	});
+
+
+
+    
 }) 
 
 app.use(router)
