@@ -53,6 +53,7 @@ io.on('connection', socket => {
 
         socket.on('mudarLocal', () => {
             socket.to(room).emit('redirect', 'salve');
+            // socket.leave(room);
         })
 
         let numerosDoBingo = [
@@ -78,7 +79,7 @@ io.on('connection', socket => {
 
         socket.on('pedras', () => {
             sortearNumero();
-            socket.to(room).emit('sorteadas', {sorteadas});
+            io.in(room).emit('sorteadas', {sorteadas});
         })
 	});
 
