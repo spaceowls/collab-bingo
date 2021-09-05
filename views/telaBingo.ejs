@@ -55,7 +55,7 @@
                     %>
                 <div class="gap-cartela">
                     <% b_numeros.forEach(num => { %>
-                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
                             <span><%= num %></span>
                         </div>
                     <% }) %>
@@ -63,7 +63,7 @@
 
                 <div class="gap-cartela">   
                     <% i_numeros.forEach(num => { %>
-                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
                             <span><%= num %></span>
                         </div>
                     <% }) %>
@@ -71,7 +71,7 @@
                 
                 <div class="gap-cartela">
                     <% n_numeros_1.forEach(num => { %>
-                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
                             <span><%= num %></span>
                         </div>
                     <% }) %>
@@ -79,7 +79,7 @@
                         <span><img style="width: 80%;" src="/assets/img/coringa.svg" alt="Coringa"></span>
                     </div>
                     <% n_numeros_2.forEach(num => { %>
-                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
                             <span><%= num %></span>
                         </div>
                     <% }) %>
@@ -87,22 +87,22 @@
                 
                 <div class="gap-cartela">
                     <% g_numeros.forEach(num => { %>
-                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
                             <span><%= num %></span>
                         </div>
                     <% }) %>
                 </div>
-                
+                    
                 <div class="gap-cartela">
                     <% o_numeros.forEach(num => { %>
-                        <div class="tabela-bingo__item" onclick="mudancaItemCartela(this)">
+                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
                             <span><%= num %></span>
                         </div>
                     <% }) %>
                 </div>
         </div>
 
-        <button class="botao-bingo">Bingo!!!</button>
+        <button class="botao-bingo" style = "display: none;">Bingo!!!</button>
 
     </div>  
     <%- include('modulos/conteudo', {parte: 'fechar'}) %>
@@ -111,18 +111,13 @@
         const bolaEsquerda = document.querySelector('.bolas-secundarias__esquerda-valor')
         const bolaMeio = document.querySelector('.bolas-secundarias__meio-valor')
         const bolaDireita = document.querySelector('.bolas-secundarias__direita-valor')
+        
 
         const listaBolas = [bolaPrincipal, bolaEsquerda, bolaMeio, bolaDireita]
 
         const itensCartela =  document.querySelectorAll(".tabela-bingo__item:not(.tabela-bingo__item--letra)")
 
-        function mudancaItemCartela(elemento){
-            if (!(elemento instanceof Element)){
-                return
-            }
-
-            elemento.classList.toggle('tabela-bingo__item--selecionado')
-        }
+        
 
         function atualizarPedras(novaPedra){
             if (typeof novaPedra !== 'number'){
@@ -182,24 +177,50 @@
             })
     
             
-    
             function atualizaNumeros(data) {
                 const secundarias = document.querySelectorAll('.bolas-secundarias span');
                 const principal = document.querySelector('.bolas-bingo__principal span');
-                if(data.length >= 4) {
-                    secundarias.forEach((element, index) => {
-                    element.innerHTML = data[index + 1];
-                });
 
-                principal.innerHTML = data[0];
-                console.log(data); 
-            }
-        }
+                    const pedras = document.querySelectorAll('.pedrinha span');
+                    const pedras_div = document.querySelectorAll('.pedrinha');
+
+                    if(data.length >= 4) {
+                        pedras.forEach((pedra, index) => {
+                            if(data.find(numero => numero === Number(pedra.textContent))){
+                                pedras_div[index].classList.remove('pedra-bloqueada');
+                                pedras_div[index].style.cursor = "pointer";
+                                pedras_div[index].classList.add("teste")
+                            }
+                        });
+                        secundarias.forEach((element, index) => {
+                            element.innerHTML = data[index + 1];
+                            principal.innerHTML = data[0];
+                        });
+                        }
+                    }
+
+    socket.on('sorteadas', function(data){
+                atualizaNumeros(data.sorteadas);
+                const marcada = document.querySelectorAll('.teste');
+                let marcadas;
+                marcada.forEach((elemento, index) => {
+                    elemento.addEventListener('click', (e) => {
+                        if(!e.target.classList.contains('pedra-marcada')){
+                            marcadas = document.querySelectorAll('.pedre-marcada').length;
+                            console.log(marcadas)
+                            marcada[index].classList.add('pedra-marcada')
+                            if(marcadas === 24) {
+                                const botao = document.querySelector('.botao-bingo');
+                                botao.style.display = "block";
+                            }
+                        }
+                    })
+                })
+            });
+           
     
             
-            socket.on('sorteadas', function(data){
-                atualizaNumeros(data.sorteadas);
-            });
+            
 
             // M O D A I S SOCKETIO
 
@@ -225,6 +246,7 @@
     </script>
 
 <% if(user.id === criador){ %>
+
     <script>
         function clicou2(){
         socket.emit('pedras')
@@ -232,13 +254,15 @@
 
     const gerarPedras = setInterval(() => {
         clicou2();
-    }, 3000);
+    }, 100);
 
     socket.on('finalizado', () => {
         clearInterval(gerarPedras);
         console.log('bingo finalizado')
     });
+
+    
     </script>
-<% } %>
+<% } %> 
 </body>
 </html>
