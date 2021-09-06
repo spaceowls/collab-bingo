@@ -78,6 +78,9 @@ router.get('/modalPerdedor', (req, res) => {
 router.get('/modalVencedor', (req, res) => {
     res.render('modalVencedor')
 });
+router.get('/ranking', (req, res) => {
+    res.render('ranking')
+});
 
 
 
