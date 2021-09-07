@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Modal</title>
+</head>
+<body>
+    <section id="modal-pedras">
+        <div class="modal-container-list">
+            <div class="modal-container-list__close">
+                <h2>Pedras que faltam para:</h2>
+                <button>
+                    <img src="/assets/img/close.svg" alt="Fechar Modal">
+                </button>
+            </div>
+
+            <div class="modal-container-list__users">
+                <% for(let i = 0; i <= 10; i++) { %>
+                    <div class="modal-container-list__users-names">
+                        <h2> <%="anonimo_8346825136" %>  </h2>
+                        <span><%="20" %></span>
+                    </div>
+                <% } %> 
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -82,7 +82,7 @@
                         </div>
                     <% }) %>
                     <div style="display: flex; align-items: center; justify-content: center;" class="tabela-bingo__item">
-                        <span><img style="width: 80%;" src="/assets/img/coringa.svg" alt="Coringa"></span>
+                        <span><img style="width: 60%;" src="/assets/img/coringa.svg" alt="Coringa"></span>
                     </div>
                     <% n_numeros_2.forEach(num => { %>
                         <div class="tabela-bingo__item pedra-bloqueada pedrinha">
@@ -124,12 +124,18 @@
                 <img src="/assets/img/king.svg" alt="Coroa vencendor">
                 <h2>VENCEDOR!!!</h2>
                 <div class="modal-container__vencedor-score">
-                    <h3>SCORE: <span><%= '200' %> </span></h3>
+                    <% if(user.role === "user" || user.role === "admin"){ %>
+                        <h3>SCORE: <span id="score"><%= 200 %> </span></h3>
+                    <% } %>
                 </div>
             </div>
 
             <div class="modal-container__botao">
-                <button class="btn-pontuacao">RECEBER PONTUAÇÃO</button>
+                <% if(user.role === "user" || user.role === "admin"){ %>
+                    <button class="btn-pontuacao" id="add-pontuacao">RECEBER PONTUAÇÃO</button>
+                <% }else { %>
+                    <button class="btn-pontuacao btn-sair">SAIR</button>
+                <% } %>
             </div>
         </div>
     </section>
@@ -139,9 +145,7 @@
         
             <div class="modal-container__text-vencedor">
                <h2> 
-                <span id="usuario-win">
-                    
-                </span> 
+                <span id="usuario-win"></span> 
 
                 FOI O(A) VENCEDOR(a)!!!
             
@@ -154,7 +158,7 @@
             </div>
 
             <div class="modal-container__botao">
-                <button class="btn-pontuacao">SAIR</button>
+                <button class="btn-pontuacao btn-sair">SAIR</button>
             </div>
         </div>
     </section>
@@ -171,8 +175,6 @@
         const listaBolas = [bolaPrincipal, bolaEsquerda, bolaMeio, bolaDireita]
 
         const itensCartela =  document.querySelectorAll(".tabela-bingo__item:not(.tabela-bingo__item--letra)")
-
-        
 
         function atualizarPedras(novaPedra){
             if (typeof novaPedra !== 'number'){
@@ -220,7 +222,7 @@
 
         const socket = io.connect()
 
-            socket.emit('join', '<%= sala %>');
+            socket.emit('join', '<%= sala %>', '<%= user.id %>', '<%= criador %>');
     
             // function clicou(){
             //     socket.emit('bingo')
@@ -255,11 +257,13 @@
                         if(data.length >= 4) {
                             secundarias[2].innerHTML = data[3]
                         }
-                    principal.innerHTML = data[0];
+                        principal.innerHTML = data[0];
                     }
 
-    socket.on('sorteadas', function(data){
-                atualizaNumeros(data.sorteadas);
+    socket.on('sorteadas', function(data, room){
+                const sala = '<%= sala %>'
+                if(room === sala){
+                    atualizaNumeros(data.sorteadas);
                 const marcada = document.querySelectorAll('.teste');
                 marcada.forEach((elemento, index) => {
                     elemento.addEventListener('click', function listener(e) {
@@ -276,6 +280,7 @@
                         }
                     })
                 })
+                }
             });
             // M O D A I S SOCKETIO
 
@@ -304,15 +309,8 @@
     </script>
 
 <% if(user.id === criador){ %>
-
     <script>
-        function clicou2(){
         socket.emit('pedras')
-    }
-
-    const gerarPedras = setInterval(() => {
-        clicou2();
-    }, 4000);
 
     socket.on('finalizado', () => {
         clearInterval(gerarPedras);

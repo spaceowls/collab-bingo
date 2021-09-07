@@ -1,0 +1,92 @@
+@use '../mixins/mixins';
+#players {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    margin-top: .3rem;
+}
+
+.player-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000055;
+    color: #FFFFFF;
+    border-radius: 20px;
+    margin-left: .7rem;
+    padding: 0 2rem 0 2rem;
+    font-weight: bold;
+    font-size: 2rem;
+    width: 90%;
+    height: 4rem;
+}
+
+.player-name {
+    margin-right: auto;
+}
+
+.player-punctuation {
+    margin-left: auto;
+}
+
+.player-placing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.7rem;
+    color: #FFFFFF;
+    width: 5.2rem;
+    height: 5.2rem;
+}
+
+// #first-place {
+//     margin-top: 2.6rem;
+// }
+
+#first-place-data {
+    color: #FFF500;
+    border: 2px solid #FFF500;
+}
+
+#second-place-data {
+    color: #E9E9E9;
+    border: 2px solid #E9E9E9;
+}
+
+#third-place-data {
+    color: #CD7F32;
+    border: 2px solid #CD7F32;
+}
+
+
+#first-place-img, #second-place-img, #third-place-img {
+    width: 5.6rem;
+    height: 5.6rem;
+}
+
+.logo-ranking{
+    width: 100%;
+    height: auto;
+    @include mixins.flex-center;
+
+    img {
+        width: 50%;
+    }
+}
+
+.ranking-scroll{
+    flex-direction: column;
+    margin-top: 1rem;
+    overflow-y: scroll;
+    width: 100%;
+    height: 50vh;
+    margin-bottom: 5vh;
+}

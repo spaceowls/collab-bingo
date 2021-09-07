@@ -69,9 +69,24 @@
             socket.emit('<%= sala.code %>')
         }
 
-        socket.emit('join', '<%= sala.id %>');
+        socket.emit('join', '<%= sala.id %>', '<%= user.id %>', '<%= sala.user_id %>');
+
         socket.on('salve', (data) => {
             console.log(data);
+        })
+
+        socket.on('saiu da sala', room => {
+            const sala = '<%= sala.id %>'
+            if(room === sala){
+                window.location.replace('/')
+            }
+        })
+
+        socket.on('dono saiu', room => {
+            const sala = '<%= sala.id %>'
+            if(room === sala){
+                console.log('O dono saiu da sala...')
+            }
         })
 
         socket.on('recebi', (data)=>{
@@ -79,8 +94,11 @@
             numero_members.innerHTML = data;
         });
 
-        socket.on('redirect', () => {
-            window.location.replace('/cartela/<%= user.id %>')
+        socket.on('redirect', room => {
+            const sala = '<%= sala.id %>';
+            if(room === sala){
+                window.location.replace('/cartela/<%= user.id %>')
+            }
         })
        
 

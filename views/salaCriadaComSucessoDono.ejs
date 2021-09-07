@@ -78,8 +78,12 @@
                     numero_members.innerHTML = data;
                 });
 
+                socket.on('dono_saiu', (msg) => {
+                    console.log(msg)
+                })
+
                     
-                socket.emit('join', '<%= sala.id %>');
+                socket.emit('join', '<%= sala.id %>', '<%= user.id %>', '<%= sala.user_id %>');
 
 
                 function mandarMensagem() {
@@ -101,7 +105,7 @@
                     }).then(resposta => resposta.json())
                     .then(data => {
                         if(data.status === 200) {
-                            socket.emit('mudarLocal', () => {})
+                            socket.emit('redirect');
                             window.location.replace('/cartela/<%= user.id %>');
                         }
                     })
@@ -109,14 +113,14 @@
 
                 const cancelar = document.querySelector('#cancelar');
 
-                // cancelar.addEventListener('click', async () => {
-                //     await fetch(`/room/delete/<%= sala.id %>`, { method: 'delete' }).then(resposta => resposta.json())
-                //     .then(data => {
-                //         if(data.status === 200){
-                //             window.location.replace('/');
-                //         }
-                //     });
-                // });
+                cancelar.addEventListener('click', async () => {
+                    await fetch(`/room/delete/<%= sala.id %>`, { method: 'delete' }).then(resposta => resposta.json())
+                    .then(data => {
+                        if(data.status === 200){
+                            window.location.replace('/');
+                        }
+                    });
+                });
             </script>
         </section>
     <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 
