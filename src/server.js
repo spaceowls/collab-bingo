@@ -1,9 +1,7 @@
 //TODO: passar o codigo para assembly x86
 const express = require('express');
 const router = require('./routes');
-const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const { Socket } = require('socket.io');
 
 
 const app = express();
@@ -81,25 +79,24 @@ io.on('connection', socket => {
             sortearNumero();
             io.in(room).emit('sorteadas', {sorteadas});
         })
+
+    let vencedor = '';
+    // M O D A I S 
+    socket.on('alguemDeuBingo', (id, username) =>{
+        if(!vencedor){
+            vencedor = id;
+            io.in(room).emit('win', vencedor, username);
+        }   
+    })
+
+    socket.on('osoutrosperderam', ()=>{
+            socket.broadcast.emit('loss'); 
+    })
 	});
 
 
 
-    // NUMEROSSSSS
-    socket.on('bingo', ()=> {
-        console.log("alguem deu bingo")
-        io.emit('respostaBingo');
-    });
-
-
-    // M O D A I S 
-    socket.on('alguem deu bingo', function(data){
-        if (data.numerosDoBingo == data.numerosDaCartela){
-            io.emit('win');
-        }else{
-            io.emit('loss');
-        }
-    })
+    
 }) 
 
 app.use(router)
