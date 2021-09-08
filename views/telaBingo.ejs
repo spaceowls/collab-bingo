@@ -274,23 +274,23 @@
             });
             // M O D A I S SOCKETIO
 
-
-            
-
             function deubingo(){
                 socket.emit('alguemDeuBingo', '<%= user.id %>', '<%= user.username %>')
             }
 
-            socket.on('win', (id, username) =>{
-                const modal_win = document.querySelector('#modal-win');
-                const modal_loser = document.querySelector('#modal-loser');
-                const user_winner = document.querySelector('#usuario-win');
-                let user_id = '<%= user.id %>';
-                if(id === user_id){
-                    modal_win.style.display = "flex";
-                }else {
-                    modal_loser.style.display = "flex"
-                    user_winner.innerHTML = username;
+            socket.on('win', (id, username, room) =>{
+                const sala = '<%= sala %>'
+                if(room === sala) {
+                    const modal_win = document.querySelector('#modal-win');
+                    const modal_loser = document.querySelector('#modal-loser');
+                    const user_winner = document.querySelector('#usuario-win');
+                    let user_id = '<%= user.id %>';
+                    if(id === user_id){
+                        modal_win.style.display = "flex";
+                    }else {
+                        modal_loser.style.display = "flex"
+                        user_winner.innerHTML = username;
+                    }
                 }
             })
             // F I M DOS M O D A I S
