@@ -1230,3 +1230,70 @@ footer h2 {
   height: 50vh;
   margin-bottom: 5vh;
 }
+
+#modal-pedras {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--black-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: auto;
+  background-color: var(--white);
+  border-radius: 15px;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+.modal-container-list__close {
+  width: 25rem;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+.modal-container-list__close h2 {
+  font-size: 1.6rem;
+}
+.modal-container-list__close button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.modal-container-list__users {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 30rem;
+  height: 40vh;
+  overflow-y: scroll;
+}
+.modal-container-list__users-names {
+  margin-top: 1rem;
+  width: 25rem;
+  height: 5rem;
+  background-color: var(--ciano-medio);
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-container-list__users-names h2 {
+  font-size: 1.5rem;
+}
+.modal-container-list__users-names span {
+  font-size: 2rem;
+  font-weight: bold;
+}

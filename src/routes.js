@@ -82,6 +82,10 @@ router.get('/ranking', (req, res) => {
     res.render('ranking')
 });
 
+router.get('/pedrasUsers', (req,res) => {
+    res.render('telaPedrasUsers')
+})
+
 
 
 

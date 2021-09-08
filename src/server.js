@@ -18,40 +18,48 @@ app.use(cookieParser());
 
 // AQUI COMEÇA SOCKET.IO
 io.on('connection', socket => {
-    socket.join('sala1');
-    console.log('entrei na sala')
-    let clientsInRoom = 0;
-
-
-    let usersCount = io.sockets.adapter.rooms.get('sala1').size
-    
-    socket.to('sala1').emit('recebi', usersCount);
-    
-    if (io.sockets.adapter.rooms.has('sala1')) clientsInRoom = io.sockets.adapter.rooms.get('sala1').size
-    console.log('o numero de pessoas na sala1 é', clientsInRoom)
-    
-    socket.on('disconnect', () => {
-        socket.leave('sala1');
-        console.log('sai da sala')
-        let clientsInRoom = 0;
-        if (io.sockets.adapter.rooms.has('sala1')) clientsInRoom = io.sockets.adapter.rooms.get('sala1').size
-        console.log('o numero de pessoas na sala1 é', clientsInRoom)
-        socket.to('sala1').emit('recebi', clientsInRoom)
-    });
 
     //Criação de salas socket.io
     
-          
-    socket.on('join', (room)=> {		
+    socket.on('join', (room, user, owner) => {		
+        socket.id = user;
 		socket.join(room);
-		// socket.broadcast.emit('new room', room);
+        let owner_id = owner;
+        console.log(owner_id)
+        const clients = io.sockets.adapter.rooms.get(room)
+        console.log('Entrou na sala: ' + room);
+        
         socket.on('mensagem', () => {
             socket.to(room).emit('salve', 'O dono da sala mandou essa mensagem');
-        })
-
+        }) 
         socket.on('mudarLocal', () => {
             socket.to(room).emit('redirect', 'salve');
-            // socket.leave(room);
+        });
+
+        socket.on('disconnect', () => {
+            const isOwner = owner_id === socket.id ? true : false;
+            delete clients[socket.id];
+            if(isOwner) {
+                setTimeout(() => {
+                    const exists = io.sockets.adapter.rooms.get(room);
+                    if(!!exists) {
+                        console.log(exists)
+                        const users = [];
+                        users.push(...exists)
+                        const owner_exist = users.find(owner => owner === owner_id);
+                        if(owner_exist){
+                            socket.broadcast.emit('redirect', room);
+                        }else{
+                            socket.broadcast.emit('dono saiu', room);
+                            setTimeout(() => {
+                                socket.broadcast.emit('saiu da sala', room);
+                            }, 1000)
+                        }
+                    }else{
+                        console.log('Sala não existe')
+                    }
+                }, 3000)
+            }
         })
 
         let numerosDoBingo = [
@@ -76,8 +84,14 @@ io.on('connection', socket => {
         }
 
         socket.on('pedras', () => {
-            sortearNumero();
-            io.in(room).emit('sorteadas', {sorteadas});
+            const sortear = setInterval(() => {
+                sortearNumero();
+                socket.broadcast.emit('sorteadas', {sorteadas}, room);
+            }, 4000)
+
+            if(sorteadas.length === numerosDoBingo.length){
+                clearInterval(sortear)
+            }
         })
 
     let vencedor = '';
@@ -85,7 +99,7 @@ io.on('connection', socket => {
     socket.on('alguemDeuBingo', (id, username) =>{
         if(!vencedor){
             vencedor = id;
-            io.in(room).emit('win', vencedor, username);
+            socket.broadcast.emit('win', vencedor, username, room);
         }   
     })
 
@@ -93,10 +107,6 @@ io.on('connection', socket => {
             socket.broadcast.emit('loss'); 
     })
 	});
-
-
-
-    
 }) 
 
 app.use(router)
