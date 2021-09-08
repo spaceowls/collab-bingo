@@ -111,13 +111,13 @@
 
 .bolas-giratorias {
     &--ativado {
-        transition: transform 1s ease-in;
-        transform: rotateX(.75turn) scale(10%);
+        transition: transform .5s ease-in;
+        transform: scale(70%);
     }
     
     &--desativado {
-        transition: transform 1s ease-out;
-        transform: rotateX(0) scale(100%);       
+        transition: transform .5s ease-out;
+        transform: scale(100%);       
     }
 }
 

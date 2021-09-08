@@ -607,12 +607,12 @@ body {
 }
 
 .bolas-giratorias--ativado {
-  transition: transform 1s ease-in;
-  transform: rotateX(0.75turn) scale(10%);
+  transition: transform 0.5s ease-in;
+  transform: scale(70%);
 }
 .bolas-giratorias--desativado {
-  transition: transform 1s ease-out;
-  transform: rotateX(0) scale(100%);
+  transition: transform 0.5s ease-out;
+  transform: scale(100%);
 }
 
 .gap-cartela {
