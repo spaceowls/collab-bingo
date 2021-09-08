@@ -87,7 +87,7 @@ io.on('connection', socket => {
             const sortear = setInterval(() => {
                 sortearNumero();
                 socket.broadcast.emit('sorteadas', {sorteadas}, room);
-            }, 100)
+            }, 4000)
 
             if(sorteadas.length === numerosDoBingo.length){
                 clearInterval(sortear)
