@@ -247,17 +247,7 @@
                                 pedras_div[index].classList.add("teste")
                             }
                         });
-
-                        if(data.length >= 2){
-                            secundarias[0].innerHTML = data[1]
-                        }
-                        if(data.length >= 3) {
-                            secundarias[1].innerHTML = data[2]
-                        }
-                        if(data.length >= 4) {
-                            secundarias[2].innerHTML = data[3]
-                        }
-                        principal.innerHTML = data[0];
+                        atualizarPedras(data[0])
                     }
 
     socket.on('sorteadas', function(data, room){
