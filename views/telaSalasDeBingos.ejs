@@ -93,7 +93,8 @@
                             <div class="content__salas-publicas__user-na-sala">
                                 <a href="#">
                                     <img src="/assets/img/users.svg" alt="usuarios na sala">
-                                    <h2><%= sala.members %><span>/</span><%= sala.max_members %></h2>
+                                    <h2><span id="<%= sala.id %>_members"><%= sala.members %></span><span>/</span><%= sala.max_members %></h2>
+                                    <% console.log(sala.id) %>
                                 </a>
                             </div>
                         </div>
@@ -103,13 +104,20 @@
                                 <img src="/assets/img/eye.svg" alt="Inspecionar sala">
                             </a>
                         </div>
-                        
                     </div> 
-        
                 <% }); %>
             <% } %>
 
             <script>
+                const socket = io.connect();
+
+                socket.on('novo membro', (room, members_online) => {
+                    const sala_members = document.getElementById(`${room}_members`);
+                    if(!!sala_members){
+                        sala_members.innerHTML = members_online;
+                    }
+                });
+
                 async function entrarSala(e, code) {
                     e.preventDefault();
                     await fetch('/api/verifyRoom', {

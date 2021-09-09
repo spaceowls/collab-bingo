@@ -13,6 +13,7 @@
     height: 5rem;
     border-radius: 1rem;
     animation: aparecer 1s;
+    
 
     h3 {
         font-size: 1.8rem;
@@ -28,4 +29,23 @@
     height: 2.5rem;
     font-size: 1rem;
     margin-bottom :3rem;
+}
+
+#notification {
+    position: absolute;
+    top: 8vh;
+    margin-top: 2rem;
+    @include mixins.flex-center;
+    border-radius: 5px;
+    width: 25rem;
+    height: 4rem;
+    @include mixins.sombra-elementos;
+}
+.entrou{
+    color: var( --white);
+    background-color: var(--roxo-ligth);
+}
+.saiu{
+    color: var(--white);
+    background-color: var(--red);
 }

@@ -189,7 +189,9 @@ body {
   --white: #FFFFFF;
   --grey-dark: #A5A2A2;
   --green-light: rgba(4, 255, 0, 0.5);
+  --green: rgba(45, 209, 42, 0.513);
   --red-ligth: rgb(255, 0, 0, 50%);
+  --red: rgba(255, 0, 0, 0.692);
   --roxo-opacity: rgba(106, 90, 205, 50%);
   --black-modal: rgba(0, 0, 0, 60%);
 }
@@ -424,6 +426,30 @@ body {
   color: var(--ciano-medio);
 }
 
+#notification {
+  position: absolute;
+  top: 8vh;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  width: 25rem;
+  height: 4rem;
+  -webkit-box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+  box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
+}
+
+.entrou {
+  color: var(--white);
+  background-color: var(--roxo-ligth);
+}
+
+.saiu {
+  color: var(--white);
+  background-color: var(--red);
+}
+
 .criar-sala {
   font-size: 1.7rem;
   font-weight: bold;
@@ -607,12 +633,12 @@ body {
 }
 
 .bolas-giratorias--ativado {
-  transition: transform 1s ease-in;
-  transform: rotateX(0.75turn) scale(10%);
+  transition: transform 0.5s ease-in;
+  transform: scale(70%);
 }
 .bolas-giratorias--desativado {
-  transition: transform 1s ease-out;
-  transform: rotateX(0) scale(100%);
+  transition: transform 0.5s ease-out;
+  transform: scale(100%);
 }
 
 .gap-cartela {

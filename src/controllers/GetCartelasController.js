@@ -23,7 +23,8 @@ async function GetCartelas(req, res) {
     },
       cartela: response.cartela ? response.cartela : response.status,
       criador: sala.room.user_id,
-      sala: sala.room.id
+      sala: sala.room.id,
+      sala_name: sala.room.name
   });
 }
 

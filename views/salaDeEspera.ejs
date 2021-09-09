@@ -43,7 +43,7 @@
                 <h5>Participantes:</h5>
                 <div class="info-sala__participantes">
                     <img src="../assets/img/users.svg" alt="Quantidade de usuarios na sala">
-                    <h2 class="info-sala__numeros-participantes"><span class="members_atual"><%= sala.members %></span><span>/</span><%= sala.max_members %></h2>                    
+                    <h2 class="info-sala__numeros-participantes"><span class="members_atual"><span id="actual_members"><%= sala.members %></span></span><span>/</span><%= sala.max_members %></h2>                    
                 </div>
 
                 <h2>GERAR MINHA</h2>
@@ -65,11 +65,27 @@
     <script>
         var socket = io.connect();
 
+        socket.on('add member', (room, online) => {
+                    const sala = '<%= sala.id %>'
+                    if(room === sala){
+                        const member = document.querySelector('#actual_members');
+                        member.innerHTML = online;
+                    }
+                })
+
+        socket.on('remove member', (room, online) => {
+                    const sala = '<%= sala.id %>'
+                    if(room === sala){
+                        const member = document.querySelector('#actual_members');
+                        member.innerHTML = online;
+                    }
+                })
+
         function sair(){
             socket.emit('<%= sala.code %>')
         }
 
-        socket.emit('join', '<%= sala.id %>', '<%= user.id %>', '<%= sala.user_id %>');
+        socket.emit('join', '<%= sala.id %>', '<%= user.id %>', '<%= sala.user_id %>', '<%= user.username %>');
 
         socket.on('salve', (data) => {
             console.log(data);

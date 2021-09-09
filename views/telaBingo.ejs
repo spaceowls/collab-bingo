@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="../css/main.css">
     <script src="../socket.io/socket.io.js"></script>
 
-    <title>Sala do dede</title>
+    <title>Bingolin | <%= sala_name %> </title>
 </head>
 <body>
-    <%- include('modulos/cabecalho', {salaAnterior: 'Teste'}) %> 
+    <%- include('modulos/cabecalho', {salaAnterior: sala_name}) %> 
 
     <style>
         .teste {
@@ -62,7 +62,7 @@
                 <div class="gap-cartela">
                     <% b_numeros.forEach(num => { %>
                         <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <span><%= num %></span>
+                            <%= num %>
                         </div>
                     <% }) %>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="gap-cartela">   
                     <% i_numeros.forEach(num => { %>
                         <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <span><%= num %></span>
+                            <%= num %>
                         </div>
                     <% }) %>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="gap-cartela">
                     <% n_numeros_1.forEach(num => { %>
                         <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <span><%= num %></span>
+                            <%= num %>
                         </div>
                     <% }) %>
                     <div style="display: flex; align-items: center; justify-content: center;" class="tabela-bingo__item">
@@ -86,7 +86,7 @@
                     </div>
                     <% n_numeros_2.forEach(num => { %>
                         <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <span><%= num %></span>
+                            <%= num %>
                         </div>
                     <% }) %>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="gap-cartela">
                     <% g_numeros.forEach(num => { %>
                         <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <span><%= num %></span>
+                            <%= num %>
                         </div>
                     <% }) %>
                 </div>
@@ -102,7 +102,7 @@
                 <div class="gap-cartela">
                     <% o_numeros.forEach(num => { %>
                         <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <span><%= num %></span>
+                            <%= num %>
                         </div>
                     <% }) %>
                 </div>
@@ -170,6 +170,13 @@
         const bolaEsquerda = document.querySelector('.bolas-secundarias__esquerda-valor')
         const bolaMeio = document.querySelector('.bolas-secundarias__meio-valor')
         const bolaDireita = document.querySelector('.bolas-secundarias__direita-valor')
+        const btn_sair = document.querySelectorAll('.btn-sair')
+
+        btn_sair.forEach(btn => {
+            btn.addEventListener('click', () => {
+                window.location.replace('/')
+            });
+        })
         
 
         const listaBolas = [bolaPrincipal, bolaEsquerda, bolaMeio, bolaDireita]
@@ -224,10 +231,6 @@
 
             socket.emit('join', '<%= sala %>', '<%= user.id %>', '<%= criador %>');
     
-            // function clicou(){
-            //     socket.emit('bingo')
-            // }
-    
             socket.on('respostaBingo', () => {
                 const hello = document.querySelector('#testee')
                 hello.style.display = 'block'
@@ -238,13 +241,12 @@
                 const secundarias = document.querySelectorAll('.bolas-secundarias span');
                 const principal = document.querySelector('.bolas-bingo__principal span');
 
-                    const pedras = document.querySelectorAll('.pedrinha span');
                     const pedras_div = document.querySelectorAll('.pedrinha');
 
-                        pedras.forEach((pedra, index) => {
-                            if(data.find(numero => numero === Number(pedra.textContent))){
-                                pedras_div[index].classList.remove('pedra-bloqueada');
-                                pedras_div[index].classList.add("teste")
+                        pedras_div.forEach((elemento, index) => {
+                            if(data.find(numero => numero === Number(elemento.textContent))){
+                                elemento.classList.remove('pedra-bloqueada');
+                                elemento.classList.add("teste")
                             }
                         });
                         atualizarPedras(data[0])
@@ -259,11 +261,12 @@
                     elemento.addEventListener('click', function listener(e) {
                         const numeros_marcados = document.querySelectorAll('.pedra-marcada');
                         if(!e.target.classList.contains('pedra-marcada')){
-                            marcada[index].classList.add('pedra-marcada')
-                            marcada[index].classList.remove('teste');
-                            marcada[index].classList.add('pedra-bloqueada');
-                            marcada[index].removeEventListener('click', listener)
-                            if(numeros_marcados.length === 24) {
+                            e.target.classList.add('pedra-marcada')
+                            e.target.classList.remove('teste');
+                            e.target.removeEventListener('click', listener)
+                            e.target.classList.add('pedra-bloqueada');
+                            e.target.classList.remove('pedrinha');
+                            if((numeros_marcados.length + 1) === 24) {
                                 const botao = document.querySelector('.botao-bingo');
                                 botao.style.display = "block";
                             }

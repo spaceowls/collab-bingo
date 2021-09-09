@@ -24,7 +24,7 @@
 
      <!-- e aquela parte roxa da tela -->
     <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
-        <section class="sala-de-espera">
+    <section class="sala-de-espera">
             <div class="info-sala__mensagem-de-criacao-dono">
 
                 <h3><%= 'Sala criada com sucesso!' %></h3>
@@ -43,7 +43,7 @@
                         <img id="copy" src="/assets/img/copy.svg" alt="Copiar">
                         <input class="input-sala-id-entrar" type="number"  name="id-sala-entrar" value= '<%= sala.code %>'  readonly>
                     </fieldset>
-
+                    
                     <script>
                         const copiarID = document.querySelector('#copy')
                         copiarID.addEventListener('click', ()=> {
@@ -51,24 +51,26 @@
                             id.select();
                             document.execCommand("copy");
                         })
-                    </script> 
+                        </script> 
                 </div>
             </div>
-
+            
             <div class="info-sala">
                 <h5>Ver participantes:</h5>
                 <div class="info-sala__participantes">
                     <img src="/assets/img/users.svg" alt="Quantidade de usuarios na sala">
                     <!-- Ejs para mostrar as pessoas que for entrando na sala de espera do bingo, vai atualizando -->
-                    <h2 class="info-sala__numeros-participantes"><span class="members_atual"><%= sala.members %></span><span>/</span><%= sala.max_members %></h2>
+                    <h2 class="info-sala__numeros-participantes"><span class="members_atual"><span id="actual_members"><%= sala.members %></span></span><span>/</span><%= sala.max_members %></h2>
                 </div>
-
+                
                 <div class="info-sala__btn">
-                   
+                    
                     <button onclick='mudarLocal()' class="info-sala__btn-gerar">COMEÇAR</button>                    
                     <button  onclick="mandarMensagem()" class="info-sala__btn-gerar-cancelar" id="cancelar">CANCELAR</button>
                 </div>
             </div>
+
+            <h1 id="notification"></h1>
 
             <script>
                var socket = io.connect();
@@ -83,12 +85,48 @@
                 })
 
                     
-                socket.emit('join', '<%= sala.id %>', '<%= user.id %>', '<%= sala.user_id %>');
+                socket.emit('join', '<%= sala.id %>', '<%= user.id %>', '<%= sala.user_id %>', '<%= user.username %>');
 
 
                 function mandarMensagem() {
                     socket.emit('mensagem');
                 }
+
+                socket.on('add member', (room, online, username) => {
+                    const sala = '<%= sala.id %>'
+                    if(room === sala){
+                        const member = document.querySelector('#actual_members');
+                        const notification = document.querySelector('#notification')
+                        const saiu = document.querySelector('.saiu')
+                        member.innerHTML = online;
+                        notification.style.display = "flex";
+                        notification.classList.remove('saiu')
+                        notification.classList.add('entrou')
+                        notification.innerHTML = `${username} entrou`
+
+                        setTimeout(() => {
+                            notification.style.display = "none";
+                        }, 2000)
+                    }
+                })
+                
+                socket.on('remove member', (room, online, username) => {
+                    const sala = '<%= sala.id %>'
+                    if(room === sala){
+                        const member = document.querySelector('#actual_members');
+                        const notification = document.querySelector('#notification')
+                        const saiu = document.querySelector('.saiu')
+                        member.innerHTML = online;
+                        notification.classList.remove('entrou')
+                        notification.style.display = "flex";
+                        notification.classList.add('saiu')
+                        notification.innerHTML = `${username} saiu`
+                        
+                        setTimeout(() => {
+                            notification.style.display = "none";
+                        }, 2000)
+                    }
+                })
 
                 
                 async function mudarLocal() {

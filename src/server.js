@@ -20,15 +20,17 @@ app.use(cookieParser());
 io.on('connection', socket => {
 
     //Criação de salas socket.io
-    
-    socket.on('join', (room, user, owner) => {		
+
+    socket.on('join', (room, user, owner, username) => {		
         socket.id = user;
 		socket.join(room);
         let owner_id = owner;
         console.log(owner_id)
         const clients = io.sockets.adapter.rooms.get(room)
         console.log('Entrou na sala: ' + room);
-        
+
+        socket.broadcast.emit('novo membro', room, clients.size);
+        socket.broadcast.emit('add member', room, clients.size, username);
         socket.on('mensagem', () => {
             socket.to(room).emit('salve', 'O dono da sala mandou essa mensagem');
         }) 
@@ -39,6 +41,8 @@ io.on('connection', socket => {
         socket.on('disconnect', () => {
             const isOwner = owner_id === socket.id ? true : false;
             delete clients[socket.id];
+            socket.broadcast.emit('novo membro', room, clients.size);
+            socket.broadcast.emit('remove member', room, clients.size, username);
             if(isOwner) {
                 setTimeout(() => {
                     const exists = io.sockets.adapter.rooms.get(room);
@@ -69,7 +73,7 @@ io.on('connection', socket => {
             61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75,
           ];
         let sorteadas = [];
-    
+
         function sortearNumero() {
             const number = Math.floor(Math.random() * numerosDoBingo.length);
             if(sorteadas.length !== numerosDoBingo.length){
@@ -82,7 +86,7 @@ io.on('connection', socket => {
                 socket.emit('finalizado');
             }
         }
-
+        
         socket.on('pedras', () => {
             const sortear = setInterval(() => {
                 sortearNumero();
@@ -101,10 +105,6 @@ io.on('connection', socket => {
             vencedor = id;
             socket.broadcast.emit('win', vencedor, username, room);
         }   
-    })
-
-    socket.on('osoutrosperderam', ()=>{
-            socket.broadcast.emit('loss'); 
     })
 	});
 }) 
