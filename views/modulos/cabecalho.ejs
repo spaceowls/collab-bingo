@@ -28,7 +28,7 @@
                     <span class="menu-mobile__texto"><%= user.username %></span>
                 </div>
                 
-                <a class="menu-mobile__botao fundo-arredondado-cinza" href="#">
+                <a class="menu-mobile__botao fundo-arredondado-cinza" id="ranking" href="#">
                     <img class="menu-mobile__icone" src="/assets/img/ranking-global.svg" alt="icone Ranking">
                     <span class="menu-mobile__texto">Ranking</span>
                 </a>
@@ -54,6 +54,12 @@
             e.preventDefault();
             document.cookie = "usuarioLogado=; path=/"
             window.location.replace('/');
+        })
+
+        const ranking = document.querySelector('#ranking')
+        ranking.addEventListener('click', (e)=> {
+            e.preventDefault();
+            window.location.replace('/ranking');
         })
 
         //parte que abre e fecha o menu mobile

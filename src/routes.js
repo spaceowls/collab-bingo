@@ -22,6 +22,8 @@ const DeleteRoomController = require('./controllers/DeleteRoomController');
 const CreateCartelaController = require('./controllers/CreateCartelaController');
 const GetCartelasController = require('./controllers/GetCartelasController');
 
+const RankingController = require('./controllers/RankingController');
+
 
 /* Import Services */
 const VerifyRoomService = require('./services/rooms/VerifyRoomService');
@@ -78,9 +80,10 @@ router.get('/modalPerdedor', (req, res) => {
 router.get('/modalVencedor', (req, res) => {
     res.render('modalVencedor')
 });
-router.get('/ranking', (req, res) => {
-    res.render('ranking')
-});
+
+/* ranking */
+router.get('/ranking', verifyToken, RankingController);
+
 
 router.get('/pedrasUsers', (req,res) => {
     res.render('telaPedrasUsers')
