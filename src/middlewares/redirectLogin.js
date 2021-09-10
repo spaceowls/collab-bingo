@@ -6,7 +6,7 @@ function redirectLogin(req, res, next) {
                 if(!err) {
                     res.redirect('/')
                     next();
-                }else{
+                }else{ 
                     next();
                 }
     });
