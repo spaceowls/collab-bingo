@@ -2,7 +2,7 @@
 
 module.exports = {
 
-  development: {
+  production: {
     client: 'pg',
     connection: {
       host: "ec2-52-7-159-155.compute-1.amazonaws.com",
