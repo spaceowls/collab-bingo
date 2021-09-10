@@ -3,9 +3,12 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    client: 'pg',
     connection: {
-      filename: `${__dirname}/src/database/collab-bingo.sqlite`
+      host: "localhost",
+      port: "5432",
+      user: 'postgres',
+      password: 'root'    
     },
     useNullAsDefault: true,
     migrations: {
