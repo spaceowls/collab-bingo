@@ -22,62 +22,58 @@
                 </div>
 
                 <div class="ranking-scroll">
-                    <div class="player" id="first-place">
-                        <img src="/assets/img/first-place.svg" id="first-place-img">
-                        <div class="player-data" id="first-place-data">
-                            <span class="player-name"> <%= 'Player 1' %>  </span>
-                            <span class="player-punctuation">  <%= '10' %> </span>
+                    <% ranking.forEach( (valor,index) =>  { %>
+                        <% if(index === 0){ %>
+                        <div class="player" id="first-place">
+                            <img src="/assets/img/first-place.svg" id="first-place-img">
+                            <div class="player-data" id="first-place-data">
+                                <span class="player-name"> <%= valor.username %>  </span>
+                                <span class="player-punctuation">  <%= valor.points %> </span>
+                            </div>
                         </div>
+                        <% }else if(index === 1 ){ %>
+                        <div class="player" id="second-place">
+                            <img src="/assets/img/second-place.svg" id="second-place-img">
+                            <div class="player-data" id="second-place-data">
+                                <span class="player-name"><%= valor.username %></span>
+                                <span class="player-punctuation"><%= valor.points %></span>
+                            </div>
+                        </div>
+                        <% }else if(index === 2){ %>
+                        <div class="player" id="third-place">
+                            <img src="/assets/img/third-place.svg" id="third-place-img">
+                            <div class="player-data" id="third-place-data">
+                                <span class="player-name"><%= valor.username %></span>
+                                <span class="player-punctuation"><%= valor.points %></span>
+                            </div>
+                        </div>
+                        <% }else if(index >= 3 && index <= 9){ %>
+                        <div class="player">
+                            <span class="player-placing">
+                                <%= index + 1 %>
+                            </span>
+                            <div class="player-data">
+                                <span class ="player-name"><%= valor.username %></span>
+                                <span class ="player-punctuation"><%= valor.points %></span>
+                            </div>
+                        </div>
+                    <% }}) %>
+           
+            </div>
+            <% if(user.role !== "quest"){ %>
+                <div class="user-pontuacao">
+                    <% const myRanking = ranking.map((usuario) => usuario.username) %>
+                    <span class="player-posicao">
+                        <%= myRanking.indexOf(user.username) + 1 %>
+                    </span>
+                    <div class="player-name-ponto">
+                        <span><%= user.username %></span>
                     </div>
-    
-                    <div class="player" id="second-place">
-                        <img src="/assets/img/second-place.svg" id="second-place-img">
-                        <div class="player-data" id="second-place-data">
-                            <span class="player-name"><%= 'Player 2' %></span>
-                            <span class="player-punctuation"><%= '9' %></span>
-                        </div>
-                    </div>
-    
-                    <div class="player" id="third-place">
-                        <img src="/assets/img/third-place.svg" id="third-place-img">
-                        <div class="player-data" id="third-place-data">
-                            <span class="player-name"><%= 'Player 3' %></span>
-                            <span class="player-punctuation"><%= '8' %></span>
-                        </div>
-                    </div>
-                    
-                    <div class="player">
-                        <span class="player-placing">
-                            4
-                        </span>
-                        <div class="player-data">
-                            <span class="player-name"><%= 'Player 4' %></span>
-                            <span class="player-punctuation"><%= '7' %></span>
-                        </div>
-                    </div>
-    
-                    <div class="player">
-                        <span class="player-placing">
-                            5
-                        </span>
-                        <div class="player-data">
-                            <span class="player-name"><%= 'Player 5' %></span>
-                            <span class="player-punctuation"><%= '6' %></span>
-                        </div>
-                    </div>
-    
-                    <div class="player">
-                        <span class="player-placing">
-                            6
-                        </span>
-                        <div class="player-data">
-                            <span class="player-name"><%= 'Player 6' %></span>
-                            <span class="player-punctuation"><%= '4' %></span>
-                        </div>
+                    <div class="player-name-ponto__score">
+                        <h2 class ="punctuation"><%= user.points %></h2>
                     </div>
                 </div>
-                
-            </div>
+            <% } %>
         </div>
     <%- include('modulos/conteudo', {parte: 'fechar'}) %> 
 </body>

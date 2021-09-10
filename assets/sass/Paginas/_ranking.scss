@@ -87,6 +87,35 @@
     margin-top: 1rem;
     overflow-y: scroll;
     width: 100%;
-    height: 50vh;
-    margin-bottom: 5vh;
+    height: 45vh;
+    margin-bottom: 2rem;
+}
+
+.user-pontuacao{
+    @include mixins.flex-center;
+    justify-content: space-between;
+    background-color: var(--white);
+    border-radius: 5px;
+    width: 100%;
+    height: 4rem;
+    margin-bottom: 40rem;
+    padding: 2rem;
+}
+
+.player-posicao{
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--roxo-ligth);
+}
+
+.player-name-ponto{
+    @include mixins.flex-center;
+    justify-content: space-between;
+    span{
+
+        color: var(--roxo-ligth);
+        font-size: 2.3rem;
+        font-weight: bold;
+    }
+
 }

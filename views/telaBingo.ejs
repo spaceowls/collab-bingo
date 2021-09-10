@@ -125,7 +125,7 @@
                 <h2>VENCEDOR!!!</h2>
                 <div class="modal-container__vencedor-score">
                     <% if(user.role === "user" || user.role === "admin"){ %>
-                        <h3>SCORE: <span id="score"><%= 200 %> </span></h3>
+                        <h3>SCORE: <span id="score"><%= 20 %> </span></h3>
                     <% } %>
                 </div>
             </div>
@@ -133,6 +133,24 @@
             <div class="modal-container__botao">
                 <% if(user.role === "user" || user.role === "admin"){ %>
                     <button class="btn-pontuacao" id="add-pontuacao">RECEBER PONTUAÇÃO</button>
+
+                    <script>
+                        const getScore = document.querySelector('#add-pontuacao')
+                        getScore.addEventListener('click', async (e) => {
+                            e.target.style.display = 'none';
+                            window.location.replace('/')
+                            await fetch('/api/addPoints', {
+                                method: 'post',
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    id: '<%= user.id %>'
+                                })
+                            })
+                        })
+                    </script>
                 <% }else { %>
                     <button class="btn-pontuacao btn-sair">SAIR</button>
                 <% } %>
