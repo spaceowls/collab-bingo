@@ -130,6 +130,16 @@
 
                 
                 async function mudarLocal() {
+                    await fetch('/api/updateRoom', {
+                        method: 'put',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            code: Number('<%= sala.code %>')
+                        })
+                    })
                     await fetch('/api/create/cartela', {
                         method: "post",
                         headers: {

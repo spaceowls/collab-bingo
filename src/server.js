@@ -25,9 +25,7 @@ io.on('connection', socket => {
         socket.id = user;
 		socket.join(room);
         let owner_id = owner;
-        console.log(owner_id)
         const clients = io.sockets.adapter.rooms.get(room)
-        console.log('Entrou na sala: ' + room);
 
         socket.broadcast.emit('novo membro', room, clients.size);
         socket.broadcast.emit('add member', room, clients.size, username);
@@ -47,7 +45,6 @@ io.on('connection', socket => {
                 setTimeout(() => {
                     const exists = io.sockets.adapter.rooms.get(room);
                     if(!!exists) {
-                        console.log(exists)
                         const users = [];
                         users.push(...exists)
                         const owner_exist = users.find(owner => owner === owner_id);

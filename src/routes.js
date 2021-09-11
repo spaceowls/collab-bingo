@@ -28,6 +28,7 @@ const RankingController = require('./controllers/RankingController');
 /* Import Services */
 const VerifyRoomService = require('./services/rooms/VerifyRoomService');
 const AddPointsController = require('./controllers/AddPointsController');
+const UpdatePrivateRoomController = require('./controllers/UpdatePrivateRoomController');
 
 /* Call API */ 
 router.post('/api/create/sala', CreateRoomController);
@@ -37,6 +38,7 @@ router.get('/api/users', ListUsersController);
 router.post('/api/authentication', AuthenticateUserController);
 router.get('/api/authenticationGuest', AuthenticateGuestController);
 router.post('/api/addPoints', AddPointsController);
+router.put('/api/updateRoom', UpdatePrivateRoomController);
 
 router.post('/api/create/:code', CreateRoomController);
 router.post('/api/verifyRoom', async (req, res) => {
