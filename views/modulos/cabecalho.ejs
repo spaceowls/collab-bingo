@@ -33,7 +33,7 @@
                     <span class="menu-mobile__texto">Ranking</span>
                 </a>
 
-                <a class="menu-mobile__botao fundo-arredondado-cinza" href="#">
+                <a class="menu-mobile__botao fundo-arredondado-cinza" id="credits" href="#">
                     <img class="menu-mobile__icone" src="/assets/img/github-pequeno.svg" alt="icone github">
                     <span class="menu-mobile__texto">Créditos</span>
                 </a>
@@ -54,6 +54,12 @@
             e.preventDefault();
             document.cookie = "usuarioLogado=; path=/"
             window.location.replace('/');
+        })
+
+        const credits = document.querySelector('#credits')
+        credits.addEventListener('click', (e) => {
+            e.preventDefault()
+            window.location.replace('/credits')
         })
 
         const ranking = document.querySelector('#ranking')

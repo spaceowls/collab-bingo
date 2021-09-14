@@ -19,7 +19,6 @@ async function EnterRoomController(req, res) {
     const room = await EnterRoomService(code);
 
     res.render('salaDeEspera', {
-        
         user: {
             id: userAuthenticated.username ? userAuthenticated.user_id : user.id,
             ...user

@@ -23,6 +23,7 @@ const CreateCartelaController = require('./controllers/CreateCartelaController')
 const GetCartelasController = require('./controllers/GetCartelasController');
 
 const RankingController = require('./controllers/RankingController');
+const CreditsController = require('./controllers/CreditsController')
 
 
 /* Import Services */
@@ -85,7 +86,7 @@ router.get('/modalVencedor', (req, res) => {
     res.render('modalVencedor')
 });
 
-/* ranking */
+/* Ranking */
 router.get('/ranking', verifyToken, RankingController);
 
 
@@ -93,7 +94,8 @@ router.get('/pedrasUsers', (req,res) => {
     res.render('telaPedrasUsers')
 })
 
-
+/* Credits */
+router.get('/credits', verifyToken, CreditsController)
 
 
 module.exports = router;
