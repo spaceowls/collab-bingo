@@ -11,13 +11,6 @@ async function EnterRoomService(code) {
                 status: 400
             }
         }
-
-    if(room.members >= room.max_members) {
-        return {
-            message: "Sala Cheia!",
-            status: 400
-        }
-    }
                                                 
     await knex('bingo').where({ code }).update({ members: room.members += 1 });
 
