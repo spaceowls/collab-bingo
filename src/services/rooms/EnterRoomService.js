@@ -11,8 +11,6 @@ async function EnterRoomService(code) {
                 status: 400
             }
         }
-                                                
-    await knex('bingo').where({ code }).update({ members: room.members += 1 });
 
     return {
         room,
