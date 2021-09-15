@@ -1,11 +1,15 @@
 // Update with your config settings.
 
 module.exports = {
-
   development: {
-    client: 'sqlite3',
+    client: 'mysql',
     connection: {
-      filename: `${__dirname}/src/database/collab-bingo.sqlite`
+      //dados das conexoes e tudo mais eh so falar com o joao, Att: joao
+      host: 'sql10.freesqldatabase.com',
+      port : 3306,
+      user : 'sql10437264',
+      password : 'CDgMlukCka',
+      database : 'sql10437264',
     },
     useNullAsDefault: true,
     migrations: {
