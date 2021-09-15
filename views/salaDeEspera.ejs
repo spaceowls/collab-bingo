@@ -51,7 +51,7 @@
 
                 <div class="info-sala__btn">
                     <button class="info-sala__btn-gerar" id="gerar">GERAR</button>
-                    <button onclick="sair()" class="info-sala__btn-cancelar" id="cancelar">CANCELAR</button>
+                    <button class="info-sala__btn-cancelar" style="display: none;" id="cancelar">CANCELAR</button>
                 </div>
 
                 <div class="info-sala__mensagem-de-criacao">
@@ -85,7 +85,7 @@
             socket.emit('<%= sala.code %>')
         }
 
-        socket.emit('join', '<%= sala.id %>', '<%= user.id %>', '<%= sala.user_id %>', '<%= user.username %>');
+        socket.emit('join', '<%= sala.id %>', '<%= user.id %>', '<%= sala.user_id %>', '<%= user.username %>', '<%= sala.max_members %>');
 
         socket.on('salve', (data) => {
             console.log(data);
@@ -119,11 +119,13 @@
        
 
         const gerar = document.querySelector('#gerar')
+        const btnCancelar = document.querySelector('#cancelar');
         const cartelaGerada = document.querySelector('.info-sala__mensagem-de-criacao')
 
         gerar.addEventListener('click', async () => {
             cartelaGerada.classList.add('cartela-gerada');
             gerar.style.display = 'none';
+            btnCancelar.style.display = 'block'
 
             await fetch('/api/create/cartela', {
                 method: "post",
@@ -137,6 +139,25 @@
                 })
             })
         })
+
+        btnCancelar.addEventListener('click', async (e) => {
+            await fetch('/api/delete/cartela', {
+                method: 'delete',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    bingo_id: '<%= sala.id %>'
+                })
+            }).then(response => {
+                if(response.ok){
+                    gerar.style.display = 'block'
+                    e.target.style.display = 'none'
+                    console.log('cartela deletada')
+                }
+            })
+        });
     </script>
 </body>
 </html>

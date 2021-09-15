@@ -10,13 +10,6 @@ async function EnterRoomService(code) {
             }
         }
 
-    if(room.members >= room.max_members) {
-        return {
-            message: "Sala Cheia!",
-            status: 400
-        }
-    }
-
     return {
         room,
         status: 200

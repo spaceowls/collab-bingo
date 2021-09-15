@@ -13,7 +13,6 @@ const AuthenticateGuestController = require('./controllers/AuthenticateGuestCont
 
 const CreateRoomController = require('./controllers/CreateRoomController');
 const EnterRoomController = require('./controllers/EnterRoomController');
-const LeaveRoomController = require('./controllers/LeaveRoomController');
 const ListPublicRoomsController = require('./controllers/ListPublicRoomsController');
 const CreateRoomPageController = require('./controllers/CreateRoomPageController');
 const CreatedRoomController = require('./controllers/CreatedRoomController');
@@ -21,6 +20,7 @@ const DeleteRoomController = require('./controllers/DeleteRoomController');
 
 const CreateCartelaController = require('./controllers/CreateCartelaController');
 const GetCartelasController = require('./controllers/GetCartelasController');
+const DeleteCartelaController = require('./controllers/DeleteCartelaController');
 
 const RankingController = require('./controllers/RankingController');
 const CreditsController = require('./controllers/CreditsController')
@@ -40,6 +40,7 @@ router.post('/api/authentication', AuthenticateUserController);
 router.get('/api/authenticationGuest', AuthenticateGuestController);
 router.post('/api/addPoints', AddPointsController);
 router.put('/api/updateRoom', UpdatePrivateRoomController);
+router.delete('/api/delete/cartela', DeleteCartelaController);
 
 router.post('/api/create/:code', CreateRoomController);
 router.post('/api/verifyRoom', async (req, res) => {
@@ -48,7 +49,6 @@ router.post('/api/verifyRoom', async (req, res) => {
     
     res.json(response);
 });
-router.post('/api/leave-room', LeaveRoomController)
 
 
 

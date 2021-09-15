@@ -5,17 +5,19 @@
     height: auto;
     @include mixins.flex-center;
     flex-direction: column;
+    margin-bottom: 3rem;
 
+    
 
     h2{
-        margin-top: 4rem;
+        margin-top: 1rem;
         color: var(--white);;
-        margin-bottom: 2rem;
+        margin-bottom: 1.3rem;
     }
 
     &__user{
-        width: 35rem;
-        height: 5rem;
+        width: 30rem;
+        height: 4.5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -48,10 +50,12 @@
 
 }
 
+
 footer{
     width: 100%;
     height: auto;
     @include mixins.flex-center;
+    margin-bottom: 2rem;
 
     h2{
         color: var(--white);

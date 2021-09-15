@@ -7,8 +7,6 @@ exports.up = function(knex) {
 
         tbl.string('name');
 
-        tbl.integer('members');
-
         tbl.integer('max_members');
     
         tbl.boolean('private');

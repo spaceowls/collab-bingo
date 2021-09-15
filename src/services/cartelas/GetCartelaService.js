@@ -9,10 +9,7 @@ async function GetCartelaService(user_id) {
             status: 200
         }
     }else{
-        return {
-            message: 'Cartela não existe',
-            status: 400
-        }
+        throw new Error('Cartela não existe')
     }
 }
 

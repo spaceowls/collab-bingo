@@ -1,7 +1,9 @@
 //TODO: passar o codigo para assembly x86
+require('express-async-errors');
 const express = require('express');
 const router = require('./routes');
 const cookieParser = require('cookie-parser');
+const errorMiddleware = require('./middlewares/errorMiddleware');
 
 
 const app = express();
@@ -15,17 +17,28 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(errorMiddleware)
 
 // AQUI COMEÇA SOCKET.IO
 io.on('connection', socket => {
 
     //Criação de salas socket.io
 
-    socket.on('join', (room, user, owner, username) => {		
+    socket.on('join', (room, user, owner, username, maxMembers) => {		
         socket.id = user;
 		socket.join(room);
         let owner_id = owner;
         const clients = io.sockets.adapter.rooms.get(room)
+        let fixedMaxMembers;
+
+        
+        if(!fixedMaxMembers){
+            fixedMaxMembers = maxMembers
+        }
+        
+        if(clients.size === Number(maxMembers)) {
+            console.log('sala cheia')
+        }
 
         socket.broadcast.emit('novo membro', room, clients.size);
         socket.broadcast.emit('add member', room, clients.size, username);

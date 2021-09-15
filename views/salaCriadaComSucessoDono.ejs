@@ -85,7 +85,7 @@
                 })
 
                     
-                socket.emit('join', '<%= sala.id %>', '<%= user.id %>', '<%= sala.user_id %>', '<%= user.username %>');
+                socket.emit('join', '<%= sala.id %>', '<%= user.id %>', '<%= sala.user_id %>', '<%= user.username %>', '<%= sala.max_members %>');
 
 
                 function mandarMensagem() {

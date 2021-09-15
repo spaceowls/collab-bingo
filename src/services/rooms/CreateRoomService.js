@@ -17,7 +17,6 @@ async function CreateRoomService(user_id, name, private, max_members) {
             name,
             private,
             max_members,
-            members: 1,
             code: roomCode
         });
 
