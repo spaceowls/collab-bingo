@@ -1,11 +1,9 @@
-//TODO: passar o codigo para assembly x86
 require('express-async-errors');
 const express = require('express');
 const router = require('./routes');
 const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const error404 = require('./middlewares/error404');
-
 
 const app = express();
 const port = process.env.PORT || 3000;  

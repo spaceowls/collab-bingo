@@ -10,15 +10,12 @@
     <title>Collab Bingo | <%= sala_name %> </title>
 </head>
 <body>
-    <%- include('modulos/cabecalho', {salaAnterior: sala_name}) %> 
-
     <style>
         .teste {
             cursor: pointer;
         }
     </style>
 
-     <!-- e aquela parte roxa da tela -->
     <%- include('modulos/conteudo', {parte: 'abrir'}) %> 
     <div class="tela-bingo">
         <div class="tela-bingo__bolas-bingo bolas-bingo">
@@ -48,64 +45,36 @@
             <div class="tabela-bingo__item tabela-bingo__item--letra">G</div>
             <div class="tabela-bingo__item tabela-bingo__item--letra">O</div>
 
-                    <%
-                        const numeros = cartela.numeros.split(',')
-                        const b_numeros = numeros.filter(num => num <= 15) 
-                        const i_numeros = numeros.filter(num => num >= 16 && num <= 30)
-                        const n_numeros = numeros.filter(num => num >= 31 && num <= 45)
-                        const g_numeros = numeros.filter(num => num >= 46 && num <= 60) 
-                        const o_numeros = numeros.filter(num => num >= 61)
-                        
-                        const n_numeros_1 = n_numeros.splice(0, 2)
-                        const n_numeros_2 = n_numeros.splice(0, 2)
-                    %>
-                <div class="gap-cartela">
-                    <% b_numeros.forEach(num => { %>
-                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <%= num %>
-                        </div>
-                    <% }) %>
+                <% 
+                const larguraTabela = 5
+                const listaNumeros = cartela.numeros
+                    .split(',')
+                    .map(v => Number(v))
+                .sort((a, b) => a - b)
+
+                listaNumeros.splice(12, 0, null) // isso vai representar o coringa no meio da lista
+
+                    
+                const numerosOrganizados = []
+                for (let i = 0; i < listaNumeros.length; i++) {
+                    //conta infernal, nao mexe nem um tiquinho nela. Ass: joao
+                    var novaPosicao = i * larguraTabela % listaNumeros.length + Math.floor(i / larguraTabela)
+                    numerosOrganizados[i] = listaNumeros[novaPosicao]
+                }
+                
+                %>
+                
+                <% for (let index = 0; index < 12; index++) { %>
+                    <div class="tabela-bingo__item pedra-bloqueada pedrinha"><%= numerosOrganizados[index] %></div>
+                <% } %>
+
+                <div style="display: flex; align-items: center; justify-content: center;" class="tabela-bingo__item">
+                    <span><img style="width: 60%;" src="/assets/img/coringa.svg" alt="Coringa"></span>
                 </div>
 
-                <div class="gap-cartela">   
-                    <% i_numeros.forEach(num => { %>
-                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <%= num %>
-                        </div>
-                    <% }) %>
-                </div>
-                
-                <div class="gap-cartela">
-                    <% n_numeros_1.forEach(num => { %>
-                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <%= num %>
-                        </div>
-                    <% }) %>
-                    <div style="display: flex; align-items: center; justify-content: center;" class="tabela-bingo__item">
-                        <span><img style="width: 60%;" src="/assets/img/coringa.svg" alt="Coringa"></span>
-                    </div>
-                    <% n_numeros_2.forEach(num => { %>
-                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <%= num %>
-                        </div>
-                    <% }) %>
-                </div>
-                
-                <div class="gap-cartela">
-                    <% g_numeros.forEach(num => { %>
-                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <%= num %>
-                        </div>
-                    <% }) %>
-                </div>
-                    
-                <div class="gap-cartela">
-                    <% o_numeros.forEach(num => { %>
-                        <div class="tabela-bingo__item pedra-bloqueada pedrinha">
-                            <%= num %>
-                        </div>
-                    <% }) %>
-                </div>
+                <% for (let index = 13; index < numerosOrganizados.length; index++) { %>
+                    <div class="tabela-bingo__item pedra-bloqueada pedrinha"><%= numerosOrganizados[index] %></div>
+                <% } %>
         </div>
 
         <button onclick="deubingo()" class="botao-bingo" style="display: none;" >Bingo!!!</button>
@@ -184,6 +153,9 @@
     
     <%- include('modulos/conteudo', {parte: 'fechar'}) %>
     <script>
+        let listaNumeros = '<%=listaNumeros.toString()%>'.split(',').map(v => Number(v))
+        let numerosOrganizados = '<%=numerosOrganizados.toString()%>'.split(',').map(v => Number(v))
+
         const bolaPrincipal = document.querySelector('.bolas-bingo__principal-valor')
         const bolaEsquerda = document.querySelector('.bolas-secundarias__esquerda-valor')
         const bolaMeio = document.querySelector('.bolas-secundarias__meio-valor')
@@ -232,53 +204,43 @@
             
         }
 
-        window.addEventListener('load', () => {
-            function clicarDelay(elemento, delay) {
-                setTimeout(() => elemento.clicar(), delay)
-            }
-
-            let dale = Array.from(itensCartela.values())
-            dale.sort((a, b) => Math.random() > 0.5 ? 1 : -1)
-
-            dale.forEach(elemento => setTimeout(() => elemento.click(), 500))
-            dale.forEach(elemento => setTimeout(() => elemento.click(), 1000))
-        })
-
-
         const socket = io.connect()
 
-            socket.emit('join', '<%= sala %>', '<%= user.id %>', '<%= criador %>');
-    
-            socket.on('respostaBingo', () => {
-                const hello = document.querySelector('#testee')
-                hello.style.display = 'block'
-            })
-    
+        socket.emit('join', '<%= sala %>', '<%= user.id %>', '<%= criador %>');
+
+        socket.on('respostaBingo', () => {
+            const hello = document.querySelector('#testee')
+            hello.style.display = 'block'
+        })
+        
+        function atualizaNumeros(data) {
+            const secundarias = document.querySelectorAll('.bolas-secundarias span');
+            const principal = document.querySelector('.bolas-bingo__principal span');
+
+            const pedras_div = document.querySelectorAll('.pedrinha');
+
+            pedras_div.forEach((elemento, index) => {
+                if(data.find(numero => numero === Number(elemento.textContent))){
+                    elemento.classList.remove('pedra-bloqueada');
+                    elemento.classList.add("teste")
+                }
+            });
             
-            function atualizaNumeros(data) {
-                const secundarias = document.querySelectorAll('.bolas-secundarias span');
-                const principal = document.querySelector('.bolas-bingo__principal span');
+            atualizarPedras(data[0])
+        }
 
-                    const pedras_div = document.querySelectorAll('.pedrinha');
-
-                        pedras_div.forEach((elemento, index) => {
-                            if(data.find(numero => numero === Number(elemento.textContent))){
-                                elemento.classList.remove('pedra-bloqueada');
-                                elemento.classList.add("teste")
-                            }
-                        });
-                        atualizarPedras(data[0])
-                    }
-
-    socket.on('sorteadas', function(data, room){
-                const sala = '<%= sala %>'
-                if(room === sala){
-                    atualizaNumeros(data.sorteadas);
+        socket.on('sorteadas', function(data, room){
+            const sala = '<%= sala %>'
+            if(room === sala){
+                atualizaNumeros(data.sorteadas);
                 const marcada = document.querySelectorAll('.teste');
                 marcada.forEach((elemento, index) => {
                     elemento.addEventListener('click', function listener(e) {
                         const numeros_marcados = document.querySelectorAll('.pedra-marcada');
                         if(!e.target.classList.contains('pedra-marcada')){
+                            //mostra para os outros usuarios que voce marcou mais um ponto
+                            socket.emit('atualizarMinhaPontuacao', '<%= user.username %>', '<%= sala_name %>')
+
                             e.target.classList.add('pedra-marcada')
                             e.target.classList.remove('teste');
                             e.target.removeEventListener('click', listener)
@@ -291,32 +253,35 @@
                         }
                     })
                 })
-                }
-            });
+            }
+        });
+
+        socket.on('pontuacaoDeAlguem', (data, room) => {
+            
+        })
+        
             // M O D A I S SOCKETIO
 
-            function deubingo(){
-                socket.emit('alguemDeuBingo', '<%= user.id %>', '<%= user.username %>')
-            }
+        function deubingo(){
+            socket.emit('alguemDeuBingo', '<%= user.id %>', '<%= user.username %>')
+        }
 
-            socket.on('win', (id, username, room) =>{
-                const sala = '<%= sala %>'
-                if(room === sala) {
-                    const modal_win = document.querySelector('#modal-win');
-                    const modal_loser = document.querySelector('#modal-loser');
-                    const user_winner = document.querySelector('#usuario-win');
-                    let user_id = '<%= user.id %>';
-                    if(id === user_id){
-                        modal_win.style.display = "flex";
-                    }else {
-                        modal_loser.style.display = "flex"
-                        user_winner.innerHTML = username;
-                    }
+        socket.on('win', (id, username, room) =>{
+            const sala = '<%= sala %>'
+            if(room === sala) {
+                const modal_win = document.querySelector('#modal-win');
+                const modal_loser = document.querySelector('#modal-loser');
+                const user_winner = document.querySelector('#usuario-win');
+                let user_id = '<%= user.id %>';
+                if(id === user_id){
+                    modal_win.style.display = "flex";
+                }else {
+                    modal_loser.style.display = "flex"
+                    user_winner.innerHTML = username;
                 }
-            })
-            // F I M DOS M O D A I S
-
-
+            }
+        })
+        // F I M DOS M O D A I S
     </script>
 
 <% if(user.id === criador){ %>

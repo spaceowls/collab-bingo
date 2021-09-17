@@ -62,7 +62,7 @@
 .tabela-bingo {
     display: grid;
     grid-template-columns: repeat(5, 2em);
-    grid-template-rows: repeat(5, 1.5em);
+    grid-template-rows: repeat(6, 1.5em);
     gap: .4em;
     
     font-family: "Roboto Mono", monospace;
@@ -76,29 +76,23 @@
 
     user-select: none;
 
-
     &__item {
         background-color: var(--ciano-medio);
         text-align: center;
-        // line-height: 2em;
         border-radius: 10%;
-        transition: outline 50ms;
-        outline: 0 var(--roxo-dark) solid ;
-        transition: background 1s;
+        transition: background-color 1s;
 
         &--letra{
             color: var(--roxo-ligth);
             font-weight: bold;
-            // font-size: 2em;
-            line-height: 1.5;
             font-family: "Raleway", sans-serif;
         }
 
         &--selecionado {
             background-color: var(--roxo-dark);
             color: var(--white);
-            // outline: 3px var(--roxo-dark) solid ;
-            transition: background 1s;
+    
+            transition: background-color 1s;
         }
     }
 }
@@ -121,11 +115,11 @@
     }
 }
 
-.gap-cartela {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
+// .gap-cartela {
+//     display: flex;
+//     flex-direction: column;
+//     gap: .5rem;
+// }
 
 .pedra-bloqueada{
     cursor: not-allowed;

@@ -580,7 +580,7 @@ body {
 .tabela-bingo {
   display: grid;
   grid-template-columns: repeat(5, 2em);
-  grid-template-rows: repeat(5, 1.5em);
+  grid-template-rows: repeat(6, 1.5em);
   gap: 0.4em;
   font-family: "Roboto Mono", monospace;
   font-size: 3.5vh;
@@ -594,20 +594,17 @@ body {
   background-color: var(--ciano-medio);
   text-align: center;
   border-radius: 10%;
-  transition: outline 50ms;
-  outline: 0 var(--roxo-dark) solid;
-  transition: background 1s;
+  transition: background-color 1s;
 }
 .tabela-bingo__item--letra {
   color: var(--roxo-ligth);
   font-weight: bold;
-  line-height: 1.5;
   font-family: "Raleway", sans-serif;
 }
 .tabela-bingo__item--selecionado {
   background-color: var(--roxo-dark);
   color: var(--white);
-  transition: background 1s;
+  transition: background-color 1s;
 }
 
 .botao-bingo {
@@ -639,12 +636,6 @@ body {
 .bolas-giratorias--desativado {
   transition: transform 0.5s ease-out;
   transform: scale(100%);
-}
-
-.gap-cartela {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 .pedra-bloqueada {
