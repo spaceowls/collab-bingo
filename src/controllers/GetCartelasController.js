@@ -5,8 +5,12 @@ const GetUserService = require('../services/users/GetUserService');
 async function GetCartelas(req, res) {
     const { user_id } = req.params;
     const { userAuthenticated } = req.body;
-    const response = await GetCartelaService(user_id);
-
+    const response = await GetCartelaService(user_id).catch((error) => {
+      if(error) {
+        res.redirect('/')
+      }
+    })
+    
     let user;
     if(userAuthenticated.username){
         user = userAuthenticated

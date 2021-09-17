@@ -1,9 +1,5 @@
-const http = require('http');
-const io = require('socket.io')(http);
-const { Socket } = require('dgram');
 const EnterRoomService = require("../services/rooms/EnterRoomService");
 const GetUserService = require("../services/users/GetUserService");
-
 
 async function EnterRoomController(req, res) {
     const { code } = req.params;

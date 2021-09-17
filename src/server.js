@@ -4,6 +4,7 @@ const express = require('express');
 const router = require('./routes');
 const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/errorMiddleware');
+const error404 = require('./middlewares/error404');
 
 
 const app = express();
@@ -35,9 +36,13 @@ io.on('connection', socket => {
         if(!fixedMaxMembers){
             fixedMaxMembers = maxMembers
         }
+
+        if(clients.size >= 2) {
+            socket.broadcast.emit(`dono-${room}`, 'liberado');
+        }
         
-        if(clients.size === Number(maxMembers)) {
-            console.log('sala cheia')
+        if(clients.size > maxMembers) {
+            socket.broadcast.emit(`stop-${user}`);
         }
 
         socket.broadcast.emit('novo membro', room, clients.size);
@@ -54,6 +59,9 @@ io.on('connection', socket => {
             delete clients[socket.id];
             socket.broadcast.emit('novo membro', room, clients.size);
             socket.broadcast.emit('remove member', room, clients.size, username);
+            if(clients.size < 2) {
+                socket.broadcast.emit(`dono-${room}`, 'fechado');
+            }
             if(isOwner) {
                 setTimeout(() => {
                     const exists = io.sockets.adapter.rooms.get(room);
@@ -70,7 +78,7 @@ io.on('connection', socket => {
                             }, 1000)
                         }
                     }else{
-                        console.log('Sala não existe')
+                        console.log('Sala não existe');
                     }
                 }, 3000)
             }
@@ -108,8 +116,8 @@ io.on('connection', socket => {
             }
         })
 
+        // M O D A I S         
     let vencedor = '';
-    // M O D A I S 
     socket.on('alguemDeuBingo', (id, username) =>{
         if(!vencedor){
             vencedor = id;
@@ -119,7 +127,6 @@ io.on('connection', socket => {
 	});
 }) 
 
-app.use(router)
+app.use(router, error404)
 
-                        
 http.listen(port, () => console.log(`Server rodando na porta ${port}`));

@@ -120,24 +120,7 @@
 
                 async function entrarSala(e, code) {
                     e.preventDefault();
-                    await fetch('/api/verifyRoom', {
-                        method: 'POST',
-                        headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                        body: JSON.stringify({
-                            code,
-                        })
-                    }).then(resposta => resposta.json())
-                    .then(resposta => {
-                        if(resposta.status !== 200){
-                            menssagem.style.display = "block";
-                            menssagem.innerHTML = resposta.message;
-                        }else{
-                            window.location.replace(`/room/${code}`);
-                        }
-                    });
+                    window.location.replace(`/room/${code}`);
                 }
             </script>
             </div>

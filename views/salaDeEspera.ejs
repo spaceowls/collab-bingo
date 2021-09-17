@@ -81,6 +81,10 @@
                     }
                 })
 
+        socket.on('stop-<%= user.id %>', () => {
+            window.location.replace('/')
+        })
+
         function sair(){
             socket.emit('<%= sala.code %>')
         }

@@ -65,7 +65,7 @@
                 
                 <div class="info-sala__btn">
                     
-                    <button onclick='mudarLocal()' class="info-sala__btn-gerar">COMEÇAR</button>                    
+                    <button onclick='mudarLocal()' id="comecar" style="display: none;" class="info-sala__btn-gerar">COMEÇAR</button>                    
                     <button  onclick="mandarMensagem()" class="info-sala__btn-gerar-cancelar" id="cancelar">CANCELAR</button>
                 </div>
             </div>
@@ -74,6 +74,16 @@
 
             <script>
                var socket = io.connect();
+
+               socket.on('dono-<%= sala.id %>', (status) => {
+                    const comecar = document.querySelector('#comecar');
+
+                    if(status === 'liberado'){
+                        comecar.style.display = "block";
+                    }else {
+                        comecar.style.display = "none";
+                    }
+               })
 
                 socket.on('recebi', (data)=>{
                     const numero_members = document.querySelector('.members_atual');
