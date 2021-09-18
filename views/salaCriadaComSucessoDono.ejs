@@ -25,8 +25,8 @@
      <!-- e aquela parte roxa da tela -->
     <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
     <section class="sala-de-espera">
+        <h1 id="user-list-online"></h1>
             <div class="info-sala__mensagem-de-criacao-dono">
-
                 <h3><%= 'Sala criada com sucesso!' %></h3>
                 <script>
                     const setTempoMensagem = document.querySelector('.info-sala__mensagem-de-criacao-dono')
@@ -85,6 +85,7 @@
                     }
                })
 
+
                 socket.on('recebi', (data)=>{
                     const numero_members = document.querySelector('.members_atual');
                     numero_members.innerHTML = data;
@@ -108,6 +109,9 @@
                         const member = document.querySelector('#actual_members');
                         const notification = document.querySelector('#notification')
                         const saiu = document.querySelector('.saiu')
+                        const listaUsers = document.querySelector('#user-list-online');
+
+                        listaUsers.insertAdjacentHTML('beforeend', `<p class='online-user-sala'>${username}</p>`);
                         member.innerHTML = online;
                         notification.style.display = "flex";
                         notification.classList.remove('saiu')
@@ -126,7 +130,15 @@
                         const member = document.querySelector('#actual_members');
                         const notification = document.querySelector('#notification')
                         const saiu = document.querySelector('.saiu')
+                        const userNaLista = document.querySelectorAll('.online-user-sala');
                         member.innerHTML = online;
+
+                        userNaLista.forEach(user => {
+                            if(user.textContent === username) {
+                                user.remove();
+                            }
+                        });
+
                         notification.classList.remove('entrou')
                         notification.style.display = "flex";
                         notification.classList.add('saiu')

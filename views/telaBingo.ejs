@@ -10,15 +10,35 @@
     <title>Collab Bingo | <%= sala_name %> </title>
 </head>
 <body>
-    <%- include('modulos/cabecalho', {salaAnterior: sala_name}) %> 
+
+    <%- include('./modulos/cabecalho', {salaAnterior:  sala_name }) %> 
 
     <style>
+        
         .teste {
             cursor: pointer;
         }
     </style>
 
-     <!-- e aquela parte roxa da tela -->
+    <header>
+        <div class="telaBingo__vizualizar-pedras vizualizar-pedras" onclick="aparecerMenu()">
+            <img src="/assets/img/visualizar-pedra.svg" alt="vizu">
+        </div>
+
+        <section id="modal-pedras--escondido">
+            <div class="modal-container-list">
+                <div class="modal-container-list__close">
+                    <h2>Pedras que faltam para:</h2>
+                    <button>
+                        <img src="/assets/img/close.svg" alt="Fechar Modal" onclick="esconderMenu()">
+                    </button>
+                </div>
+
+                <div class="modal-container-list__users"></div>
+            </div>
+        </section>
+    </header>
+
     <%- include('modulos/conteudo', {parte: 'abrir'}) %> 
     <div class="tela-bingo">
         <div class="tela-bingo__bolas-bingo bolas-bingo">
@@ -247,7 +267,23 @@
 
         const socket = io.connect()
 
-            socket.emit('join', '<%= sala %>', '<%= user.id %>', '<%= criador %>');
+        socket.on('bingo-<%= sala %>', username => {
+            console.log(username);
+            const listaUsers = document.querySelector('.modal-container-list__users');
+            listaUsers.insertAdjacentHTML('beforeend', `<div class='modal-container-list__users-names'><h2>${username}</h2><span id='pedras-${username}' class="pedras-usuarios">24</span></div>`);
+        });
+
+        socket.on('pedra-marcada', (pedras, username) => {
+            const pedraUser = document.querySelectorAll('.pedras-usuarios');
+
+            pedraUser.forEach(pedra => {
+                if(pedras.id === `pedras-${username}`){
+                    pedra.innerHTML = pedras;
+                }
+            });
+        });
+
+            socket.emit('join', '<%= sala %>', '<%= user.id %>', '<%= criador %>', '<%= user.username %>');
     
             socket.on('respostaBingo', () => {
                 const hello = document.querySelector('#testee')
@@ -284,6 +320,9 @@
                             e.target.removeEventListener('click', listener)
                             e.target.classList.add('pedra-bloqueada');
                             e.target.classList.remove('pedrinha');
+
+                            socket.emit('pedras-<%= user.username %>');
+
                             if((numeros_marcados.length + 1) === 24) {
                                 const botao = document.querySelector('.botao-bingo');
                                 botao.style.display = "block";

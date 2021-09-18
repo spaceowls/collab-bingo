@@ -1,4 +1,4 @@
-//TODO: passar o codigo para assembly x86
+
 require('express-async-errors');
 const express = require('express');
 const router = require('./routes');
@@ -21,32 +21,39 @@ app.use(cookieParser());
 app.use(errorMiddleware)
 
 // AQUI COMEÇA SOCKET.IO
+const usernames = [];
 io.on('connection', socket => {
 
     //Criação de salas socket.io
 
-    socket.on('join', (room, user, owner, username, maxMembers) => {		
-        socket.id = user;
+    socket.on('join', (room, user, owner, username, maxMembers) => {
+        socket.id = user;  
 		socket.join(room);
         let owner_id = owner;
         const clients = io.sockets.adapter.rooms.get(room)
         let fixedMaxMembers;
-
+        let pedras = 24;
+        
         
         if(!fixedMaxMembers){
             fixedMaxMembers = maxMembers
         }
-
-        if(clients.size >= 5) {
+        
+        if(clients.size >= 1) {
             socket.broadcast.emit(`dono-${room}`, 'liberado');
         }
         
-        if(clients.size > maxMembers) {
+        if(clients.size > maxMembers) { 
             socket.broadcast.emit(`stop-${user}`);
         }
-
+        
+        socket.broadcast.emit(`bingo-${room}`, username);
         socket.broadcast.emit('novo membro', room, clients.size);
         socket.broadcast.emit('add member', room, clients.size, username);
+        socket.on(`pedras-${username}`, () => {
+            pedras-=1;
+            socket.broadcast.emit(`pedra-marcada`, pedras, username);
+        })
         socket.on('mensagem', () => {
             socket.to(room).emit('salve', 'O dono da sala mandou essa mensagem');
         }) 
@@ -59,9 +66,9 @@ io.on('connection', socket => {
             delete clients[socket.id];
             socket.broadcast.emit('novo membro', room, clients.size);
             socket.broadcast.emit('remove member', room, clients.size, username);
-            if(clients.size < 5) {
-                socket.broadcast.emit(`dono-${room}`, 'fechado');
-            }
+            // if(clients.size < 5) {
+            //     socket.broadcast.emit(`dono-${room}`, 'fechado');
+            // }
             if(isOwner) {
                 setTimeout(() => {
                     const exists = io.sockets.adapter.rooms.get(room);
