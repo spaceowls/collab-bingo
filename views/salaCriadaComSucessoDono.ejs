@@ -10,7 +10,7 @@
     <% if(sala === 400) { %>
         <script>
             window.location.replace('/')
-        </script>      
+        </script>    
     <%} %>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +25,45 @@
      <!-- e aquela parte roxa da tela -->
     <%- include('./modulos/conteudo', {parte: 'abrir'}) %>
     <section class="sala-de-espera">
+
+        <section id="modal-pedras" style="display:none">
+            <div class="modal-container-list">
+                <div class="modal-container-list-button">
+                    <button>
+                        <img src="/assets/img/close.svg" alt="Fechar Modal" onclick="fecharModal(event)">
+                    </button>
+                </div>
+                <div class="modal-container-list__close">
+                    <h2>Usuários Online...</h2>
+                </div>
+                <div class="modal-container-list__users">
+                    <!-- Está recebendo um elemento com os dados dos usuários -->
+                </div>
+            </div>
+        </section>
+
+        <script>
+
+
+
+
+            function mostrarModal(){
+                document.getElementById('modal-pedras').style.display = 'flex'
+            }
+
+            function fecharModal(){
+                document.getElementById('modal-pedras').style.display = 'none'
+            }
+
+            // function fecharModal(e){
+            //     e.preventDefault();
+            //     let elemento = document.getElementsByClassName('modal-pedras')[0]
+            //     if (elemento) {
+            //         elemento.classList.toggle('modal-pedras--escondido')
+            //     }
+            // }
+        </script>
+
         <h1 id="user-list-online"></h1>
             <div class="info-sala__mensagem-de-criacao-dono">
                 <h3><%= 'Sala criada com sucesso!' %></h3>
@@ -51,20 +90,19 @@
                             id.select();
                             document.execCommand("copy");
                         })
-                        </script> 
+                    </script> 
                 </div>
             </div>
             
             <div class="info-sala">
                 <h5>Ver participantes:</h5>
-                <div class="info-sala__participantes">
+                <div class="info-sala__participantes" onclick="mostrarModal()">
                     <img src="/assets/img/users.svg" alt="Quantidade de usuarios na sala">
                     <!-- Ejs para mostrar as pessoas que for entrando na sala de espera do bingo, vai atualizando -->
-                    <h2 class="info-sala__numeros-participantes"><span class="members_atual"><span id="actual_members"></span></span><span>/</span><%= sala.max_members %></h2>
+                    <h2 class="info-sala__numeros-participantes"><span class="members_atual"><span id="actual_members"></span><span>/</span><%= sala.max_members %></h2>
                 </div>
                 
                 <div class="info-sala__btn">
-                    
                     <button onclick='mudarLocal()' id="comecar" style="display: none;" class="info-sala__btn-gerar">COMEÇAR</button>                    
                     <button  onclick="mandarMensagem()" class="info-sala__btn-gerar-cancelar" id="cancelar">CANCELAR</button>
                 </div>
@@ -109,14 +147,22 @@
                         const member = document.querySelector('#actual_members');
                         const notification = document.querySelector('#notification')
                         const saiu = document.querySelector('.saiu')
-                        const listaUsers = document.querySelector('#user-list-online');
-
-                        listaUsers.insertAdjacentHTML('beforeend', `<p class='online-user-sala'>${username}</p>`);
+                        
                         member.innerHTML = online;
                         notification.style.display = "flex";
                         notification.classList.remove('saiu')
                         notification.classList.add('entrou')
                         notification.innerHTML = `${username} entrou`
+
+                        const dale = document.querySelector('.modal-container-list__users')
+                        const dele = document.createElement('div')
+                        dele.classList.add('modal-container-list__users-names')
+                        dele.classList.add('modal-dono');
+                        const doly = document.createElement('h2')
+                        doly.textContent = username
+                        doly.classList.add('nome-jogador-na-sala')
+                        dele.appendChild(doly)
+                        dale.insertAdjacentElement('beforeend', dele)
 
                         setTimeout(() => {
                             notification.style.display = "none";
@@ -130,12 +176,12 @@
                         const member = document.querySelector('#actual_members');
                         const notification = document.querySelector('#notification')
                         const saiu = document.querySelector('.saiu')
-                        const userNaLista = document.querySelectorAll('.online-user-sala');
+                        const userNaLista = document.querySelectorAll('.nome-jogador-na-sala');
                         member.innerHTML = online;
 
                         userNaLista.forEach(user => {
                             if(user.textContent === username) {
-                                user.remove();
+                                user.parentElement.remove();
                             }
                         });
 
@@ -191,6 +237,7 @@
                         }
                     });
                 });
+
             </script>
         </section>
     <%- include('./modulos/conteudo', {parte: 'fechar'}) %> 

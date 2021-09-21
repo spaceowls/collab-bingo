@@ -62,7 +62,7 @@
 .tabela-bingo {
     display: grid;
     grid-template-columns: repeat(5, 2em);
-    grid-template-rows: repeat(5, 1.5em);
+    grid-template-rows: repeat(6, 1.5em);
     gap: .4em;
     
     font-family: "Roboto Mono", monospace;
@@ -76,37 +76,32 @@
 
     user-select: none;
 
-
     &__item {
         background-color: var(--ciano-medio);
         text-align: center;
-        // line-height: 2em;
         border-radius: 10%;
-        transition: outline 50ms;
-        outline: 0 var(--roxo-dark) solid ;
-        transition: background 1s;
+        transition: background-color 1s;
 
         &--letra{
             color: var(--roxo-ligth);
             font-weight: bold;
-            // font-size: 2em;
-            line-height: 1.5;
             font-family: "Raleway", sans-serif;
         }
 
         &--selecionado {
             background-color: var(--roxo-dark);
             color: var(--white);
-            // outline: 3px var(--roxo-dark) solid ;
-            transition: background 1s;
+    
+            transition: background-color 1s;
         }
     }
 }
 
 .botao-bingo {
     @include mixins.botao-padrao;
-    margin: 0 auto;
-    margin-bottom: 1em;
+    width: 70%;
+    height: 5rem;
+    margin: 10rem auto;
 }
 
 .bolas-giratorias {
@@ -121,11 +116,11 @@
     }
 }
 
-.gap-cartela {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
+// .gap-cartela {
+//     display: flex;
+//     flex-direction: column;
+//     gap: .5rem;
+// }
 
 .pedra-bloqueada{
     cursor: not-allowed;
@@ -134,4 +129,37 @@
 .pedra-marcada{
     background-color: var(--roxo-dark);
     color: var(--white);
+}
+
+.telaBingo__vizualizar-pedras{
+    padding:3rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+
+    img {
+        width: 4rem;
+        cursor: pointer;
+    }
+}
+
+.modal-pedras {
+    display: block;
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--black-modal);
+    @include mixins.flex-center;
+    animation: aparecer .5s;
+    z-index: 100;
+
+    &--escondido{
+        //precisa ser none pra nao zuar com a identacao da pagina
+        display: none;
+    }
+
 }

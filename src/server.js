@@ -1,11 +1,9 @@
-
 require('express-async-errors');
 const express = require('express');
 const router = require('./routes');
 const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const error404 = require('./middlewares/error404');
-
 
 const app = express();
 const port = process.env.PORT || 3000;  
@@ -18,47 +16,76 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(errorMiddleware)
+app.use(errorMiddleware);
 
 // AQUI COMEÇA SOCKET.IO
-const usernames = [];
+const teste = [];
 io.on('connection', socket => {
 
     //Criação de salas socket.io
-
-    socket.on('join', (room, user, owner, username, maxMembers) => {
-        socket.id = user;  
+    socket.on('join', (room, user, owner, username, maxMembers) => {		
+        socket.id = user;
 		socket.join(room);
         let owner_id = owner;
-        const clients = io.sockets.adapter.rooms.get(room)
+        const clients = io.sockets.adapter.rooms.get(room);
         let fixedMaxMembers;
-        let pedras = 24;
+
         
+        if(teste[room]){
+            const userData = {
+                id: user,
+                username,
+                pedras: 24
+            }
+            const existUser = teste[room].find(usr => usr.id === user);
+            if(!existUser) {
+                teste[room].push(userData);
+            }
+        }else{
+            teste[room] = [];
+            const userData = {
+                id: user,
+                username,
+                pedras: 24
+            }
+            teste[room].push(userData);  
+        }
+
+        socket.broadcast.emit('lista-users', room, teste[room])
+
         
         if(!fixedMaxMembers){
             fixedMaxMembers = maxMembers
         }
-        
+
         if(clients.size >= 1) {
             socket.broadcast.emit(`dono-${room}`, 'liberado');
         }
         
-        if(clients.size > maxMembers) { 
+        if(clients.size > maxMembers) {
             socket.broadcast.emit(`stop-${user}`);
         }
-        
-        socket.broadcast.emit(`bingo-${room}`, username);
+
         socket.broadcast.emit('novo membro', room, clients.size);
         socket.broadcast.emit('add member', room, clients.size, username);
-        socket.on(`pedras-${username}`, () => {
-            pedras-=1;
-            socket.broadcast.emit(`pedra-marcada`, pedras, username);
-        })
         socket.on('mensagem', () => {
             socket.to(room).emit('salve', 'O dono da sala mandou essa mensagem');
-        }) 
+        });
         socket.on('mudarLocal', () => {
             socket.to(room).emit('redirect', 'salve');
+        });
+
+        socket.on('pedra marcada', (user_id) => {
+            const user = teste[room].find(usr => usr.id === user_id);
+            const indexUser = teste[room].indexOf(user);
+            const newValue = user.pedras = user.pedras - 1;
+            teste[room][indexUser].pedras = newValue;
+            const pedrasAtualizadas = teste[room][indexUser].pedras;
+            socket.broadcast.emit('pedra foi marcada', room, user_id, pedrasAtualizadas);
+        })
+
+        socket.on('fim da partida', (sala) => {
+            delete teste[sala];
         });
 
         socket.on('disconnect', () => {
@@ -66,7 +93,7 @@ io.on('connection', socket => {
             delete clients[socket.id];
             socket.broadcast.emit('novo membro', room, clients.size);
             socket.broadcast.emit('remove member', room, clients.size, username);
-            // if(clients.size < 5) {
+            // if(clients.size < 1) {
             //     socket.broadcast.emit(`dono-${room}`, 'fechado');
             // }
             if(isOwner) {
@@ -84,12 +111,10 @@ io.on('connection', socket => {
                                 socket.broadcast.emit('saiu da sala', room);
                             }, 1000)
                         }
-                    }else{
-                        console.log('Sala não existe');
                     }
                 }, 3000)
             }
-        })
+        });
 
         let numerosDoBingo = [
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,

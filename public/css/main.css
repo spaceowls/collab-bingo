@@ -580,7 +580,7 @@ body {
 .tabela-bingo {
   display: grid;
   grid-template-columns: repeat(5, 2em);
-  grid-template-rows: repeat(5, 1.5em);
+  grid-template-rows: repeat(6, 1.5em);
   gap: 0.4em;
   font-family: "Roboto Mono", monospace;
   font-size: 3.5vh;
@@ -594,20 +594,17 @@ body {
   background-color: var(--ciano-medio);
   text-align: center;
   border-radius: 10%;
-  transition: outline 50ms;
-  outline: 0 var(--roxo-dark) solid;
-  transition: background 1s;
+  transition: background-color 1s;
 }
 .tabela-bingo__item--letra {
   color: var(--roxo-ligth);
   font-weight: bold;
-  line-height: 1.5;
   font-family: "Raleway", sans-serif;
 }
 .tabela-bingo__item--selecionado {
   background-color: var(--roxo-dark);
   color: var(--white);
-  transition: background 1s;
+  transition: background-color 1s;
 }
 
 .botao-bingo {
@@ -624,8 +621,9 @@ body {
   -webkit-box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
   box-shadow: -1px 9px 8px -6px rgba(0, 0, 0, 0.58);
   transition: background 0.3s;
-  margin: 0 auto;
-  margin-bottom: 1em;
+  width: 70%;
+  height: 5rem;
+  margin: 10rem auto;
 }
 .botao-bingo:hover {
   background: var(--roxo-ligth);
@@ -641,12 +639,6 @@ body {
   transform: scale(100%);
 }
 
-.gap-cartela {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
 .pedra-bloqueada {
   cursor: not-allowed;
 }
@@ -654,6 +646,36 @@ body {
 .pedra-marcada {
   background-color: var(--roxo-dark);
   color: var(--white);
+}
+
+.telaBingo__vizualizar-pedras {
+  padding: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.telaBingo__vizualizar-pedras img {
+  width: 4rem;
+  cursor: pointer;
+}
+
+.modal-pedras {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--black-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: aparecer 0.5s;
+  z-index: 100;
+}
+.modal-pedras--escondido {
+  display: none;
 }
 
 .texto-id__entrar {
@@ -1313,22 +1335,28 @@ footer h2 {
   flex-direction: column;
   padding: 2rem 0;
 }
+.modal-container-list-button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.modal-container-list-button button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 2rem;
+}
 .modal-container-list__close {
   width: 25rem;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0.5rem;
 }
 .modal-container-list__close h2 {
   font-size: 1.6rem;
-}
-.modal-container-list__close button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
 }
 .modal-container-list__users {
   display: flex;
@@ -1348,6 +1376,9 @@ footer h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.modal-container-list__users-names.modal-dono {
+  justify-content: center;
 }
 .modal-container-list__users-names h2 {
   font-size: 1.5rem;
