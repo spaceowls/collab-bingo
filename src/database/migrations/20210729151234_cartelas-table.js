@@ -5,7 +5,7 @@ exports.up = function(knex) {
     
         tbl.string('numeros');
 
-        tbl.integer('bingo_id').unsigned();
+        tbl.integer('bingo_id')
 
         tbl.string('owner_user');
     });
