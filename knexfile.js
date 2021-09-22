@@ -2,22 +2,17 @@
 
 module.exports = {
   production: {
-    client: 'mysql',
+    client: "pg",
     connection: {
-      //dados das conexoes e tudo mais eh so falar com o joao, Att: joao
-      host: 'sql10.freesqldatabase.com',
-      port : 3306,
-      user : 'sql10437264',
-      password : 'CDgMlukCka',
-      database : 'sql10437264',
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
     },
-    useNullAsDefault: true,
     migrations: {
-      directory: `${__dirname}/src/database/migrations`
+      directory: `${__dirname}/src/database/migrations`,
     },
     seeds: {
-      directory: `${__dirname}/src/database/seeds`
-    }
+      directory: `${__dirname}/src/database/seeds`,
+    },
   },
   development: {
     client: 'sqlite3',
