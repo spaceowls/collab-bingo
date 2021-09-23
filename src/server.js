@@ -58,7 +58,7 @@ io.on('connection', socket => {
             fixedMaxMembers = maxMembers
         }
 
-        if(clients.size >= 5) {
+        if(clients.size >= 3) {
             socket.broadcast.emit(`dono-${room}`, 'liberado');
         }
         
@@ -93,7 +93,7 @@ io.on('connection', socket => {
             delete clients[socket.id];
             socket.broadcast.emit('novo membro', room, clients.size);
             socket.broadcast.emit('remove member', room, clients.size, username);
-            if(clients.size < 5) {
+            if(clients.size < 3) {
                 socket.broadcast.emit(`dono-${room}`, 'fechado');
             }
             if(isOwner) {
