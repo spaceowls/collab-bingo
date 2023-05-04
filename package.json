@@ -6,10 +6,10 @@
   "author": "Lucas André <lucasandrefreitas1@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "14.17.6"
+    "node": ">=14"
   },
   "scripts": {
-    "start": "node src/server.js",
+    "start": "knex migrate:latest && node src/server.js",
     "dev": "nodemon src/server.js",
     "sass-build": "npx sass --no-source-map assets/sass/main.scss public/css/main.css",
     "sass-dev": "npx sass --watch --no-source-map assets/sass/main.scss public/css/main.css"
